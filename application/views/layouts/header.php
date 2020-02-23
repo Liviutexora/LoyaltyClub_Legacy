@@ -32,7 +32,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link href="<?=site_url("assets/lib/perfect-scrollbar/perfect-scrollbar.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/owl.carousel/owl.carousel.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/lib/flatpickr/flatpickr.min.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/css/theme.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/css/app.css")?>" rel="stylesheet">
 
   </head>
 

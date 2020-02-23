@@ -105,55 +105,7 @@
           </div>
         </div>
       </nav>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body p-4">
-              <div class="row text-left justify-content-between align-items-center mb-2">
-                <div class="col-auto">
-                  <h5 id="modalLabel"> Register</h5>
-                </div>
-                <div class="col-auto">
-                  <p class="fs--1 text-600 mb-0">Have an account? <a href="../authentication/basic/login.html">Login</a></p>
-                </div>
-              </div>
-              <form>
-                <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Name" />
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="email" placeholder="Email address" />
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-6">
-                    <input class="form-control" type="password" placeholder="Password" />
-                  </div>
-                  <div class="form-group col-6">
-                    <input class="form-control" type="password" placeholder="Confirm Password" />
-                  </div>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="modal-register-checkbox" />
-                  <label class="custom-control-label" for="modal-register-checkbox">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Register</button>
-                </div>
-              </form>
-              <div class="w-100 position-relative mt-4">
-                <hr class="text-300" />
-                <div class="position-absolute absolute-centered t-0 px-3 bg-white text-sans-serif fs--1 text-500 text-nowrap">or register with</div>
-              </div>
-              <div class="form-group mb-0">
-                <div class="row no-gutters">
-                  <div class="col-sm-6 pr-sm-1"><a class="btn btn-outline-google-plus btn-sm btn-block mt-2" href="#"><span class="fab fa-google-plus-g mr-2" data-fa-transform="grow-8"></span> google</a></div>
-                  <div class="col-sm-6 pl-sm-1"><a class="btn btn-outline-facebook btn-sm btn-block mt-2" href="#"><span class="fab fa-facebook-square mr-2" data-fa-transform="grow-8"></span> facebook</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php $this->load->view("register/register_modal.php") ?>
 
 
       <!-- ============================================-->
@@ -178,31 +130,6 @@
       </section>
       <!-- <section> close ============================-->
       <!-- ============================================-->
-
-
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="py-3 bg-light shadow-sm">
-
-        <div class="container">
-          <div class="row justify-content-center align-items-center">
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="40" src="<?=site_url("assets/img/logos/b&amp;w/6.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="45" src="<?=site_url("assets/img/logos/b&amp;w/11.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="30" src="<?=site_url("assets/img/logos/b&amp;w/2.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="30" src="<?=site_url("assets/img/logos/b&amp;w/4.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="35" src="<?=site_url("assets/img/logos/b&amp;w/1.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="40" src="<?=site_url("assets/img/logos/b&amp;w/10.png")?>" alt="" /></div>
-            <div class="col-3 col-sm-auto my-1 my-sm-3 px-card"><img class="landing-cta-img" height="40" src="<?=site_url("assets/img/logos/b&amp;w/12.png")?>" alt="" /></div>
-          </div>
-        </div>
-        <!-- end of .container-->
-
-      </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-
 
 
 
@@ -373,7 +300,7 @@
             </div>
             <div class="col pl-lg-6 pl-xl-8">
               <div class="row mt-5 mt-lg-0">
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-6">
                   <h5 class="text-uppercase text-white opacity-85 mb-3">Company</h5>
                   <ul class="list-unstyled">
                     <li class="mb-1"><a class="text-600" href="#!">About</a></li>
@@ -385,7 +312,7 @@
                     <li><a class="text-600" href="#!">Imprint</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-6">
                   <h5 class="text-uppercase text-white opacity-85 mb-3">Product</h5>
                   <ul class="list-unstyled">
                     <li class="mb-1"><a class="text-600" href="#!">Features</a></li>
@@ -398,27 +325,7 @@
                     <li class="mb-1"><a class="text-600" href="#!">Enterprise</a></li>
                   </ul>
                 </div>
-                <div class="col mt-5 mt-md-0">
-                  <h5 class="text-uppercase text-white opacity-85 mb-3">From the Blog</h5>
-                  <ul class="list-unstyled">
-                    <li>
-                      <h5 class="fs-0 mb-0"><a class="text-600" href="#!">New components are ready to publish!</a></h5>
-                      <p class="text-600 opacity-50">Jan 15 &bull; 8min read </p>
-                    </li>
-                    <li>
-                      <h5 class="fs-0 mb-0"><a class="text-600" href="#!">January '19 New Features Newsletter</a></h5>
-                      <p class="text-600 opacity-50">Jan 5 &bull; 3min read &starf;</p>
-                    </li>
-                    <li>
-                      <h5 class="fs-0 mb-0"><a class="text-600" href="#!">Merry Christmas From the Falcon Team.</a></h5>
-                      <p class="text-600 opacity-50">Dec 25 &bull; 2min read</p>
-                    </li>
-                    <li>
-                      <h5 class="fs-0 mb-0"><a class="text-600" href="#!">The New Falcon Theme</a></h5>
-                      <p class="text-600 opacity-50">Dec 23 &bull; 10min read </p>
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -432,32 +339,4 @@
 
 
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="py-0 bg-dark">
-
-        <div>
-          <hr class="my-0 border-600 opacity-25" />
-          <div class="container py-3">
-            <div class="row justify-content-between fs--1">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600 opacity-85">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none" /> 2018 &copy; <a class="text-white opacity-85" href="https://themewagon.com">Themewagon</a></p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600 opacity-85">v2.3.1</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of .container-->
-
-      </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-
-
-    </main>
-    <!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
     <?php $this->load->view("layouts/footer") ?>
