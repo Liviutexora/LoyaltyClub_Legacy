@@ -45,6 +45,7 @@
     <script src="<?=site_url('assets/lib/lottie/lottie.min.js')?>"></script>
     <script src="<?=site_url("assets/js/theme.js")?>"></script>
     <script src="<?=site_url("assets/js/register.js")?>"></script>
+    <script src="<?=site_url("assets/js/app.js")?>"></script>
 
   </body>
 
