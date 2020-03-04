@@ -18,11 +18,11 @@ class Users_actions extends CI_model
 	
 	function update_password_by_email($email) {
 		//generare parola random
-		$password=rand(100000,9999999);
-		$password=md5($password);
+		$password_to_send=rand(100000,9999999);
+		$password=md5($password_to_send);
 		$this->db->where('email', $email);
 		$this->db->update("user", array("password" => $password));
-		return $password;
+		return $password_to_send;
 	}
 
     public function checkChilds($id)
