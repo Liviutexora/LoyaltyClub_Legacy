@@ -49,7 +49,7 @@
                               <label class="custom-control-label" for="modal-checkbox"><?=$this->lang->line("Remember me")?></label>
                             </div>
                           </div>
-                          <!--div class="col-auto"><a class="fs--1" href="../authentication/basic/forgot-password.html">Forgot Password?</a></div-->
+                          <div class="col-auto"><a class="fs--1" href="<?=site_url('forgot-password')?>"><?=$this->lang->line("Login Modal Forgot Password?")?></a></div>
                         </div>
                         <div class="form-group">
                           <button class="btn btn-primary btn-block mt-3 login-btn" type="button" ><?=$this->lang->line("Log in")?></button>

@@ -124,6 +124,35 @@ $(document).ready(function(){
       }
   });
 
+    $(document).on('click','.forgot-password-button',function() {
+        forgotPasswordFormValid = $(".forgot-password-form").valid();
+        url = $(".forgot-password-form").attr('action');
+        email = $(".forgot-password-form").find('input[name="email"]').val();
+      
+        if(forgotPasswordFormValid) {
+        $.ajax({
+                type: "POST",
+                url:  url,
+                data: {
+                    email: email
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error: ' + xhr.responseText);
+                },
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data );
+                    if(obj.error) {
+                        $(".forgot-password-form").find('#save_result').html(obj.message);
+                    } else {
+                        $(".forgot-password-form").find('#save_result').html(obj.message);
+                    }
+                
+                }
+        });
+        }
+    });
+
   });
   
   function display_register_company_private_block(){

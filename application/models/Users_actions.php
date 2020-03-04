@@ -9,7 +9,21 @@ class Users_actions extends CI_model
             }
             $query = $this->db->get("user");
             return $query->num_rows();
-    }
+	}
+
+	function get_user_details_by_email($email)
+	{
+		return $this->db->select('nume', FALSE)->where('email',$email)->get('user')->row_array();
+	}
+	
+	function update_password_by_email($email) {
+		//generare parola random
+		$password=rand(100000,9999999);
+		$password=md5($password);
+		$this->db->where('email', $email);
+		$this->db->update("user", array("password" => $password));
+		return $password;
+	}
 
     public function checkChilds($id)
 	{

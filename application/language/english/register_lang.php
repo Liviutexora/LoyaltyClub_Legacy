@@ -63,5 +63,35 @@ $lang['Now you can access to your account'] = "Now you can access to your accoun
 $lang['Go to Home Page'] = "Go to Home Page";
 $lang['Invalid login details'] = "Invalid login details";
 $lang['Register Success'] = "Success";
+$lang['Register Success'] = "Forgot Password Page Forgot your password?";
+$lang['Login Modal Forgot Password?'] = "Forgot Password?";
+$lang['Forgot Password Page Enter your email and we\'ll send you a reset link.'] = "Enter your email and we'll send you a reset link.";
+$lang['Forgot Password Send reset link'] = "Send reset link";
+$lang['Forgot Password Password recovery'] = "Password recovery";
+$lang['Forgot Password You have accessed the recovery password form on '] = "You have accessed the recovery password form on ";
+$lang['Forgot Password The new login details are:'] = "The new login details are:";
+$lang['Forgot Password Username:'] = "Username:";
+$lang['Forgot Password Password:'] = "Password:";
+$lang['Forgot Password Please go to '] = "Please go to ";
+$lang['Forgot Password and please change your password.'] = " and please change your password.";
+$lang['Forgot Password We are waiting you on '] = " We are waiting you on ";
+$lang['Forgot Password with many promotions and discounts.'] = "with many promotions and discounts.";
+$lang['Forgot Password The team'] = "The team";
+$lang['Forgot Password Please check your emai address'] = "Please check your emai address";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

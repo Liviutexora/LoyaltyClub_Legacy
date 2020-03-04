@@ -293,6 +293,62 @@ class Register extends MY_Controller {
 		}
 	}
 
+	public function forgotPassword() {
+
+		if($this->input->post()) {
+			$validation = array();
+			$validation[] =  array('field' => 'email', 'rules' => 'required|valid_email');
+			$this -> form_validation -> set_rules($validation);
+			$response = array();
+			if ($this -> form_validation -> run() == FALSE) {
+				$response['error'] = 1;
+				$response['message'] = $this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'), true);
+				exit(json_encode($response));
+			}
+			$rez = $this->users_actions->email_exists($this->input->post('email'));
+
+			if(!$rez) {
+				$response['error'] = 1;
+				$response['message'] = $this -> load -> view('layouts/error', array('message' => 'Introduceti o adresa de email valida.'), true);
+				exit(json_encode($response));
+			} else {
+				$password = $this->users_actions->update_password_by_email($this->input->post('email'));
+				$user_details = $this->users_actions->get_user_details_by_email($this->input->post('email'));
+				//creaza si trimite email
+				$catre=$this->input->post('email');
+				$subiect="".$this->lang->line('Forgot Password Password recovery')." ".site_url("/");
+				$mesaj="".$this->lang->line('Hello')." ".$user_details['nume']."
+						<br><br>
+						".$this->lang->line('Forgot Password You have accessed the recovery password form on ')." ".site_url("/").".
+						<br>
+						".$this->lang->line('Forgot Password The new login details are:')."
+						<br>
+						".$this->lang->line('Forgot Password Username:')."".$this->input->post('email')."
+						<br>
+						".$this->lang->line('Forgot Password Password:')."".$password."
+						<br><br>
+						".$this->lang->line('Forgot Password Please go to ')." <a href='http://".site_url("/")."'>site</a> ".$this->lang->line('Forgot Password and please change your password.')." 
+						<br><br>
+						".$this->lang->line('Forgot Password We are waiting you on ')." <a href='http://".site_url("/")."'>site</a> ".$this->lang->line('Forgot Password with many promotions and discounts.')."
+						<br><br>
+						".$this->lang->line('Forgot Password The team')." ".site_url("/").".";
+				$headere  = "MIME-Version: 1.0\r\n";
+				$headere .= "Content-type: text/html; charset=iso-8859-1\r\n";
+				$headere .= "From: ".ucfirst($_SERVER['HTTP_HOST'])."<".$this->users_actions->getContactEmail().">\r\n";
+
+				mail($catre,$subiect,$mesaj,$headere);
+				$response['error'] = 0;
+				$message = "";
+				$message .= $this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forgot Password Please check your emai address')), true);
+				$message .= $this -> load -> view('layouts/redirect', array('url' => site_url()/*, 'close_only_modal' => true*/), true);
+				$response['message'] = $message;
+				exit(json_encode($response));
+			}
+		} else {
+			$this->load->view('register/forgot_password');
+		}
+	}
+
 	public function logout() {
 		$this->session->sess_destroy();
 		redirect(site_url("/"));
