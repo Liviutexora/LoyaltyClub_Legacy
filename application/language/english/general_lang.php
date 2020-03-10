@@ -19,6 +19,8 @@ $lang['Start our business'] = "Start our business";
 $lang['Yes'] = "Yes";
 $lang['No'] = "No";
 $lang['Success'] = "Success";
+$lang['Comming Soon'] = "Comming Soon";
+
 
 
 
