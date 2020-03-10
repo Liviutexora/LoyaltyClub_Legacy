@@ -3,7 +3,7 @@
     <div class="toggle-icon-wrapper">
         <button class="btn btn-link navbar-vertical-toggle" data-toggle="tooltip" data-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
     </div><a class="navbar-brand text-left" href="<?=site_url("/")?>">
-        <div class="d-flex align-items-center py-3"><img class="mr-2" src="<?=site_url("assets/img/icons/logo_blue.png")?>" alt="" width="90" />
+        <div class="d-flex align-items-center py-3"><img class="mr-2" src="<?=site_url("assets/img/icons/".($this->darkMode ? 'loyaltyclub-white.png' : 'logo_blue.png')."")?>" alt="" width="90" />
         </div>
     </a>
     </div>
