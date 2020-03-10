@@ -63,7 +63,6 @@ $lang['Now you can access to your account'] = "Now you can access to your accoun
 $lang['Go to Home Page'] = "Go to Home Page";
 $lang['Invalid login details'] = "Invalid login details";
 $lang['Register Success'] = "Success";
-$lang['Register Success'] = "Forgot Password Page Forgot your password?";
 $lang['Login Modal Forgot Password?'] = "Forgot Password?";
 $lang['Forgot Password Page Enter your email and we\'ll send you a reset link.'] = "Enter your email and we'll send you a reset link.";
 $lang['Forgot Password Send reset link'] = "Send reset link";

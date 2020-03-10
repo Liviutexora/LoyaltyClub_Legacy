@@ -40,3 +40,9 @@
 
 
   <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+    <?php $this->load->view("menu/before_login.php") ?>
+    <?php $this->load->view("register/register_modal.php") ?>

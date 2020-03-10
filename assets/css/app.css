@@ -2,3 +2,9 @@
   background-color: grey ;
 }
 .hidde {display:none}
+
+.loading-div{display:none;position: fixed;z-index: 999;height: 2em;width: 303px;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;}
+/* User dashboard */
+.nav-item .professional-settings-container {margin-left: 20px;}
+
+/* End user dashboard */

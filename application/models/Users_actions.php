@@ -107,15 +107,26 @@ class Users_actions extends CI_model
 			$query="SELECT * FROM `".$table."`
 					WHERE `".$child."`=".$user_info['id'];	
             $user_info=$this->db->query($query)->row_array();
-            //echo "<pre>";
-            //var_dump( $user_info);die();
-			//$user_info->params = $exeQuery;	
 			$this->session->set_userdata(array("user" => $exeQuery));	
           
 			return true;
 		}
 			
 	return false;		
+	}
+
+	function getUserSettings($settingName,$userId) {
+		return $this->db->select(array('settings_id','settings_name','settings_value'))->where('settings_name',$settingName)->where('settings_user_id',$userId)->get('user_settings')->row_array();	
+	}
+
+	function updateUserSettings($settingName,$settingValue,$userId) {
+		$this->db->where('settings_user_id', $userId);
+		$this->db->where('settings_name', $settingName);
+		$this->db->update('user_settings', array("settings_value" =>$settingValue));
+	}
+
+	function insertUserSettings($data) {
+		$this->db->insert('user_settings', $data);
 	}
 }
 ?>

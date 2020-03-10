@@ -78,7 +78,6 @@ $(document).ready(function(){
 
         return false;
     },onTabShow: function(tab, navigation, index) {
-        console.log(index)
         if(index == 1) {
             $(".previous .btn-link").css("display","block");
         }else if(index==2){

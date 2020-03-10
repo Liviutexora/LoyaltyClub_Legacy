@@ -86,3 +86,53 @@ function submit_form(form_selector, target, callback) {
         }
     });
 }
+
+var app = {
+    setDarkMode : function(){
+        $(document).ready(function(){
+            $(document).on('click','#make-dark',function(event) {
+                content = $(this).attr("modal-content");
+                yes = $(this).attr("yes");
+                no = $(this).attr("no");
+                enabled = $(this).attr("enabled");
+                url = $(this).attr("url");
+                var dialog = bootbox.dialog({
+                        message: content,
+                        closeButton: false,
+                        buttons: {
+                                noclose: {
+                                        label: yes,
+                                        className: "btn-success",
+                                        callback: function () {
+                                            $(".loading-div").css("display","block");
+                                            $.ajax({
+                                                type: "POST",
+                                                url:  url,
+                                                data: {
+                                                    enabled: enabled
+                            
+                                                },
+                                                error: function (xhr, textStatus, errorThrown) {
+                                                    console.log('Error: ' + xhr.responseText);
+                                                },
+                                                success: function (data) {
+                                                    dialog.find('.bootbox-body').prepend(data);
+                                                  
+                                                }
+                                            });
+                                        }
+                                },
+                                danger: {
+                                        label: no,
+                                        className: "btn-danger",
+                                }
+                        }
+                });
+            });
+        });
+    }
+};
+
+app.setDarkMode();
+
+

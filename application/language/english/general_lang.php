@@ -16,6 +16,9 @@ $lang['in your life'] = "in your life";
 $lang['Become one of us'] = "Become one of us";
 $lang['Join our community'] = "Join our community of 3000+ members and companies, to build a better future of shopings";
 $lang['Start our business'] = "Start our business";
+$lang['Yes'] = "Yes";
+$lang['No'] = "No";
+$lang['Success'] = "Success";
 
 
 

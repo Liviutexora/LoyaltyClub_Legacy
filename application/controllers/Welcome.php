@@ -24,9 +24,9 @@ class Welcome extends MY_Controller {
 	public function index()
 	{
 		if(isset($this->current_user['id'])) {
-			$this->load->view('index_logged');
+			$this->load->view('layouts_after_login/index');
 		} else {
-			$this->load->view('index');
+			$this->load->view('layouts/index');
 		}
 		
 	}

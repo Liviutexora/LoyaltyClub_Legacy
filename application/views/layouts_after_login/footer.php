@@ -1,7 +1,21 @@
-
+</div>
+    </div>
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
+    <script>
+      
+      /*-----------------------------------------------
+      |   Theme Configuration
+      -----------------------------------------------*/
+      var storage = {
+        isDark: ($this->darkMode ? true : false)
+      };
+    </script>
     <script src="<?=site_url("assets/js/jquery.min.js")?>"></script>
     <script src="<?=site_url("assets/js/popper.min.js")?>"></script>
     <script src="<?=site_url("assets/js/bootstrap.min.js")?>"></script>
@@ -17,10 +31,10 @@
     <script src="<?=site_url("assets/lib/datatables-bs4/dataTables.bootstrap4.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/datatables.net-responsive/dataTables.responsive.js")?>"></script>
     <script src="<?=site_url("assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js")?>"></script>
-    <script src="<?=site_url("assets/lib/leaflet/leaflet.js")?>"></script>
-    <script src="<?=site_url("assets/lib/leaflet.markercluster/leaflet.markercluster.js")?>"></script>
-    <script src="<?=site_url("assets/lib/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js")?>"></script>
     <script src="<?=site_url("assets/js/theme.js")?>"></script>
+    <script src="<?=site_url("assets/js/bootbox.all.min.js")?>"></script>
+    <script src="<?=site_url("assets/js/app.js")?>"></script>
+   
 
   </body>
 

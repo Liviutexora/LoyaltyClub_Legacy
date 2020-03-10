@@ -1,0 +1,1 @@
+<div class="alert alert-danger"><?= $this->lang->line($message)?></div>
