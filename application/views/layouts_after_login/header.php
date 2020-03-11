@@ -85,7 +85,7 @@
         <div class="content">
           <nav class="navbar navbar-light navbar-glass fs--1 font-weight-semi-bold row navbar-top sticky-kit navbar-expand">
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button><a class="navbar-brand text-left ml-3" href="index.html">
-              <div class="d-flex align-items-center"><img class="mr-2" src="assets/img/illustrations/falcon.png" alt="" width="40" /><span class="text-sans-serif">falcon</span>
+              <div class="d-flex align-items-center"><img class="mr-2" src="<?=site_url("assets/img/icons/".($this->darkMode ? 'loyaltyclub-white.png' : 'logo_blue.png')."")?>" alt="" width="90" />
               </div>
             </a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown1">
