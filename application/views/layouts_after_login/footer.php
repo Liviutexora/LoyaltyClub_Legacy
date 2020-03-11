@@ -13,7 +13,7 @@
       |   Theme Configuration
       -----------------------------------------------*/
       var storage = {
-        isDark: ($this->darkMode ? true : false)
+        isDark: <?=($this->darkMode ? 1 : 0)?>
       };
     </script>
     <script src="<?=site_url("assets/js/jquery.min.js")?>"></script>

@@ -16,6 +16,27 @@ $lang['User Section Menu Label Contact Us'] = "Contact Us";
 $lang['User Section Notification Label View All'] = "View All";
 $lang['User Section Notification Label Mark All As Read'] = "Mark all as read";
 $lang['User Section Notification Label Notifications'] = "Notifications";
+$lang['User Section Graph Label Today'] = "Today";
+$lang['User Section Graph Label This Month'] = "This month";
+$lang['User Section Graph Label Network Incomes'] = "Network Incomes";
+$lang['User Section Graph Label Personal Incomes'] = "Personal Incomes";
+$lang['User Section Graph Label New Registered'] = "New Registered";
+$lang['User Section Tasks Label New Tasks'] = "You have 4 new tasks. <a href='#'>Open Tasks</a>";
+$lang['User Section Label Revenue'] = "Revenue";
+$lang['User Section Label Users'] = "Users";
+$lang['User Section Label All Users'] = "All users";
+$lang['User Section Label Loyalty Tickets'] = "Tickets";
+$lang['User Section Label Btn Add Ticket'] = "Add Ticket";
+$lang['User Section Label Btn See All Tickets'] = "See all";
+
+
+
+
+
+
+
+
+
 
 
 

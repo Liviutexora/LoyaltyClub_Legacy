@@ -92,7 +92,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#"> 
                             <div class="form-group form-check">
-                                <input class="form-check-input" url="<?=site_url('user/enableDisableDarkMode')?>" yes="<?=$this->lang->line("Yes")?>" no="<?=$this->lang->line("No")?>" modal-title="<?=($this->lang->line("User Section Dark Mode Modal Title"))?>" modal-content="<?=( $this->darkMode == 1 ? $this->lang->line("User Section Dark Mode Modal Disable Title") : $this->lang->line("User Section Dark Mode Modal Enable Title") )?>" enabled="<?=($this->darkMode == 1 ? 1 : 0 )?>" id="make-dark" type="checkbox">
+                                <input class="form-check-input" <?=($this->darkMode ? "checked='checked'" : '')?> url="<?=site_url('user/enableDisableDarkMode')?>" yes="<?=$this->lang->line("Yes")?>" no="<?=$this->lang->line("No")?>" modal-title="<?=($this->lang->line("User Section Dark Mode Modal Title"))?>" modal-content="<?=( $this->darkMode == 1 ? $this->lang->line("User Section Dark Mode Modal Disable Title") : $this->lang->line("User Section Dark Mode Modal Enable Title") )?>" enabled="<?=($this->darkMode == 1 ? 1 : 0 )?>" id="make-dark" type="checkbox">
                                 <label class="form-check-label" for="make-dark"><?=$this->lang->line("User Section Menu Label Dark Mode")?></label>
                             </div>
                         </a>
