@@ -29,7 +29,7 @@
        
         <div class="card-body position-relative">
         <h6><?=$this->lang->line("User Section Label Loyalty Tickets")?></h6>
-        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-warning" data-countupp='{"count":36487,"format":"alphanumeric"}'>564</div><a class="font-weight-semi-bold fs--1 text-nowrap" href="#!"><?=$this->lang->line("User Section Label Btn Add Ticket")?><svg class="svg-inline--fa fa-angle-right fa-w-8 ml-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" transform="translate(-128 -256)"></path></g></g></svg><!-- <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span> --></a>
+        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-warning" data-countupp='{"count":36487,"format":"alphanumeric"}'>564</div><a class="font-weight-semi-bold fs--1 text-nowrap" href="#!"><?=$this->lang->line("User Section Label Btn Add Ticket")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span><!--  --></a>
         </div>
     </div>
     <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
@@ -49,7 +49,43 @@
 
         <div class="card-body position-relative">
         <h6><?=$this->lang->line("User Section Label Users")?></h6>
-        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info" data-countup="{&quot;count&quot;:23434,&quot;format&quot;:&quot;comma&quot;}">733</div><a class="font-weight-semi-bold fs--1 text-nowrap" href="#!"><?=$this->lang->line("User Section Label All Users")?><svg class="svg-inline--fa fa-angle-right fa-w-8 ml-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" transform="translate(-128 -256)"></path></g></g></svg><!-- <span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span> --></a>
+        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info" data-countup="{&quot;count&quot;:23434,&quot;format&quot;:&quot;comma&quot;}">733</div><a class="font-weight-semi-bold fs--1 text-nowrap" href="#!"><?=$this->lang->line("User Section Label All Users")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
         </div>
     </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-lg-6 col-xl-7 col-xxl-8 mb-3 pr-lg-2 mb-3">
+            <div class="card h-lg-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="w-100">
+                <h6 class="mb-3 text-800"><?=$this->lang->line("User Section Label Personal Shopping")?> <strong class="text-dark">2100 kr </strong><?=$this->lang->line('User Section Label Personal Shopping of')?> 4900 kr</h6>
+                <div class="progress mb-3 rounded-soft" style="height: 10px;">
+                    <div class="progress-bar bg-card-gradient border-right border-white border-2x" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info border-right border-white border-2x" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success border-right border-white border-2x" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="row fs--1 font-weight-semi-bold text-500">
+                    <div class="col-auto d-flex align-items-center pr-2"><span class="dot bg-primary"></span><span><?=$this->lang->line("User Section Label Personal Shopping Level 1")?></span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(895MB)</span></div>
+                    <div class="col-auto d-flex align-items-center px-2"><span class="dot bg-info"></span><span><?=$this->lang->line("User Section Label Personal Shopping Level 2")?></span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(379MB)</span></div>
+                    <div class="col-auto d-flex align-items-center px-2"><span class="dot bg-success"></span><span><?=$this->lang->line("User Section Label Personal Shopping Level 3")?></span><span class="d-none d-md-inline-block d-lg-none d-xxl-inline-block ml-1">(192MB)</span></div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-5 col-xxl-4 mb-3 pl-lg-2">
+            <div class="card h-lg-100 overflow-hidden">
+            <div class="bg-holder bg-card" style="background-image:url(../assets/img/illustrations/corner-1.png);">
+            </div>
+            <!--/.bg-holder-->
+
+            <div class="card-body position-relative">
+                <h5 class="text-warning"><?=$this->lang->line('User Section Label Subscription Your subscription will be renewed in')?></h5>
+                <p class="fs--1 mb-0"><?=$this->lang->line('User Section Label Subscription Your subscription will expire on')?>: 12-03-2021</p>
+                <button class="btn btn-falcon-success mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional</button>
+                <a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0 pr-0 float-right" href="#!"><?=$this->lang->line('User Section Label Subscription Keep Me')?> standard<svg class="svg-inline--fa fa-chevron-right fa-w-10 ml-1" data-fa-transform="shrink-4 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg="" style="transform-origin: 0.3125em 0.5625em;"><g transform="translate(160 256)"><g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" transform="translate(-160 -256)"></path></g></g></svg><!-- <span class="fas fa-chevron-right ml-1" data-fa-transform="shrink-4 down-1"></span> --></a>
+               
+            </div>
+            </div>
+        </div>
     </div>

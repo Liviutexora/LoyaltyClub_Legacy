@@ -28,6 +28,16 @@ $lang['User Section Label All Users'] = "All users";
 $lang['User Section Label Loyalty Tickets'] = "Tickets";
 $lang['User Section Label Btn Add Ticket'] = "Add Ticket";
 $lang['User Section Label Btn See All Tickets'] = "See all";
+$lang['User Section Label Personal Shopping'] = "Personal Shopping";
+$lang['User Section Label Personal Shopping of'] = "of";
+$lang['User Section Label Personal Shopping Level 1'] = "Level 1";
+$lang['User Section Label Personal Shopping Level 2'] = "Level 2";
+$lang['User Section Label Personal Shopping Level 3'] = "Level 3";
+$lang['User Section Label Subscription Your subscription will be renewed in'] = "Your subscription will be renewed in";
+$lang['User Section Label Subscription Your subscription will expire on'] = "Your subscription will be renewed in";
+$lang['User Section Label Subscription Upgrade to'] = "Upgrade to";
+$lang['User Section Label Subscription Keep Me'] = "Keep me";
+
 
 
 
