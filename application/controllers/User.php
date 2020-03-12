@@ -66,4 +66,11 @@ class User extends MY_Controller {
 		}
 		
 	}
+
+	public function myNetwork()
+	{
+		$this->load->view('users/my-network/index');
+	}
+
+
 }

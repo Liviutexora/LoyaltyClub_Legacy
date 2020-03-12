@@ -11,6 +11,7 @@ $lang['User Section Menu Label Documentation'] = "Documentation";
 $lang['User Section Menu Label Companies'] = "Companies";
 $lang['User Section Menu Label Profile'] = "Profile";
 $lang['User Section Menu Label My Network'] = "My Network";
+$lang['User Section Menu Label My Network List'] = "List";
 $lang['User Section Menu Label Loyalty Bank'] = "Loyalty Bank";
 $lang['User Section Menu Label Contact Us'] = "Contact Us";
 $lang['User Section Notification Label View All'] = "View All";
@@ -37,6 +38,14 @@ $lang['User Section Label Subscription Your subscription will be renewed in'] = 
 $lang['User Section Label Subscription Your subscription will expire on'] = "Your subscription will be renewed in";
 $lang['User Section Label Subscription Upgrade to'] = "Upgrade to";
 $lang['User Section Label Subscription Keep Me'] = "Keep me";
+$lang['User Section Label My Network Revenue'] = "Revenue";
+$lang['User Section Label My Network Qualified'] = "Qualified";
+$lang['User Section Label My Network Incomes'] = "Incomes";
+$lang['User Section Label My Network Users'] = "Users";
+$lang['User Section Label My Network Level'] = "Level";
+
+
+
 
 
 

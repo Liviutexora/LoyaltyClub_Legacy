@@ -50,12 +50,12 @@
         </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link dropdown-indicator collapsed" href="#my-network" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
-            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-network-wired" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("User Section Menu Label My Network")?></span>
+          <a class="nav-link dropdown-indicator <?=(in_array(uri_string(),array("my-network")) ? '' : 'collapsed')?>" href="#my-network" data-toggle="collapse" role="button" aria-expanded="<?=(in_array(uri_string(),array("my-network")) ? 'true' : 'false')?>" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-network-wired" aria-hidden="<?=(in_array(uri_string(),array("my-network")) ? 'false' : 'true')?>"></i></span><span class="nav-link-text"><?=$this->lang->line("User Section Menu Label My Network")?></span>
             </div>
         </a>
-        <ul class="nav collapse" id="my-network" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Comming Soon")?></a>
+        <ul class="nav collapse <?=(in_array(uri_string(),array("my-network")) ? 'show' : '')?>" id="my-network" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('my-network')?>"><?=$this->lang->line("User Section Menu Label My Network List")?></a>
             </li>
         </ul>
         </li>
