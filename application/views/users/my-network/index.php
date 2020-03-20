@@ -23,7 +23,7 @@
     </div>
     <div class="card-body px-0 pt-0 ml-2 myNetwork">
         <div class="dashboard-data-table">
-        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11,"columnDefs":[{"targets":[0,6],"orderable":false}],"language":{"info":"_START_ to _END_ Items of _TOTAL_"}}'>
+        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
             <thead class="bg-200 text-900">
             <tr>
                 <th class="no-sort pr-1 align-middle data-table-row-bulk-select">
