@@ -23,7 +23,7 @@
     </div>
     <div class="card-body px-0 pt-0 ml-2 myNetwork">
         <div class="dashboard-data-table">
-        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":false,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11,"columnDefs":[{"targets":[0,6],"orderable":false}],"language":{"info":"_START_ to _END_ Items of _TOTAL_"}}'>
+        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11,"columnDefs":[{"targets":[0,6],"orderable":false}],"language":{"info":"_START_ to _END_ Items of _TOTAL_"}}'>
             <thead class="bg-200 text-900">
             <tr>
                 <th class="no-sort pr-1 align-middle data-table-row-bulk-select">
@@ -44,7 +44,7 @@
                 </td>
                 <th class="align-middle">0</th>
                 <td class="align-middle"><?=$this->current_user['nume']?></td>
-                <td class="align-middle">0 kr</td>
+                <td class="align-middle"><?=$totalAmount?> kr</td>
                 <td class="align-middle text-center fs-0"><span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                 </td>
                 <td class="align-middle text-right"><?=$totalAmount?> kr</td>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 </td>
-                <td class="align-middle">0 kr</td>
+                <td class="align-middle"><?=$levelDetails['totalprofit']?> kr</td>
                 <td class="align-middle text-center fs-0">
                    
                     <?php if($totalAmount<50):?>
