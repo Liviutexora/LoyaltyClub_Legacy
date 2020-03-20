@@ -43,6 +43,12 @@ $lang['User Section Label My Network Qualified'] = "Qualified";
 $lang['User Section Label My Network Incomes'] = "Incomes";
 $lang['User Section Label My Network Users'] = "Users";
 $lang['User Section Label My Network Level'] = "Level";
+$lang['User Section Label My Network Client Code'] = "Client code";
+$lang['User Section Label My Network Qualified'] = "Qualified";
+$lang['User Section Label My Network Unqualified'] = "Unqualified";
+
+
+
 
 
 

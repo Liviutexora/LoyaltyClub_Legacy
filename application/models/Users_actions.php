@@ -128,5 +128,76 @@ class Users_actions extends CI_model
 	function insertUserSettings($data) {
 		$this->db->insert('user_settings', $data);
 	}
+
+	//scoate copii userului
+	public function getUserChilds($id=null,$nivel=1,&$network)
+	{
+	
+		if(!isset($id) || (int)$id==0) return false;
+		$childs = $this->db->select('us.id ,us.nume ,us.localitate ', FALSE)
+						   ->join("user us","ct.id_user =us.id", "LEFT")
+						   ->where('ct.sponsor', $id)
+						   ->group_by('us.id')
+						   ->get('contact ct')->result();
+		
+		if($nivel<=10)
+		{
+			foreach($childs as $child)
+			{
+				$network[$nivel][]=$child;
+				
+				if($this->counts($child->id)>0)
+				{			
+					$nivel++;
+					$this->getUserChilds($child->id,$nivel,$network);
+					$nivel--;
+				}			
+			}
+		}
+	}
+
+	//get the array from **getUserChilds** function and return
+	function getNetwork($id) 
+	{
+		$network=array();
+		$this->getUserChilds($id,1,$network);
+	return $network;
+	}
+
+	//count subcategories
+	public function counts($id)
+	{
+	   $rows = $this->db->select('COUNT(*) AS cnt', FALSE)
+						   ->join("user us","ct.id_user =us.id", "LEFT")
+						   ->where('ct.sponsor', $id)
+						   ->where('us.status', 1)
+						   ->get('contact ct')->row_array();
+	   return $rows['cnt'];
+	}
+
+	//scoate castigul oferit de fiecare copil al user-ului
+	public function getOfferedGain($user,$child)
+	{
+		$row = $this->db->select('IFNULL(SUM(cs.suma),0) as suma', FALSE)
+		->join("tickets tk","cs.ticket = tk.ticket", "LEFT")
+		->where('tk.status', 2)
+		->where('cs.id_user', $user)
+		->where('cs.id_user_from', $child)
+		->get('castiguri cs')->row_array();
+		
+		return $row['suma'];
+	}
+
+	//get total tickets value that user bought
+	public function getUserTicketsValue($user)
+	{
+		
+		$row = $this->db->select('IFNULL(SUM(tk.valoare),0) as suma', FALSE)
+		->where('tk.id_user', $user)
+		->where('tk.status', 2)
+		->get('tickets tk')->row_array();
+		
+		return $row['suma'];
+	}
 }
 ?>

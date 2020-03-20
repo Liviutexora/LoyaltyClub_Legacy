@@ -1,0 +1,1 @@
+<li class="list-group-item"><?=$userName?>, <?=$city?> <br/> <?=$this->lang->line("User Section Label My Network Client Code")?>: <?=$clientCode?></li>

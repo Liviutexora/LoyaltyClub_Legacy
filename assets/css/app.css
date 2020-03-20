@@ -6,5 +6,9 @@
 .loading-div{display:none;position: fixed;z-index: 999;height: 2em;width: 303px;overflow: visible;margin: auto;top: 0;left: 0;bottom: 0;right: 0;}
 /* User dashboard */
 .nav-item .professional-settings-container {margin-left: 20px;}
+.myNetwork .card-my-network {padding: 0px;}
+.myNetwork .card-my-network-container {overflow-y: scroll;height: 200px;}
+.myNetwork .level-with-users-span {color:green !important;}
+.myNetwork .level-without-users-span {color:red !important;}
 
 /* End user dashboard */

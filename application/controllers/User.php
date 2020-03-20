@@ -69,7 +69,27 @@ class User extends MY_Controller {
 
 	public function myNetwork()
 	{
-		$this->load->view('users/my-network/index');
+		$my_network = $this->users_actions->getNetwork($this->current_user['id']);
+		$userMoney = $this->users_actions->getOfferedGain($this->current_user['id'],$this->current_user['id']);
+		$totalAmount = $this->users_actions->getUserTicketsValue($this->current_user['id']);
+		$levels = array();
+		foreach($my_network as $level=>$levelChilds){
+			$usersRows = ""; $totalprofit=0;
+			foreach($levelChilds as $levelChildsDetails){
+				$offeredGain=$this->users_actions->getOfferedGain($this->current_user['id'],$levelChildsDetails->id); 
+				$usersRows.= $this -> load -> view('users/my-network/templates/listOfUsers/row', array('userName' => $levelChildsDetails->nume,"city" => $levelChildsDetails->localitate,"clientCode" => $levelChildsDetails->id), true);
+				$totalprofit+=$offeredGain;
+			}
+			$usersList =  $this -> load -> view('users/my-network/templates/listOfUsers/index', array('items' => $usersRows), true);
+			$levels[$level]['totalprofit'] = $totalprofit;
+			$levels[$level]['users'] = $usersList;
+			$levels[$level]['nr'] = count($levelChilds);
+		}
+		$data['levels'] = $levels;
+		$data['totalAmount'] = $totalAmount;
+		$data['userMoney'] = $userMoney;
+		
+		$this->load->view('users/my-network/index',$data);
 	}
 
 
