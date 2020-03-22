@@ -123,10 +123,7 @@ class User extends MY_Controller {
 
 		$config['upload_path']          = './uploads/users/'.$this->current_user['id'].'/cover-image';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']     = '5120';
-		$config['min_width']            = 900;
-		$config['min_height']            = 100;
-		$config['max_height']           = 1080;
+		$config['max_size']     = '10240';
 
 		$this->load->library('upload', $config);
 
@@ -163,9 +160,7 @@ class User extends MY_Controller {
 
 		$config['upload_path']          = './uploads/users/'.$this->current_user['id'].'/avatar-image';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
-		$config['max_size']     = '5120';
-		$config['min_width']            = 100;
-		$config['min_height']            = 100;
+		$config['max_size']     = '10240';
 
 		$this->load->library('upload', $config);
 
