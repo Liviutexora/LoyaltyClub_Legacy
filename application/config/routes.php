@@ -54,6 +54,19 @@ $route['login'] = 'register/login';
 $route['logout'] = 'register/logout';
 $route['forgot-password'] = 'register/forgotPassword';
 $route['my-network'] = 'user/myNetwork';
+$route['my-profile'] = 'user/myProfile';
+$route['change-cover-image'] = 'user/changeCoverImage';
+$route['change-avatar-image'] = 'user/changeAvatarImage';
+$route['edit-profile-info'] = 'user/editProfileInfo';
+$route['change-password'] = 'user/changePassword';
+$route['change-email'] = 'user/changeEmail';
+$route['confirm-email-address/(:any)'] = 'user/confirmEmailAddress/$1';
+
+
+
+
+
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -199,5 +199,44 @@ class Users_actions extends CI_model
 		
 		return $row['suma'];
 	}
+
+	function updateUserDetails($data,$userId) {
+		$this->db->where('id', $userId);
+		$this->db->update('user', $data);
+	}
+
+	function updateUserContactDetails($data,$userId) {
+		$this->db->where('id_user', $userId);
+		$this->db->update('contact', $data);
+	}
+	
+	function getUserDetails($userId) {
+		return $this->db->select('ct.*,us.*', FALSE)
+						   ->join("user us","ct.id_user =us.id", "LEFT")
+						   ->where('us.id', $userId)
+						   ->get('contact ct')->row_array();
+	}
+
+	function checkOldPassword($password,$userId) {
+		return $this->db->select('count(*) as nr', FALSE)
+						   ->where('password', md5($password))
+						   ->where('id',$userId)
+						   ->get('user')->row_array();
+	}
+
+	function checkEmail($email) {
+		return $this->db->select('count(*) as nr', FALSE)
+						   ->where('email', $email)
+						   ->get('user')->row_array();
+	}
+
+	function checkEmailToken($token) {
+		return $this->db->select('*', FALSE)
+						   ->where('tokenChangeEmail', $token)
+						   ->get('user')->row_array();
+	}
+
+	
+	
 }
 ?>

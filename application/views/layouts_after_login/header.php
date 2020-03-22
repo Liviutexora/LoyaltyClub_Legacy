@@ -84,7 +84,7 @@
       <?php } ?>
         <div class="content">
           <nav class="navbar navbar-light navbar-glass fs--1 font-weight-semi-bold row navbar-top sticky-kit navbar-expand">
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button><a class="navbar-brand text-left ml-3" href="index.html">
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button><a class="navbar-brand text-left ml-3" href="<?=site_url('/')?>">
               <div class="d-flex align-items-center"><img class="mr-2" src="<?=site_url("assets/img/icons/".($this->darkMode ? 'loyaltyclub-white.png' : 'logo_blue.png')."")?>" alt="" width="90" />
               </div>
             </a>
@@ -113,7 +113,7 @@
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link pr-0" id="navbarDropdownUser" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-xl">
-                      <img class="rounded-circle" src="assets/img/team/3-thumb.png" alt="" />
+                      <img class="rounded-circle" src="<?=($this->avatarImage ? $this->avatarImage : site_url('assets/img/team/avatar.png'))?>" alt="" />
 
                     </div>
                   </a>

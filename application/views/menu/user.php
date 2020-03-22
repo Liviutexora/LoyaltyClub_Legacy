@@ -45,7 +45,7 @@
             </div>
         </a>
         <ul class="nav collapse" id="profile" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Comming Soon")?></a>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('my-profile')?>"><?=$this->lang->line("User Section Profile Label Edit Profile Info")?></a>
             </li>
         </ul>
         </li>

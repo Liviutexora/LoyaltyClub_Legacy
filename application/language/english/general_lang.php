@@ -20,6 +20,7 @@ $lang['Yes'] = "Yes";
 $lang['No'] = "No";
 $lang['Success'] = "Success";
 $lang['Comming Soon'] = "Comming Soon";
+$lang['Forms Successful Saving Data'] = "The data were inserted successfully";
 
 
 

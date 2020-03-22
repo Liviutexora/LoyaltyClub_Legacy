@@ -10,6 +10,6 @@
   </script>
 <?php } else { ?>
   <script type="text/javascript">
-  $('document').ready(function(){setTimeout(function(){location.href="<?= $url?>";},1500);});
+  $('document').ready(function(){setTimeout(function(){location.href="<?= $url?>";},<?=(isset($time_before_refresh) ? $time_before_refresh : 1500 )?>);});
   </script>
 <?php } ?>

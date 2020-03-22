@@ -17,6 +17,8 @@
       };
     </script>
     <script src="<?=site_url("assets/js/jquery.min.js")?>"></script>
+    <script src="<?=site_url("assets/lib/jquery-validation/jquery.validate.min.js")?>"></script>
+    <script src="<?=site_url("assets/js/jquery.form.js")?>"></script>
     <script src="<?=site_url("assets/js/popper.min.js")?>"></script>
     <script src="<?=site_url("assets/js/bootstrap.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/@fortawesome/all.min.js")?>"></script>

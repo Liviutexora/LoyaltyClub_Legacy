@@ -46,6 +46,39 @@ $lang['User Section Label My Network Level'] = "Level";
 $lang['User Section Label My Network Client Code'] = "Client code";
 $lang['User Section Label My Network Qualified'] = "Qualified";
 $lang['User Section Label My Network Unqualified'] = "Unqualified";
+$lang['User Section Profile Label Edit Profile Info'] = "Edit Profile";
+$lang['User Section Profile Label Change Cover Photo'] = "Change cover photo";
+$lang['User Section Profile Label Change Avatar Photo'] = "Update";
+$lang['User Section Profile Label Full Name'] = "Full name";
+$lang['User Section Profile Label Address'] = "Address";
+$lang['User Section Profile Label Phone'] = "Phone";
+$lang['User Section Profile Label Date of Birth'] = "Date of Birth";
+$lang['User Section Profile Label IBAN Account'] = "IBAN Account";
+$lang['User Section Profile Label Bank'] = "Bank";
+$lang['User Section Profile Label You should have 18 years old'] = "You should have 18 years old";
+$lang['User Section Profile Label Profile Settings'] = "Profile Settings";
+$lang['User Section Profile Label Profile Change Password'] = "Change password";
+$lang['User Section Profile Label Profile Old Password'] = "Old password";
+$lang['User Section Profile Label Profile New Password'] = "New Password";
+$lang['User Section Profile Label Profile Update Info'] = "Update";
+$lang['User Section Profile Label Profile Your old password is wrong'] = "Your old password is wrong";
+$lang['User Section Profile Label Profile Change Email'] = "Change Email";
+$lang['User Section Profile Label Profile Old Email'] = "Old Email";
+$lang['User Section Profile Label Profile New Email'] = "New Email";
+$lang['User Section Profile Label Profile Email Already Exist'] = "The email already exist!";
+$lang['User Section Profile Label Profile Please Check Email Address'] = "Please check you email address and confirm the action";
+$lang['User Section Profile Label Profile To Confirm Change Of Email Content'] = "To confirm your email please click on this <a href='[changeEmailLink]'>Link</a>";
+$lang['User Section Profile Label Profile To Confirm Change Of Email Title'] = "Confirm your email address";
+
+
+
+
+
+
+
+
+
+
 
 
 

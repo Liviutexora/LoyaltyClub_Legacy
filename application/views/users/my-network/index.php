@@ -21,9 +21,9 @@
         </div>
         </div>
     </div>
-    <div class="card-body px-0 pt-0 ml-2 myNetwork">
+    <div class="card-body px-0 pt-0  myNetwork">
         <div class="dashboard-data-table">
-        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
+        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" width="100%" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
             <thead class="bg-200 text-900">
             <tr>
                 <th class="no-sort pr-1 align-middle data-table-row-bulk-select">
@@ -78,12 +78,11 @@
                 </td>
                 <td class="align-middle"><?=$levelDetails['totalprofit']?> kr</td>
                 <td class="align-middle text-center fs-0">
-                   
-                    <?php if($totalAmount<50):?>
+                    <?php if($totalAmount<500):?>
                     <span class="badge badge rounded-capsule badge-soft-warning"><?=$this->lang->line('User Section Label My Network Unqualified')?><span class="ml-1 fas fa-stream" data-fa-transform="shrink-2"></span></span>
-                    <?php elseif($totalAmount<210 && $levelNr>3):?> 
+                    <?php elseif($totalAmount<2100 && $levelNr>3):?> 
                     <span class="badge badge rounded-capsule badge-soft-warning"><?=$this->lang->line('User Section Label My Network Unqualified')?><span class="ml-1 fas fa-stream" data-fa-transform="shrink-2"></span></span>
-                    <?php elseif($totalAmount<490 && $levelNr>7):?>
+                    <?php elseif($totalAmount<4900 && $levelNr>7):?>
                     <span class="badge badge rounded-capsule badge-soft-warning"><?=$this->lang->line('User Section Label My Network Unqualified')?><span class="ml-1 fas fa-stream" data-fa-transform="shrink-2"></span></span>							
                     <?php else: ?>
                     <span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
