@@ -11,7 +11,7 @@
 .myNetwork .level-with-users-span {color:green !important;}
 .myNetwork .level-without-users-span {color:red !important;}
 .alert p {margin-bottom: 0px;}
-/*
+
 .cover-image .cover-image-file-input { opacity: 1; -webkit-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
 
 .avatar .overlay-icon {
@@ -19,13 +19,9 @@
   opacity: 1;
 
 }
-.avatar .overlay {
 
-  min-height: 0px;
 
-}
 
-.cover-image-file-input { background: none !important;}
- */
+ 
 
 /* End user dashboard */

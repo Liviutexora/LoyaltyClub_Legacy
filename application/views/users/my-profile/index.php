@@ -13,7 +13,7 @@
             </form>
             </div>
             <div class="avatar avatar-5xl avatar-profile shadow-sm img-thumbnail rounded-circle">
-            <div class="h-100 w-100 rounded-circle overflow-hidden position-relative"> <img src="<?=($avatarImage ? $avatarImage : site_url("assets/img/team/2.jpg") )?>" alt="" data-dz-thumbnail="" width="200">
+            <div class="h-100 w-100 rounded-circle overflow-hidden position-relative"> <img src="<?=($avatarImage ? $avatarImage : site_url("assets/img/team/avatar.png") )?>" alt="" data-dz-thumbnail="" width="200">
                 <form method="post" id="change-avatar-image-form" action="<?=site_url('change-avatar-image')?>" enctype="multipart/form-data">
                     <input class="d-none" accept="image/gif,image/jpg,image/jpeg,image/png" id="profile-image" name="upload-avatar-image" type="file">
                     <label class="mb-0 overlay-icon d-flex flex-center" for="profile-image"><span class="bg-holder overlay overlay-0"></span><span class="z-index-1 text-white text-center fs--1"><span class="fas fa-camera"></span><span class="d-block"><?=$this->lang->line("User Section Profile Label Change Avatar Photo")?></span></span></label>
