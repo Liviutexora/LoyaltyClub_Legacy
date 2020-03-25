@@ -43,11 +43,12 @@
 
 
   <body>
- 
+
   <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
+    <div id="modal_window"></div>
     <div class="loading-div">
         <div class="spinner-grow text-primary" role="status">
           <span class="sr-only">Loading...</span>

@@ -3,7 +3,7 @@
   <?php if(isset($modal_id)) { ?>
       var modal_id = '<?=$modal_id?>';
   <?php } else  { ?>
-      var modal_id = 'modal_window';
+      var modal_id = 'general-modal';
   <?php } ?>
  
   $('document').ready(function(){setTimeout(function(){$('#'+modal_id+'').modal('hide')},1200); });

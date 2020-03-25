@@ -15,6 +15,7 @@
       var storage = {
         isDark: <?=($this->darkMode ? 1 : 0)?>
       };
+      var url = "<?=site_url('/')?>"
     </script>
     <script src="<?=site_url("assets/js/jquery.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/jquery-validation/jquery.validate.min.js")?>"></script>
@@ -36,6 +37,11 @@
     <script src="<?=site_url("assets/js/theme.js")?>"></script>
     <script src="<?=site_url("assets/js/bootbox.all.min.js")?>"></script>
     <script src="<?=site_url("assets/js/app.js")?>"></script>
+    <?php if(isset($jsFiles)) { ?>
+      <?php foreach ($jsFiles as $file) { ?>
+       <?php echo '<script src="'.site_url("assets/js/$file").'"></script>' ?>
+     <?php } ?>
+    <?php } ?>
    
 
   </body>

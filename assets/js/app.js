@@ -39,7 +39,6 @@ function submit_form(form_selector, target, callback) {
           event.preventDefault();
           event.stopPropagation();
         }else {
-            console.log('ss')
             $(form_selector).ajaxSubmit({
                 beforeSubmit: function (arr, $form) {
                     tabs_ids = [];
@@ -119,12 +118,27 @@ var app = {
         $('#profile-image').change(function() {
             $('#change-avatar-image-form').submit();
         });
+    },
+    initOpenModals: function() {
+       
+        $(document).on("click",".open-modal", function () {
+                var link = $(this).attr("ajaxlink");
+                $('#modal_window').html("");
+                $.ajax({
+                        url: link,
+                }).done(function (data) {
+                        $('#modal_window').html(data);
+                        $('.modal').modal("show");
+                });
+        });
+       
     }
 };
 
 app.setDarkMode();
 app.setCoverImage();
 app.setAvatarImage();
+app.initOpenModals();
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });

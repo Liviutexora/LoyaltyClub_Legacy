@@ -1,1 +1,1 @@
-<div class="alert alert-danger"><?= $this->lang->line($message)?></div>
+<div class="alert alert-danger"><?= (!isset($translate) || (isset($translate) && $translate) ? $this->lang->line($message) : $message)?></div>

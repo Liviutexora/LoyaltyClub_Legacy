@@ -236,7 +236,23 @@ class Users_actions extends CI_model
 						   ->get('user')->row_array();
 	}
 
-	
-	
+	function insertUserSectionAccess($data)
+	{
+		$this->db->insert('users_sections_access', $data);
+	}
+
+	function checkUserSectionAccess($data)
+	{
+		return $this->db->select('*', FALSE)
+						   ->where('user_section_access_class_name', $data['user_section_access_class_name'])
+						   ->where('user_section_access_method_name', $data['user_section_access_method_name'])
+						   ->where('user_section_access_user_type', $data['user_section_access_user_type'])
+						   ->where('user_section_access_allowed', 1)
+
+
+						   
+						   ->get('users_sections_access')->row_array();
+	}
+
 }
 ?>

@@ -21,6 +21,22 @@ $lang['No'] = "No";
 $lang['Success'] = "Success";
 $lang['Comming Soon'] = "Comming Soon";
 $lang['Forms Successful Saving Data'] = "The data were inserted successfully";
+$lang['Datatables Label Display'] = "Display";
+$lang['Datatables Label Per Page'] = "per page";
+$lang['Datatables Label No Data'] = "No data";
+$lang['Datatables Label Page'] = "Page";
+$lang['Datatables Label Of'] = "of";
+$lang['Datatables Label No Records Available'] = "No Records Available";
+$lang['Datatables Label Total Records'] = "total records";
+$lang['Datatables Label Next'] = "Next";
+$lang['Datatables Label Previous'] = "Previous";
+$lang['Modals Label Btn Save Changes'] = "Save";
+$lang['Modals Label Btn Cancel'] = "Cancel";
+$lang['Delete Action'] = "Delete";
+$lang['Delete Action Question'] = "Are you sure you want to perform this?";
+
+
+
 
 
 

@@ -19,6 +19,16 @@
             
         </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-indicator collapsed" href="#loyalty-bank" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-money-check-alt" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("Company Section Menu Label Loyalty Bank")?></span>
+            </div>
+        </a>
+        <ul class="nav collapse" id="loyalty-bank" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('tickets')?>"><?=$this->lang->line("Company Section Menu Label Generate Tickets")?></a>
+            </li>
+        </ul>
+        </li>
         
     </ul>
     </div>

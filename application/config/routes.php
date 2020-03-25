@@ -63,6 +63,15 @@ $route['change-email'] = 'user/changeEmail';
 $route['confirm-email-address/(:any)'] = 'user/confirmEmailAddress/$1';
 
 
+/* Company user type routes */
+
+$route['add-tickets'] = 'company/addTickets';
+$route['tickets'] = 'company/tickets';
+$route['list-of-tickets'] = 'company/generatedTicketsDatables';
+$route['delete-ticket'] = 'company/deleteTicket';
+/* End company user type routes */
+
+
 
 
 
