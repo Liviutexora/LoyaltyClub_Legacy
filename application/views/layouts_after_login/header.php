@@ -48,7 +48,7 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-    <div id="modal_window"></div>
+
     <div class="loading-div">
         <div class="spinner-grow text-primary" role="status">
           <span class="sr-only">Loading...</span>
@@ -77,7 +77,7 @@
     </div>
 
       <div class="container" data-layout="container">
-
+      <div id="modal_window"></div>
       <?php if(isset($this->current_user['tip']) && $this->current_user['tip'] == 1) { ?>
         <?php $this->load->view("menu/user") ?>
       <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 2) { ?>
