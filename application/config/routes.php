@@ -61,6 +61,9 @@ $route['edit-profile-info'] = 'user/editProfileInfo';
 $route['change-password'] = 'user/changePassword';
 $route['change-email'] = 'user/changeEmail';
 $route['confirm-email-address/(:any)'] = 'user/confirmEmailAddress/$1';
+$route['validated-tickets-datables'] = 'user/validatedTicketsDatables';
+$route['my-tickets'] = 'user/myTickets';
+$route['insert-ticket'] = 'user/insertTicket';
 
 
 /* Company user type routes */

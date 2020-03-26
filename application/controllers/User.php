@@ -5,6 +5,8 @@ class User extends MY_Controller {
 	function __construct() {
 			parent::__construct();
 			$this -> load -> model('users_actions');
+			$this -> load -> model('tickets_actions');
+			
 			$this->checkUserLogged();
 	}
 	/**
@@ -292,6 +294,60 @@ class User extends MY_Controller {
 				redirect(site_url("my-profile"));
 			}
 		}
+	}
+
+	public function MyTickets() {
+		
+		$this->load->view('users/tickets/index');
+		
+	}
+
+	public function insertTicket() {
+		if($this->input->post()) {
+			$validation = array();
+			$validation[] =  array('field' => 'nr-of-tickets', 'rules' => 'required|regex_match[/^[0-9]*/]');
+			$isDate = $this->is_date($this->input->post( 'date-of-birth'));
+			$this -> form_validation -> set_rules($validation);
+			$response = array();
+			if ($this -> form_validation -> run() == FALSE) {
+				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
+			}
+			
+			$nrOfTickets = $this->input->post('nr-of-tickets');
+			if($nrOfTickets > $this->config->item('nrOfTicketsToGenerate')) {
+				exit($this -> load -> view('layouts/error', array('message' => str_replace("[nrOfTickests]",$this->config->item('nrOfTicketsToGenerate'),$this->lang->line('Company Section Ticket Label Section Ticket Max Limit Of Tickets On Insert')), "translate" => false),true));
+			}
+
+			$this->tickets_actions->generateTickets($nrOfTickets);
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		} else {
+			$this->load->view('users/tickets/partials/addTicketModal');
+		}
+	}
+
+	public function validatedTicketsDatables() {
+		$list = $this->tickets_actions->get_user_tickets_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $ticket) {
+            $row = array();
+            $row['serialNumber'] = $ticket->serialNumber;
+            $row['discount'] = $ticket->discount;
+            $row['value'] = $ticket->value;
+			$row['createdDate'] = date("d-m-Y",strtotime($ticket->createdDate));
+			$row['status'] = ($ticket->status == 1 ? $this->lang->line("User Section Tickets Page Label Not Validated By Trader") : $this->lang->line("User Section Tickets Page Label Validated"));
+			$data[] = $row;
+          }
+   
+          $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->tickets_actions->count_user_tickets_all(),
+                        "recordsFiltered" => $this->tickets_actions->count_user_tickets_filtered(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
 	}
 
 

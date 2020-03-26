@@ -118,6 +118,95 @@ class Tickets_actions extends CI_model
     }
 
 
+    var $table_user_tickets = 'tickets as t';
+    var $column_order_user_tickets = array('t.ticket',
+                              't.reducere',
+                              't.valoare',
+							  't.data_valorificare',
+							  't.status'
+                             ); //set column field database for datatable orderable
+    var $column_search_user_tickets = array('t.ticket',
+									't.reducere',
+									't.valoare',
+									't.data_creare',
+									't.status'
+                               ); //set column field database for datatable searchable 
+    var $column_search_type_user_tickets = array('where','where','where','where','where'); //set where or having clause for each column
+    var $order_user_tickets = array('t.id' => 'desc'); // default order 
+    
+    function _get_datatables_user_tickets_query() {
+      
+		$this->db->select(' t.id,
+						    t.ticket as serialNumber,
+							t.reducere as discount,
+							t.valoare as value,
+							t.data_valorificare as createdDate,
+							t.id_user as clientID,
+							t.status,
+                          '); 
+        $this->db->from($this->table_user_tickets);
+       
+        $i = 0;
+       
+        foreach ($this->column_search_user_tickets as $column_search_key => $item) { // loop column 
+             
+              $search_value = (isset($_POST['columns'][$column_search_key]['search']['value']) ? $_POST['columns'][$column_search_key]['search']['value'] : "");
+              //var_dump($_POST['columns'][$column_search_key]['search']['value']);die();
+              if($search_value) { // if datatable send POST for search 
+
+                  if($i===0) { // first loop
+                      // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                      if($this->column_search_type_user_tickets[$column_search_key] == 'where') {
+                          $this->db->like($item, $search_value);
+                      } else {
+                          $this->db->having($item."= ", $search_value);
+                      }
+                      
+                  } else {
+                      if($this->column_search_type_user_tickets[$column_search_key] == 'where') {
+                           $this->db->like($item, $search_value);
+                      } else {
+                           $this->db->having($item."= ",$search_value);
+                      }
+                  }
+              }
+              $i++;
+          }
+        $this->db->where_in('t.status', array(1,2)); 
+        $this->db->where('t.id_user', $this->session->userdata('user')['id']);
+                 
+        //if(isset($_POST['order'])) {  // here order processing
+            //$this->db->order_by($this->column_order_company_tickets[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        //} 
+       // else if(isset($this->order)) {
+            $order = $this->order_user_tickets;
+            $this->db->order_by(key($order), $order[key($order)]);
+      //  } 
+    }
+
+    function get_user_tickets_datatables() {
+		$this->_get_datatables_user_tickets_query();
+		
+        $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+ 
+    function count_user_tickets_filtered() {
+        $this->_get_datatables_user_tickets_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+ 
+    public function count_user_tickets_all() {
+        $this->db->from($this->table_user_tickets);
+        $this->db->where_in('t.status', array(1,2)); 
+        $this->db->where('t.id_user', $this->session->userdata('user')['id']);
+        return $this->db->count_all_results();
+    }
+
+
 	
 	
 }
