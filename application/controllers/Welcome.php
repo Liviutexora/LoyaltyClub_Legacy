@@ -38,10 +38,7 @@ class Welcome extends MY_Controller {
 					$data['generalTotalNrUsers'] = $generalTotalNrUsers;
 					$totalAmount = $this->users_actions->getUserTicketsValue($this->current_user['id']);
 					$data['totalAmount'] = $totalAmount;
-					$config['personalShoppingMaxValue'] = 4900;
-					$config['graphTicketsLevel1MaxValue'] = 500;
-					$config['graphTicketsLevel2MaxValue'] = 2100;
-					$config['graphTicketsLevel3MaxValue'] = $config['personalShoppingMaxValue'];
+					
 					$level1Precentage = round(($this->config->item('graphTicketsLevel1MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'));
 					$level2Precentage = round((($this->config->item('graphTicketsLevel2MaxValue') - $this->config->item('graphTicketsLevel1MaxValue') + 1)  * 100)/$this->config->item('personalShoppingMaxValue'));
 					$level3Precentage = round((($this->config->item('graphTicketsLevel3MaxValue') - $this->config->item('graphTicketsLevel2MaxValue') + 1)  * 100)/$this->config->item('personalShoppingMaxValue'));
@@ -63,10 +60,17 @@ class Welcome extends MY_Controller {
 							}
 							$data['levelSelect'] = $levelSelect;
 							$data['currentGraphPercentage'] = array();
+							
+						} else {
+							$levelSelect = $level;
+							$data['levelSelect'] = $levelSelect;
 							if($currentPrecentageFromTicketTotal > 100)
 								$currentPrecentageFromTicketTotal = 100;
 							$data['currentGraphPercentage'][$levelSelect] = $currentPrecentageFromTicketTotal;
+						break;
 						}
+
+						
 					}
 					
 					break;
@@ -75,7 +79,7 @@ class Welcome extends MY_Controller {
 					# code...
 					break;
 			}
-			
+	
 			$this->load->view('layouts_after_login/index',$data);
 		} else {
 			$this->load->view('layouts/index');
