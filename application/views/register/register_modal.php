@@ -18,7 +18,7 @@
                     <div class="card-body py-4">
                         <div class="tab-content">
                             <div class="tab-pane active px-sm-3 px-md-5" id="bootstrap-wizard-tab1">
-                                <form class="form-validation needs-validation" id="first-step-form" novalidate>
+                                <form class="needs-validation" id="first-step-form" novalidate>
                                     <div class="form-group">
                                         <label for="account_type"><?=$this->lang->line('Register Account Type')?></label>
                                         <select class="form-control custom-select" id="account_type_input" name="account_type" required="required">
@@ -31,7 +31,7 @@
                             </div>
                             <div class="tab-pane px-sm-3 px-md-5" id="bootstrap-wizard-tab2">
                                 <div class="company_details">
-                                    <form class="form-validation needs-validation" action="<?=site_url('register')?>" id="last-step-form-company" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
+                                    <form class="needs-validation" action="<?=site_url('register')?>" id="last-step-form-company" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
                                         <div id="save_result"></div>
                                         <div class="form-group">
                                             <label for="wizard-name"><?=$this->lang->line("Register Company Name")?> <span class="required-sign-label">*</span>:</label>
@@ -82,7 +82,7 @@
                                     </form>
                                 </div>
                                 <div class="private_details hidde">
-                                    <form class="form-validation needs-validation" action="<?=site_url('register')?>" id="last-step-form-private" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password-private"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
+                                    <form class="needs-validation" action="<?=site_url('register')?>" id="last-step-form-private" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password-private"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
                                         <div id="save_result"></div>
                                         <div class="form-group">
                                             <label for="wizard-name"><?=$this->lang->line("Register Private Name")?> <span class="required-sign-label">*</span>:</label>

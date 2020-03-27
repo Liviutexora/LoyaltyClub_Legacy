@@ -27,6 +27,16 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
+    <script>
+      
+      /*-----------------------------------------------
+      |   Theme Configuration
+      -----------------------------------------------*/
+      var storage = {
+        isDark: <?=($this->darkMode ? 1 : 0)?>
+      };
+      var url = "<?=site_url('/')?>"
+    </script>
     <script src="<?=site_url("assets/js/jquery.min.js")?>"></script>
     <script src="<?=site_url("assets/js/popper.min.js")?>"></script>
     <script src="<?=site_url("assets/js/bootstrap.min.js")?>"></script>

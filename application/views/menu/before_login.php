@@ -7,13 +7,13 @@
             <ul class="navbar-nav align-items-center">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Pages")?></a>
                 <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownPages">
-                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#">Activity</a>
+                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Comming Soon")?></a>
                   </div>
                 </div>
               </li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownDocumentation" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Companies")?></a>
                 <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownDocumentation">
-                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#">Getting started</a>
+                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Comming Soon")?></a>
                   </div>
                 </div>
               </li>
@@ -29,7 +29,7 @@
                           <h5 class="mb-0"><?=$this->lang->line("Log in")?></h5>
                         </div>
                       </div>
-                      <form class="form-validation" id="login-form" action="<?=site_url("login")?>">
+                      <form class="needs-validation" id="login-form" action="<?=site_url("login")?>">
                         <div id="save_result"></div>
                         <div class="form-group">
                           <input class="form-control" type="email" name="email" required="required" placeholder="Email address" />

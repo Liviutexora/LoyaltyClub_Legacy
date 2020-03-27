@@ -39,6 +39,17 @@ $(document).ready(function(){
         return false;
     });
 
+    $( "#login-form" ).submit(function( event ) {
+        form = $(this);
+        event.preventDefault();
+        if ( form[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form[0].classList.add('was-validated');
+        return false;
+    });
+
     $display_final_step = false;
 
     wizard = $('.theme-wizard').bootstrapWizard({'tabClass': 'nav',onNext: function(tab, navigation, index) {
@@ -129,7 +140,8 @@ $(document).ready(function(){
   });
 
   $(document).on('click','.login-btn',function() {
-      loginFormValid = $("#login-form").valid();
+      $("#login-form").trigger("submit");
+      loginFormValid = $("#login-form")[0].checkValidity();
       url = $("#login-form").attr('action');
       remember = $("#login-form").find('input[name="remember"]').prop("checked");
       password = $("#login-form").find('input[name="password"]').val();

@@ -34,6 +34,7 @@ $lang['Modals Label Btn Save Changes'] = "Save";
 $lang['Modals Label Btn Cancel'] = "Cancel";
 $lang['Delete Action'] = "Delete";
 $lang['Delete Action Question'] = "Are you sure you want to perform this?";
+$lang['Home Page Slider Slogan'] = "With the power of Loyalty Club, you can now focus only on your favourite shopping, while leaving the deep work on us!";
 
 
 
