@@ -35,6 +35,12 @@ class Tickets_actions extends CI_model
 		$this->db->where('id', $id);
 		$this->db->update('tickets', $data);
     }
+    function getNrTickets($userId = null) {
+        $this->db->from('tickets as t');
+        $this->db->where_in('t.status', array(1,2)); 
+        $this->db->where('t.id_user', ($userId ? $userId : $this->session->userdata('user')['id']));
+        return $this->db->count_all_results();
+    }
     
     function validateTicket($ticketDetails) {
        

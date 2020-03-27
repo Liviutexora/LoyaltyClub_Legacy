@@ -46,6 +46,7 @@ $lang['User Section Label My Network Level'] = "Level";
 $lang['User Section Label My Network Client Code'] = "Client code";
 $lang['User Section Label My Network Qualified'] = "Qualified";
 $lang['User Section Label My Network Unqualified'] = "Unqualified";
+$lang['User Section Label My Network Totals'] = "Totals";
 $lang['User Section Profile Label Edit Profile Info'] = "Edit Profile";
 $lang['User Section Profile Label Change Cover Photo'] = "Change cover photo";
 $lang['User Section Profile Label Change Avatar Photo'] = "Update";

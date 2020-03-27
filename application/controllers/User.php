@@ -75,6 +75,10 @@ class User extends MY_Controller {
 		$my_network = $this->users_actions->getNetwork($this->current_user['id']);
 		$userMoney = $this->users_actions->getOfferedGain($this->current_user['id'],$this->current_user['id']);
 		$totalAmount = $this->users_actions->getUserTicketsValue($this->current_user['id']);
+		$totalReceived = $this->users_actions->getTotalReceived($this->current_user['id']);
+		$generalTotalProfit = 0;
+		$generalTotalNrUsers = 0;
+		$generalTotalNrLevels = 0;
 		$levels = array();
 		foreach($my_network as $level=>$levelChilds){
 			$usersRows = ""; $totalprofit=0;
@@ -82,15 +86,24 @@ class User extends MY_Controller {
 				$offeredGain=$this->users_actions->getOfferedGain($this->current_user['id'],$levelChildsDetails->id); 
 				$usersRows.= $this -> load -> view('users/my-network/templates/listOfUsers/row', array('userName' => $levelChildsDetails->nume,"city" => $levelChildsDetails->localitate,"clientCode" => $levelChildsDetails->id), true);
 				$totalprofit+=$offeredGain;
+				$generalTotalProfit+=$offeredGain;
 			}
+			$generalTotalNrLevels+=$level;
+			$generalTotalNrUsers+=count($levelChilds);
 			$usersList =  $this -> load -> view('users/my-network/templates/listOfUsers/index', array('items' => $usersRows), true);
 			$levels[$level]['totalprofit'] = $totalprofit;
 			$levels[$level]['users'] = $usersList;
 			$levels[$level]['nr'] = count($levelChilds);
 		}
+		$generalTotalProfit+=$totalAmount;
 		$data['levels'] = $levels;
 		$data['totalAmount'] = $totalAmount;
 		$data['userMoney'] = $userMoney;
+		$data['generalTotalProfit'] = $generalTotalProfit;
+		$data['generalTotalNrUsers'] = $generalTotalNrUsers;
+		$data['generalTotalNrLevels'] = $generalTotalNrLevels;
+		$data['totalReceived'] = $totalReceived;
+		
 		
 		$this->load->view('users/my-network/index',$data);
 	}
@@ -334,9 +347,13 @@ class User extends MY_Controller {
 			$this->tickets_actions->updateTicket($data,$rez['id']);
 			
 			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('User Section Tickets Page Label Message To Wait Validation')));
-			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+			$this -> load -> view('layouts/redirect', array('url' => site_url("my-tickets")));
 		} else {
-			$this->load->view('users/tickets/partials/addTicketModal');
+			$data = array();
+			$data['redirect'] = "";
+			if($this->input->get("redirect"))
+				$data['redirect'] = $this->input->get("redirect");
+			$this->load->view('users/tickets/partials/addTicketModal',$data);
 		}
 	}
 

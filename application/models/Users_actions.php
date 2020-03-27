@@ -49,7 +49,47 @@ class Users_actions extends CI_model
 		}
 	
 	return $id;
-    }
+	}
+	
+	public function getEarnedOffered($user,$frunza)
+	{
+		$rez = $this->db->select('IFNULL(SUM(cs.suma),0) as suma ', FALSE)
+						   ->join("tickets tk","cs.ticket=tk.ticket", "LEFT")
+						   ->where('tk.status',2)
+						   ->where('cs.id_user',$user)
+						   ->where('cs.id_user_from',$frunza)
+						   ->get('castiguri cs')->row_array();
+		
+		return $rez['suma'];
+	}
+	//castigul user-ului curent
+	public function getTotalReceived($user)
+	{
+		
+		$rez = $this->db->select('IFNULL(SUM(tk.valoare),0) as suma ', FALSE)
+		->where('tk.status',2)
+		->where('tk.id_user',$user)
+		->get('tickets tk')->row_array();
+		$suma = $rez["suma"];
+		$network=$this->getNetwork($user);
+		
+		$total=0.00; 
+		foreach($network as $key=>$level)
+		{
+			if($suma->suma<50) break;
+			else if($suma->suma<210 && $key>3) break;
+			else if($suma->suma<490 && $key>7) break;
+			
+			foreach($level as $leaf)
+			{
+				$CastigOferit=$this->getEarnedOffered($user,$leaf->id); 
+
+				$total+=$CastigOferit;
+			}
+		}
+		
+		return number_format($total,2);
+	}	
     
     //scoate copii userului
 	public function getUserParents($id,&$network)

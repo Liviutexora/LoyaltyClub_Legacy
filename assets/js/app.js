@@ -125,7 +125,7 @@ var app = {
                 var link = $(this).attr("ajaxlink");
                 $('#modal_window').html("");
                 $.ajax({
-                        url: link,
+                        url: link
                 }).done(function (data) {
                         $('#modal_window').html(data);
                         $('.modal').modal("show");

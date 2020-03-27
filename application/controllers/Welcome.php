@@ -5,6 +5,7 @@ class Welcome extends MY_Controller {
 	function __construct() {
 			parent::__construct();
 			$this -> load -> model('users_actions');
+			$this -> load -> model('tickets_actions');
 	}
 	/**
 	 * Index Page for this controller.
@@ -24,7 +25,58 @@ class Welcome extends MY_Controller {
 	public function index()
 	{
 		if(isset($this->current_user['id'])) {
-			$this->load->view('layouts_after_login/index');
+			$data = array();
+			switch ($this->current_user['tip']) {
+				case 1:
+					$data['nrOfTickets'] = $this->tickets_actions->getNrTickets($this->current_user['id']);
+					$data['totalReceived'] = $this->users_actions->getTotalReceived($this->current_user['id']);
+					$my_network = $this->users_actions->getNetwork($this->current_user['id']);
+					$generalTotalNrUsers = 0;
+					foreach($my_network as $level=>$levelChilds){
+						$generalTotalNrUsers+=count($levelChilds);
+					}
+					$data['generalTotalNrUsers'] = $generalTotalNrUsers;
+					$totalAmount = $this->users_actions->getUserTicketsValue($this->current_user['id']);
+					$data['totalAmount'] = $totalAmount;
+					$config['personalShoppingMaxValue'] = 4900;
+					$config['graphTicketsLevel1MaxValue'] = 500;
+					$config['graphTicketsLevel2MaxValue'] = 2100;
+					$config['graphTicketsLevel3MaxValue'] = $config['personalShoppingMaxValue'];
+					$level1Precentage = round(($this->config->item('graphTicketsLevel1MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'));
+					$level2Precentage = round((($this->config->item('graphTicketsLevel2MaxValue') - $this->config->item('graphTicketsLevel1MaxValue') + 1)  * 100)/$this->config->item('personalShoppingMaxValue'));
+					$level3Precentage = round((($this->config->item('graphTicketsLevel3MaxValue') - $this->config->item('graphTicketsLevel2MaxValue') + 1)  * 100)/$this->config->item('personalShoppingMaxValue'));
+					$graphTicketsMaxPrecentages = array("level1" => $level1Precentage,"level2" => $level2Precentage,"level3" => $level3Precentage);
+					$currentPrecentageFromTicketTotal = round(($totalAmount * 100)/$this->config->item('personalShoppingMaxValue'),0);
+					$data['graphTicketsMaxPrecentages'] = $graphTicketsMaxPrecentages;
+					$data['currentGraphPercentage'] = array();
+					foreach ($graphTicketsMaxPrecentages as $level => $precentage) {
+						if($currentPrecentageFromTicketTotal >= $precentage) {
+							//echo $currentPrecentageFromTicketTotal. " ".$precentage;die();
+							if($currentPrecentageFromTicketTotal > $precentage) {
+								if($level == "level1") {
+									$levelSelect = "level2";
+								} else {
+									$levelSelect = "level3";
+								}
+							} else {
+								$levelSelect = $level;
+							}
+							$data['levelSelect'] = $levelSelect;
+							$data['currentGraphPercentage'] = array();
+							if($currentPrecentageFromTicketTotal > 100)
+								$currentPrecentageFromTicketTotal = 100;
+							$data['currentGraphPercentage'][$levelSelect] = $currentPrecentageFromTicketTotal;
+						}
+					}
+					
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+			
+			$this->load->view('layouts_after_login/index',$data);
 		} else {
 			$this->load->view('layouts/index');
 		}

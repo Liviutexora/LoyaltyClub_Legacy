@@ -32,8 +32,8 @@
                 <th class="sort pr-1 align-middle"><?=$this->lang->line('User Section Label My Network Level')?></th>
                 <th class="sort pr-1 align-middle"><?=$this->lang->line('User Section Label My Network Users')?></th>
                 <th class="sort pr-1 align-middle"><?=$this->lang->line('User Section Label My Network Incomes')?></th>
-                <th class="sort pr-1 align-middle text-center"><?=$this->lang->line('User Section Label My Network Qualified')?></th>
-                <th class="sort pr-1 align-middle text-right"><?=$this->lang->line('User Section Label My Network Revenue')?></th>
+                <th class="sort pr-1 align-middle"><?=$this->lang->line('User Section Label My Network Qualified')?></th>
+                <th class="sort pr-1 align-middle"><?=$this->lang->line('User Section Label My Network Revenue')?></th>
                
             </tr>
             </thead>
@@ -44,10 +44,10 @@
                 </td>
                 <th class="align-middle">0</th>
                 <td class="align-middle"><?=$this->current_user['nume']?></td>
-                <td class="align-middle"><?=$totalAmount?> kr</td>
-                <td class="align-middle text-center fs-0"><span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
+                <td class="align-middle"><?=number_format($totalAmount,2)?> <?=$this->config->item('currency')?></td>
+                <td class="align-middle"><span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                 </td>
-                <td class="align-middle text-right"><?=$totalAmount?> kr</td>
+                <td class="align-middle"><?=$totalAmount?> kr</td>
                
             </tr>
             <?php foreach($levels as $levelNr=>$levelDetails){ ?>
@@ -76,8 +76,8 @@
                     </div>
                 </div>
                 </td>
-                <td class="align-middle"><?=$levelDetails['totalprofit']?> kr</td>
-                <td class="align-middle text-center fs-0">
+                <td class="align-middle"><?=$levelDetails['totalprofit']?> <?=$this->config->item('currency')?></td>
+                <td class="align-middle">
                     <?php if($totalAmount<500):?>
                     <span class="badge badge rounded-capsule badge-soft-warning"><?=$this->lang->line('User Section Label My Network Unqualified')?><span class="ml-1 fas fa-stream" data-fa-transform="shrink-2"></span></span>
                     <?php elseif($totalAmount<2100 && $levelNr>3):?> 
@@ -88,16 +88,22 @@
                     <span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                     <?php endif; ?>
                 </td>
-                <td class="align-middle text-right"><?=$levelDetails['totalprofit']?> kr</td>
+                <td class="align-middle"><?=$levelDetails['totalprofit']?> <?=$this->config->item('currency')?></td>
                 <td class="align-middle white-space-nowrap">
                
                 </td>
             </tr>
             <?php } ?>
-
+            <tr>
+                <td><strong><?=$this->lang->line('User Section Label My Network Totals')?></strong></td>
+                <td><a href="<?=site_url('/')?>"><?=$generalTotalNrLevels?></a></td>
+                <td><a href="<?=site_url('/')?>"><?=$generalTotalNrUsers?></a></td>
+                <td><a href="<?=site_url('/')?>"><?=number_format($generalTotalProfit,2)?> <?=$this->config->item('currency')?></a></td>
+                <td>-</td>
+                <td><a href="<?=site_url('/')?>"><?=number_format($generalTotalProfit,2)?> <?=$this->config->item('currency')?></a></td>
+            </tr>
             </tbody>
         </table>
-        </div>
     </div>
-    </div>
+</div>
 <?php $this->load->view("layouts_after_login/footer") ?>
