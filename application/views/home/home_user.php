@@ -49,7 +49,7 @@
 
         <div class="card-body position-relative">
         <h6><?=$this->lang->line("User Section Label Users")?></h6>
-        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info" data-countup="{&quot;count&quot;:><?=$generalTotalNrUsers?>,&quot;format&quot;:&quot;comma&quot;}"><?=$generalTotalNrUsers?></div><a class="font-weight-semi-bold fs--1 text-nowrap" href="<?=site_url('my-network')?>"><?=$this->lang->line("User Section Label All Users")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
+        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info" data-countup="{&quot;count&quot;:<?=$generalTotalNrUsers?>,&quot;format&quot;:&quot;comma&quot;}"><?=$generalTotalNrUsers?></div><a class="font-weight-semi-bold fs--1 text-nowrap" href="<?=site_url('my-network')?>"><?=$this->lang->line("User Section Label All Users")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
         </div>
     </div>
     </div>

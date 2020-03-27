@@ -88,7 +88,7 @@ class User extends MY_Controller {
 				$totalprofit+=$offeredGain;
 				$generalTotalProfit+=$offeredGain;
 			}
-			$generalTotalNrLevels+=$level;
+			$generalTotalNrLevels=$level;
 			$generalTotalNrUsers+=count($levelChilds);
 			$usersList =  $this -> load -> view('users/my-network/templates/listOfUsers/index', array('items' => $usersRows), true);
 			$levels[$level]['totalprofit'] = $totalprofit;
@@ -101,7 +101,7 @@ class User extends MY_Controller {
 		$data['userMoney'] = $userMoney;
 		$data['generalTotalProfit'] = $generalTotalProfit;
 		$data['generalTotalNrUsers'] = $generalTotalNrUsers;
-		$data['generalTotalNrLevels'] = $generalTotalNrLevels;
+		$data['generalTotalNrLevels'] = count($my_network);
 		$data['totalReceived'] = $totalReceived;
 		
 		
