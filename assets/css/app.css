@@ -28,10 +28,11 @@
 
 
 /* Datables */
-.datatable-table {white-space: nowrap;}
+
 .dashboard-data-table {margin:5px;}
 /* End Datables */
 
 /* General */
 .required-sign-label {color:red;}
+.card-datables {overflow: hidden; overflow-x: auto;}
 /* End General */

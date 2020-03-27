@@ -8,9 +8,9 @@ class Tickets_actions extends CI_model
 		{
 			$CI = get_instance();
 			$ticket = strtoupper($CI->generateRandomString($length = 5));
-			$data = array("ticket" => $ticket, "id_firma" => $this->session->userdata('user')['id'], "data_creare" => date("Y-m-d"));
-			$this->db->insert('tickets', $data);
-		}
+			$data[] = array("ticket" => $ticket, "id_firma" => $this->session->userdata('user')['id'], "data_creare" => date("Y-m-d"));
+        }
+        $this->db->insert_batch('tickets', $data);
 
 	}
 
@@ -23,7 +23,136 @@ class Tickets_actions extends CI_model
 		return $this->db->select('*', FALSE)
 						   ->where('id', $id)
 						   ->get('tickets')->row_array();
-	}
+    }
+    
+    function checkTicketBySerial($serial) {
+		return $this->db->select('*', FALSE)
+						   ->where('ticket', $serial)
+						   ->get('tickets')->row_array();
+    }
+    
+    function updateTicket($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('tickets', $data);
+    }
+    
+    function validateTicket($ticketDetails) {
+       
+        $companyDetails = $this->db->select('sponsor_id', FALSE)
+						   ->where('id_firma', $this->session->userdata('user')['id'])
+                           ->get('firma')->row_array();
+        $sponsorId = $companyDetails['sponsor_id'];
+		
+        $CI = get_instance();
+        $CI -> load -> model('users_actions');
+		//scoate parinti clientului
+		$parents= $CI->users_actions->getUserParents($ticketDetails['id_user']);
+		
+		//calculeaza suma pentru cele 3 parti
+		$sum=($ticketDetails['valoare']*($ticketDetails['reducere']/100))/3;
+		$dataToInsertEarnings = array();
+		//contruieste query de inserare
+        $dataToInsert = array();
+        $dataToInsert['id_user'] = 10;
+        $dataToInsert['id_user_from'] = $ticketDetails['id_user'];
+        $dataToInsert['ticket'] = $ticketDetails['ticket'];
+        $dataToInsert['suma'] = $sum;
+        $dataToInsert['data'] = date("Y-m-d");
+        $dataToInsert['bifat'] = 1;
+        $dataToInsertEarnings[] = $dataToInsert;
+        
+        $dataToInsert = array();
+		$dataToInsert['id_user'] = $ticketDetails['id_user'];
+        $dataToInsert['id_user_from'] = $ticketDetails['id_user'];
+        $dataToInsert['ticket'] = $ticketDetails['ticket'];
+        $dataToInsert['suma'] = $sum;
+        $dataToInsert['data'] = date("Y-m-d");
+        $dataToInsert['bifat'] = 1;
+        $dataToInsertEarnings[] = $dataToInsert;
+    
+		if ( $sponsor_id )
+		{
+            /*
+            $sponsorDetails = $this->db->select('id', FALSE)
+						   ->where('nume', $sponsor_id)
+                           ->get('user')->row_array();
+			$amount = ($suma * 0.1);
+			 //$suma = (($bilet->valoare/3) * 0.1)/3;
+			
+            $dataToInsert = array();
+            $dataToInsert['id_user'] = $sponsorDetails['id_user'];
+            $dataToInsert['id_user_from'] = $this->session->userdata('user')['id'];
+            $dataToInsert['ticket'] = $ticketDetails['ticket'];
+            $dataToInsert['suma'] = number_format($amount,2);
+            $dataToInsert['data'] = date("Y-m-d");
+            $dataToInsert['bifat'] = 1;
+            $dataToInsertEarnings[] = $dataToInsert;*/
+		}
+		
+		//verifica daca avem parinti deasupra
+		if(count($parents)==0) {
+            $dataToInsert = array();
+            $dataToInsert['id_user'] = $sponsorDetails['id_user'];
+            $dataToInsert['id_user_from'] = $sponsorDetails['id_user'];
+            $dataToInsert['ticket'] = $ticketDetails['ticket'];
+            $dataToInsert['suma'] = $sum;
+            $dataToInsert['data'] = date("Y-m-d");
+            $dataToInsert['bifat'] = 1;
+            $dataToInsertEarnings[] = $dataToInsert;
+		}
+		else
+		{
+			
+				// send mail for all parents to inform about their earning
+                $rez = $this->db->select('*', FALSE)
+						   ->where_in('id', implode(',',$parents ))
+                           ->get('user')->result();
+				
+				foreach( $rez as $key => $value)
+				{
+					if( $value->email )
+					{
+						$catre_utilizator=$value->email;
+						//$catre_utilizator='ucostea@yahoo.fr';
+						$subiect_utilizator=lang('Profit nou pe Loyalty-Club');
+						$mesaj_utilizator="
+									".lang('Salut')."
+									<br><br>
+									".lang('Felicitari echipa ta ti-a adus noi profituri')."
+									<br>
+									".lang('Logheazate in contul tau')." <a href='".$_SERVER['HTTP_HOST']."'>link</a> ".$_SERVER['HTTP_HOST']."
+									<br><br>
+									".lang('Va multumim.')."";
+						$headere  = "MIME-Version: 1.0\r\n";
+						$headere .= "Content-type: text/html; charset=iso-8859-1\r\n";
+						
+						
+						//trimite mail
+						mail($catre_utilizator, $subiect_utilizator, $mesaj_utilizator, $headere);
+				
+					}
+				}
+			
+			foreach($parents as $parent)
+			{
+				
+                $sql_val.=",(".$parent.",".$bilet->id_user.",'".$bilet->ticket."','".($amount)."',NOW(),0)";
+                $dataToInsert = array();
+                $dataToInsert['id_user'] = $parent;
+                $dataToInsert['id_user_from'] = $sponsorDetails['id_user'];
+                $dataToInsert['ticket'] = $ticketDetails['ticket'];
+                $dataToInsert['suma'] = ($suma/count($parents));
+                $dataToInsert['data'] = date("Y-m-d");
+                $dataToInsert['bifat'] = 1;
+                $dataToInsertEarnings[] = $dataToInsert;
+			}
+        
+        
+        }
+        $this->db->insert_batch('castiguri', $dataToInsertEarnings);
+        $this->updateTicket(array("status" => 2, "data_validare" => date("Y-m-d")),$ticketDetails['id']);
+
+    }
 
     var $table_company_tickets = 'tickets as t';
     var $column_order_company_tickets = array('t.ticket',

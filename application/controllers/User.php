@@ -305,21 +305,35 @@ class User extends MY_Controller {
 	public function insertTicket() {
 		if($this->input->post()) {
 			$validation = array();
-			$validation[] =  array('field' => 'nr-of-tickets', 'rules' => 'required|regex_match[/^[0-9]*/]');
-			$isDate = $this->is_date($this->input->post( 'date-of-birth'));
+			$validation[] =  array('field' => 'ticket-serial', 'rules' => 'required');
+			$validation[] =  array('field' => 'ticket-value', 'rules' => 'required|regex_match[/^[0-9]*/]');
+			$validation[] =  array('field' => 'ticket-discount', 'rules' => 'required|regex_match[/^[0-9]*/]');
+
 			$this -> form_validation -> set_rules($validation);
 			$response = array();
 			if ($this -> form_validation -> run() == FALSE) {
 				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
 			}
-			
-			$nrOfTickets = $this->input->post('nr-of-tickets');
-			if($nrOfTickets > $this->config->item('nrOfTicketsToGenerate')) {
-				exit($this -> load -> view('layouts/error', array('message' => str_replace("[nrOfTickests]",$this->config->item('nrOfTicketsToGenerate'),$this->lang->line('Company Section Ticket Label Section Ticket Max Limit Of Tickets On Insert')), "translate" => false),true));
+
+			$rez = $this->tickets_actions->checkTicketBySerial($this->input->post('ticket-serial'));
+			if(!$rez) {
+				exit($this -> load -> view('layouts/error', array('message' => 'User Section Tickets Page Label Invalid Serial'),true));
 			}
 
-			$this->tickets_actions->generateTickets($nrOfTickets);
-			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+			if($rez['status'] == 1) {
+				exit($this -> load -> view('layouts/error', array('message' => 'User Section Tickets Page Label In Porgress To Be Validated'),true));
+			}elseif($rez['status'] == 2) {
+				exit($this -> load -> view('layouts/error', array('message' => 'User Section Tickets Page Label Already Validated'),true));
+			}
+
+			$data['id_user'] = $this->session->userdata('user')['id'];
+			$data['valoare'] = (float)$this->input->post('ticket-serial');
+			$data['reducere'] = (float)$this->input->post('ticket-discount');
+			$data['data_valorificare'] = date("Y-m-d");
+			$data['status'] = 1;
+			$this->tickets_actions->updateTicket($data,$rez['id']);
+			
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('User Section Tickets Page Label Message To Wait Validation')));
 			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
 		} else {
 			$this->load->view('users/tickets/partials/addTicketModal');

@@ -89,6 +89,28 @@ class Company extends MY_Controller {
 			$this->load->view('company/tickets/partials/addTicketsModal');
 		}
 	}
+
+	public function validateTicket() {
+		if($this->input->post()) {
+			$validation = array();
+			$validation[] =  array('field' => 'id', 'rules' => 'required');
+			$this -> form_validation -> set_rules($validation);
+			$response = array();
+			if ($this -> form_validation -> run() == FALSE) {
+				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
+			}
+			
+			$rez = $this->tickets_actions->checkTicket($this->input->post("id"));
+			if($rez) {
+				if($rez['id_firma'] == $this->session->userdata('user')['id'] && $rez['status'] == 1) {
+					$rez = $this->tickets_actions->validateTicket($rez);
+					$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+					$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+				}
+			}
+
+		}
+	}
 	
 
 
@@ -104,8 +126,20 @@ class Company extends MY_Controller {
             $row['value'] = $ticket->value;
 			$row['createdDate'] = date("d-m-Y",strtotime($ticket->createdDate));
 			$row['clientID'] = $ticket->clientID;
-			$row['status'] = ($ticket->status == 0 ? $this->lang->line("Company Section Ticket Label Section Ticket Status Not Validated") : $this->lang->line("Company Section Ticket Label Section Ticket Status Validated"));
-			$row['actions'] = $this->load->view('company/tickets/partials/actions',array('id' => $ticket->id),true);
+	
+			switch ($ticket->status) {
+				case 0:
+					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Not Used");
+					break;
+				case 1:
+					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Used");
+					break;
+				default:
+					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Validated");
+				break;
+			}
+			$row['status'] = $status;
+			$row['actions'] = $this->load->view('company/tickets/partials/actions',array('ticket' => $ticket),true);
             $data[] = $row;
           }
    

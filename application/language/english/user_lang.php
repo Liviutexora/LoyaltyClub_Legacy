@@ -72,8 +72,26 @@ $lang['User Section Profile Label Profile To Confirm Change Of Email Title'] = "
 $lang['User Section Menu Label My Tickets'] = "My Tickets";
 $lang['User Section Tickets Page Label My Tickets'] = "My Tickets";
 $lang['User Section Tickets Page Label Insert Ticket'] = "Insert Ticket";
-$lang['User Section Tickets Page Label Not Validated By Trader'] = "It s not validated by the trader";
+$lang['User Section Tickets Page Label Not Validated By Trader'] = "It's not validated by the trader";
 $lang['User Section Tickets Page Label Validated'] = "Validated";
+$lang['User Section Tickets Page Label Serial'] = "Serial";
+$lang['User Section Tickets Page Label Value'] = "Value";
+$lang['User Section Tickets Page Label Discount'] = "Discount";
+$lang['User Section Tickets Page Label Invalid Serial'] = "This serial number is invalid";
+$lang['User Section Tickets Page Label In Porgress To Be Validated'] = "This serial has already been submitted and it is in  pending validation.";
+$lang['User Section Tickets Page Label Already Validated'] = "This serial has already been validated";
+$lang['User Section Tickets Page Label Message To Wait Validation'] = "The dates has been inserted, please wait until when the ticket will be validated";
+
+
+
+
+
+
+
+
+
+
+
 
 
 

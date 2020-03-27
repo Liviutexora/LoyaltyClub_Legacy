@@ -72,6 +72,7 @@ $route['add-tickets'] = 'company/addTickets';
 $route['tickets'] = 'company/tickets';
 $route['list-of-tickets'] = 'company/generatedTicketsDatables';
 $route['delete-ticket'] = 'company/deleteTicket';
+$route['validate-ticket'] = 'company/validateTicket';
 /* End company user type routes */
 
 

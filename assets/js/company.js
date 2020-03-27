@@ -91,7 +91,7 @@ var company = {
          
                 "processing": true, //Feature control the processing indicator.
                 "serverSide": true, //Feature control DataTables' server-side processing mode.
-                "responsive":true,
+                "responsive":false,
                 "order": [], //Initial no order.
                 // Load data for the table's content from an Ajax source
                 "ajax": {
@@ -180,6 +180,48 @@ var company = {
                         }
                 });
             });
+
+            $(document).on('click','#validate-ticket',function(event) {
+                content = $(this).attr("lang-content");
+                yes = $(this).attr("lang-yes");
+                no = $(this).attr("lang-no");
+                url = $(this).attr("url");
+                id = $(this).attr("idTicket");
+                var dialog = bootbox.dialog({
+                        message: content,
+                        closeButton: false,
+                        buttons: {
+                                noclose: {
+                                        label: yes,
+                                        className: "btn-success",
+                                        callback: function () {
+                                            $(".loading-div").css("display","block");
+                                            $.ajax({
+                                                type: "POST",
+                                                url:  url,
+                                                data: {
+                                                    id: id
+                            
+                                                },
+                                                error: function (xhr, textStatus, errorThrown) {
+                                                    console.log('Error: ' + xhr.responseText);
+                                                },
+                                                success: function (data) {
+                                                    dialog.find('.bootbox-body').prepend(data);
+                                                  
+                                                }
+                                            });
+                                        }
+                                },
+                                danger: {
+                                        label: no,
+                                        className: "btn-danger",
+                                }
+                        }
+                });
+            });
+
+            
             
         });
     }
