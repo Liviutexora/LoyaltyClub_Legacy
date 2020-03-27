@@ -47,6 +47,7 @@ class Welcome extends MY_Controller {
 					$data['graphTicketsMaxPrecentages'] = $graphTicketsMaxPrecentages;
 					$data['currentGraphPercentage'] = array();
 					foreach ($graphTicketsMaxPrecentages as $level => $precentage) {
+				
 						if($currentPrecentageFromTicketTotal >= $precentage) {
 							//echo $currentPrecentageFromTicketTotal. " ".$precentage;die();
 							if($currentPrecentageFromTicketTotal > $precentage) {
@@ -60,6 +61,9 @@ class Welcome extends MY_Controller {
 							}
 							$data['levelSelect'] = $levelSelect;
 							$data['currentGraphPercentage'] = array();
+							if($currentPrecentageFromTicketTotal > 100)
+								$currentPrecentageFromTicketTotal = 100;
+							$data['currentGraphPercentage'][$levelSelect] = $currentPrecentageFromTicketTotal;
 							
 						} else {
 							$levelSelect = $level;
