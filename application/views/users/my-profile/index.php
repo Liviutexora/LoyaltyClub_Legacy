@@ -43,6 +43,17 @@
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
+                        <label for="name"><?=$this->lang->line("User Section Profile Label Profile Reference")?></label>
+                        <input class="form-control" value="<?=$this->session->userdata('user')['id']?>" disabled="disabled" type="text">
+                    </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                    <div class="form-group">
                         <label for="name"><?=$this->lang->line("User Section Profile Label Full Name")?></label>
                         <input class="form-control" id="name" name="name" value="<?=$userDetails['nume']?>" required="required" type="text">
                     </div>

@@ -327,7 +327,7 @@ class User extends MY_Controller {
 			}
 
 			$data['id_user'] = $this->session->userdata('user')['id'];
-			$data['valoare'] = (float)$this->input->post('ticket-serial');
+			$data['valoare'] = (float)$this->input->post('ticket-value');
 			$data['reducere'] = (float)$this->input->post('ticket-discount');
 			$data['data_valorificare'] = date("Y-m-d");
 			$data['status'] = 1;

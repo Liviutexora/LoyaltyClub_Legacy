@@ -80,6 +80,17 @@
             <!--/.bg-holder-->
 
             <div class="card-body position-relative">
+                <div class="row">
+                    <div class="col-md-8">
+                    <h5 ><?=$this->lang->line('User Section Profile Label Profile Reference')?></h5>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="display-4 fs-2 mb-2 font-weight-normal text-sans-serif text-info float-right"><?=$this->session->userdata('user')['id']?></div>
+                    </div>
+
+                </div>
+                
+                
                 <h5 class="text-warning"><?=$this->lang->line('User Section Label Subscription Your subscription will be renewed in')?></h5>
                 <p class="fs--1 mb-0"><?=$this->lang->line('User Section Label Subscription Your subscription will expire on')?>: 12-03-2021</p>
                 <button class="btn btn-falcon-success mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional</button>

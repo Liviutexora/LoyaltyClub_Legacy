@@ -27,14 +27,15 @@ class Register extends MY_Controller {
 		
 		if($this->input->post()) {
 			$validation = array();
-			$validation[] =  array('field' => 'account_type', 'rules' => 'required');
-			$validation[] =  array('field' => 'name', 'rules' => 'required');
-			$validation[] =  array('field' => 'email', 'rules' => 'required');
-			$validation[] =  array('field' => 'password', 'rules' => 'required');
-			$validation[] =  array('field' => 'terms', 'rules' => 'required');
+			$validation[] =  array('field' => 'account_type', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'name', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'email', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'password', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'terms', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'phone', 'rules' => 'required|trim|regex_match[/^[0-9]*/]');
 
 			if($this->input->post("account_type") && $this->input->post("account_type") == "company") {
-				$validation[] =  array('field' => 'cui', 'rules' => 'required');
+				$validation[] =  array('field' => 'cui', 'rules' => 'required|trim');
 			}
 			$this -> form_validation -> set_rules($validation);
 			//echo "<pre>";
@@ -145,7 +146,7 @@ class Register extends MY_Controller {
 			$query="INSERT INTO `user` (`tip`,`nume`,`username`,`password`,`email`,`status`,`data`) 
 					VALUES(".(int)$tip.",'".$this->input->post('name')."','".$this->input->post('email')."','".md5($this->input->post('password'))."','".$this->input->post('email')."',".$status.",NOW())";
 			//$this->db->query($query);
-			$post_data = array("tip" => (int)$tip, "nume" => $this->input->post('name'),"username" =>$this->input->post('email'),"password"=>md5($this->input->post('password')),"email" =>$this->input->post('email'), "status"=>$status, "data" =>date("Y-m-d H:i:s") );
+			$post_data = array("telefon" => $this->input->post("phone"), "tip" => (int)$tip, "nume" => $this->input->post('name'),"username" =>$this->input->post('email'),"password"=>md5($this->input->post('password')),"email" =>$this->input->post('email'), "status"=>$status, "data" =>date("Y-m-d H:i:s") );
 			$this->db->insert('user',$post_data);
 			//get the las inserted id
 			$last_id=$this->db->insert_id();

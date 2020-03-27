@@ -6,25 +6,61 @@ $(document).ready(function(){
       display_register_company_private_block();
     });
 
+    $( "#last-step-form-private" ).submit(function( event ) {
+        form = $(this);
+        event.preventDefault();
+        if ( form[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form[0].classList.add('was-validated');
+        return false;
+    });
+
+    $( "#last-step-form-company" ).submit(function( event ) {
+        form = $(this);
+        event.preventDefault();
+        if ( form[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form[0].classList.add('was-validated');
+        return false;
+    });
+
+    $( "#first-step-form" ).submit(function( event ) {
+        form = $(this);
+        event.preventDefault();
+        if ( form[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form[0].classList.add('was-validated');
+        return false;
+    });
+
     $display_final_step = false;
 
     wizard = $('.theme-wizard').bootstrapWizard({'tabClass': 'nav',onNext: function(tab, navigation, index) {
 
-        if(index==2 && $("#first-step-form").valid() ) {
+        if(index==2 && $("#first-step-form")[0].checkValidity() ) {
             
-            
+            formIsValid = false;
             if($('#account_type_input').val() == "private") {
-                $("#last-step-form-private").valid();
+                $("#last-step-form-private").trigger("submit");
+                formIsValid = $("#last-step-form-private")[0].checkValidity();
                 form_id = "last-step-form-private";
             } else {
-                $("#last-step-form-company").valid();
+                $("#last-step-form-company").trigger("submit");
+                formIsValid = $("#last-step-form-company")[0].checkValidity();
                 form_id = "last-step-form-company";
             }
-            if(!$display_final_step) {
+            if(!$display_final_step && formIsValid) {
                 url = $("#"+ form_id+"").attr('action');
                 account_type = $('#account_type_input').val();
                 csrf = $('#csrf').val();
                 name = $("#"+ form_id+"").find("input[name='name']").val();
+                phone = $("#"+ form_id+"").find("input[name='phone']").val();
                 email = $("#"+ form_id+"").find("input[name='email']").val();
                 password = $("#"+ form_id+"").find("input[name='password']").val();
                 confirmPassword = $("#"+ form_id+"").find("input[name='confirmPassword']").val();
@@ -44,7 +80,8 @@ $(document).ready(function(){
                         confirmPassword: confirmPassword,
                         sponsor: sponsor,
                         cui:cui,
-                        terms:terms
+                        terms:terms,
+                        phone:phone
 
                     },
                     error: function (xhr, textStatus, errorThrown) {
@@ -68,7 +105,7 @@ $(document).ready(function(){
         }
         else {
             
-            return $("#first-step-form").valid();
+            return  $("#first-step-form").trigger("submit") && $("#first-step-form")[0].checkValidity();
         }
 
      

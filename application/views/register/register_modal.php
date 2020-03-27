@@ -18,7 +18,7 @@
                     <div class="card-body py-4">
                         <div class="tab-content">
                             <div class="tab-pane active px-sm-3 px-md-5" id="bootstrap-wizard-tab1">
-                                <form class="form-validation" id="first-step-form">
+                                <form class="form-validation needs-validation" id="first-step-form" novalidate>
                                     <div class="form-group">
                                         <label for="account_type"><?=$this->lang->line('Register Account Type')?></label>
                                         <select class="form-control custom-select" id="account_type_input" name="account_type" required="required">
@@ -31,30 +31,34 @@
                             </div>
                             <div class="tab-pane px-sm-3 px-md-5" id="bootstrap-wizard-tab2">
                                 <div class="company_details">
-                                    <form class="form-validation" action="<?=site_url('register')?>" id="last-step-form-company" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}'>
+                                    <form class="form-validation needs-validation" action="<?=site_url('register')?>" id="last-step-form-company" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
                                         <div id="save_result"></div>
                                         <div class="form-group">
-                                            <label for="wizard-name"><?=$this->lang->line("Register Company Name")?>*</label>
+                                            <label for="wizard-name"><?=$this->lang->line("Register Company Name")?> <span class="required-sign-label">*</span>:</label>
                                             <input class="form-control" type="text" name="name" placeholder="<?=$this->lang->line("Register Placeholder Company Name")?>" required="required" id="wizard-name" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="wizard-email"><?=$this->lang->line("Register Private Email")?>*</label>
+                                            <label for="wizard-email"><?=$this->lang->line("Register Private Email")?> <span class="required-sign-label">*</span>:</label>
                                             <input class="form-control" type="email" name="email" placeholder="<?=$this->lang->line("Register Placeholder Email Address")?>" required="required" id="wizard-email" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="wizard-name"><?=$this->lang->line("Register Company Organization Number")?>*</label>
+                                            <label for="phone"><?=$this->lang->line("User Section Profile Label Phone")?> <span class="required-sign-label">*</span>:</label>
+                                            <input class="form-control" placeholder="<?=$this->lang->line("User Section Profile Label Phone")?>" id="phone" pattern="^[0-9]*" required="required"  name="phone" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="wizard-name"><?=$this->lang->line("Register Company Organization Number")?> <span class="required-sign-label">*</span>:</label>
                                             <input class="form-control" type="text" name="cui" placeholder="<?=$this->lang->line("Register Placeholder Organization Number")?>" required="required" id="wizard-name" />
                                         </div>
                                         <div class="form-row">
                                             <div class="col-6">
                                                 <div class="form-gorup">
-                                                    <label for="wizard-password"><?=$this->lang->line("Register Password")?>*</label>
+                                                    <label for="wizard-password"><?=$this->lang->line("Register Password")?> <span class="required-sign-label">*</span>:</label>
                                                     <input class="form-control" type="password" name="password" placeholder="<?=$this->lang->line("Register Placeholder Password")?>" required="required" id="wizard-password" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="wizard-confirm-password"><?=$this->lang->line("Register Confirm Password")?>*</label>
+                                                    <label for="wizard-confirm-password"><?=$this->lang->line("Register Confirm Password")?> <span class="required-sign-label">*</span>:</label>
                                                     <input class="form-control" type="password" name="confirmPassword" placeholder="<?=$this->lang->line("Register Placeholder Confirm Password")?>" id="wizard-confirm-password" />
                                                 </div>
                                             </div>
@@ -78,26 +82,30 @@
                                     </form>
                                 </div>
                                 <div class="private_details hidde">
-                                    <form class="form-validation" action="<?=site_url('register')?>" id="last-step-form-private" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password-private"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}'>
+                                    <form class="form-validation needs-validation" action="<?=site_url('register')?>" id="last-step-form-private" data-options='{"rules":{"confirmPassword":{"equalTo":"#wizard-password-private"}},"messages":{"confirmPassword":{"equalTo":"<?=$this->lang->line("Register Passwords didn&#39;t match")?>"},"terms":{"required":"You must accept terms and privacy policy"}}}' novalidate>
                                         <div id="save_result"></div>
                                         <div class="form-group">
-                                            <label for="wizard-name"><?=$this->lang->line("Register Private Name")?>*</label>
+                                            <label for="wizard-name"><?=$this->lang->line("Register Private Name")?> <span class="required-sign-label">*</span>:</label>
                                             <input class="form-control" type="text" name="name" placeholder="<?=$this->lang->line("Register Placeholder Username")?>" required="required" id="wizard-name" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="wizard-email"><?=$this->lang->line("Register Private Email")?>*</label>
+                                            <label for="wizard-email"><?=$this->lang->line("Register Private Email")?> <span class="required-sign-label">*</span>:</label>
                                             <input class="form-control" type="email" name="email" placeholder="<?=$this->lang->line("Register Placeholder Email Address")?>" required="required" id="wizard-email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone"><?=$this->lang->line("User Section Profile Label Phone")?> <span class="required-sign-label">*</span>:</label>
+                                            <input class="form-control" placeholder="<?=$this->lang->line("User Section Profile Label Phone")?>" id="phone" required="required" pattern="^[0-9]*" name="phone" type="text">
                                         </div>
                                         <div class="form-row">
                                             <div class="col-6">
                                                 <div class="form-gorup">
-                                                    <label for="wizard-password"><?=$this->lang->line("Register Password")?>*</label>
+                                                    <label for="wizard-password"><?=$this->lang->line("Register Password")?> <span class="required-sign-label">*</span>:</label>
                                                     <input class="form-control" type="password" name="password" placeholder="<?=$this->lang->line("Register Placeholder Password")?>" required="required" id="wizard-password-private" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="wizard-confirm-password"><?=$this->lang->line("Register Confirm Password")?>*</label>
+                                                    <label for="wizard-confirm-password"><?=$this->lang->line("Register Confirm Password")?> <span class="required-sign-label">*</span>:</label>
                                                     <input class="form-control" type="password" name="confirmPassword" placeholder="<?=$this->lang->line("Register Placeholder Confirm Password")?>" id="wizard-confirm-password-private" />
                                                 </div>
                                             </div>
