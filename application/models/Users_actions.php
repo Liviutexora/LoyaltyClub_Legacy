@@ -76,9 +76,9 @@ class Users_actions extends CI_model
 		$total=0.00; 
 		foreach($network as $key=>$level)
 		{
-			if($suma->suma<50) break;
-			else if($suma->suma<210 && $key>3) break;
-			else if($suma->suma<490 && $key>7) break;
+			if($suma<50) break;
+			else if($suma<210 && $key>3) break;
+			else if($suma<490 && $key>7) break;
 			
 			foreach($level as $leaf)
 			{

@@ -23,7 +23,7 @@
     </div>
     <div class="card-body px-0 pt-0  myNetwork">
         <div class="dashboard-data-table">
-        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" width="100%" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
+        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" width="100%" data-options='{"responsive":true,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":13}'>
             <thead class="bg-200 text-900">
             <tr>
                 <th class="no-sort pr-1 align-middle data-table-row-bulk-select">
