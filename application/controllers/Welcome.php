@@ -37,7 +37,6 @@ class Welcome extends MY_Controller {
 					}
 					$data['generalTotalNrUsers'] = $generalTotalNrUsers;
 					$totalAmount = $this->users_actions->getUserTicketsValue($this->current_user['id']);
-					$totalAmount = 530;
 					$data['totalAmount'] = $totalAmount;
 					
 					$level1Precentage = round(($this->config->item('graphTicketsLevel1MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'),2);
