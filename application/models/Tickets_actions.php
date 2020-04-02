@@ -11,7 +11,7 @@ class Tickets_actions extends CI_model
 			$data[] = array("ticket" => $ticket, "id_firma" => $this->session->userdata('user')['id'], "data_creare" => date("Y-m-d"));
         }
         $this->db->insert_batch('tickets', $data);
-
+        return $data;
 	}
 
 	public function deleteTicket($id) {
@@ -30,6 +30,7 @@ class Tickets_actions extends CI_model
 						   ->where('ticket', $serial)
 						   ->get('tickets')->row_array();
     }
+    
     
     function updateTicket($data,$id) {
 		$this->db->where('id', $id);
@@ -159,6 +160,12 @@ class Tickets_actions extends CI_model
         $this->updateTicket(array("status" => 2, "data_validare" => date("Y-m-d")),$ticketDetails['id']);
 
     }
+
+    public function downloadTickets() {
+        $this->db->where_in('status', array(0,1)); 
+        $this->db->where('id_firma', $this->session->userdata('user')['id']);
+		return $this->db->get('tickets')->result_array();
+	}
 
     var $table_company_tickets = 'tickets as t';
     var $column_order_company_tickets = array('t.ticket',

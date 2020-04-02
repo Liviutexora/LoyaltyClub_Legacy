@@ -57,12 +57,81 @@ class Company extends MY_Controller {
 				exit($this -> load -> view('layouts/error', array('message' => str_replace("[nrOfTickests]",$this->config->item('nrOfTicketsToGenerate'),$this->lang->line('Company Section Ticket Label Section Ticket Max Limit Of Tickets On Insert')), "translate" => false),true));
 			}
 
-			$this->tickets_actions->generateTickets($nrOfTickets);
+			$ticketsGenerated = $this->tickets_actions->generateTickets($nrOfTickets);
+			$pdfUrl = $this->generateTicketsPdf($ticketsGenerated) ;
+			
 			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
-			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+			$this -> load -> view('company/tickets/partials/pdfTickets/downloadTickets', array('pdfUrl' => $pdfUrl));
+			//$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
 		} else {
 			$this->load->view('company/tickets/partials/addTicketsModal');
 		}
+	}
+
+	public function generateTicketsPdf($ticketsData = array()) {
+		$this->load->library('pdf');
+		$pdf = $this->pdf->load();
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		//header
+		$pdf->setPrintHeader(false);
+
+		//set margins
+		$pdf->SetMargins(5, 5, 5);
+		$pdf->SetHeaderMargin(0);
+		$pdf->SetFooterMargin(7);
+
+		//set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+		//set image scale factor
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+		//set some language-dependent strings
+		//$pdf->setLanguageArray($l);
+
+		// ---------------------------------------------------------
+
+		// set font
+		$pdf->SetFont('helvetica', '', 10);
+
+		// add a page
+		$pdf->AddPage();
+		$content = $this->load->view("company/tickets/partials/pdfTickets/pdfTickets",array("tickets" => $ticketsData),true);
+		// output the HTML content
+		$pdf->writeHTML($content, true, false, true, false, '');
+		// reset pointer to the last page
+		$pdf->lastPage();
+
+		// add a page
+		$pdf->AddPage();
+
+		$content = $this->load->view("company/tickets/partials/pdfTickets/listOfTickets",array("tickets" => $ticketsData),true);
+
+		$pdf->writeHTML($content, true, false, true, false, '');
+		// reset pointer to the last page
+		$pdf->lastPage();
+
+		if (!file_exists('./downloands')) {
+            mkdir('./downloands', 0777, true);
+		}
+		$folderName = $this->session->userdata('user')['id'].md5(time());
+		$folderName = substr($folderName, 0, 10);
+		if (!file_exists('./downloands/'.$folderName.'')) {
+            mkdir('./downloands/'.$folderName.'', 0777, true);
+		}
+		$fileName = 'ticketsReport'.$this->session->userdata('user')['id'].'.pdf';
+		$path = '/downloands/'.$folderName.'/';
+		$pdf->Output(".".$path.$fileName, 'F');
+
+		return site_url($path.$fileName);
+	}
+
+	public function downloadTickets() {
+		$tickets = $this->tickets_actions->downloadTickets();
+		$ticketsPdfUrl = $this->generateTicketsPdf($tickets);
+		echo $ticketsPdfUrl;
 	}
 
 	public function deleteTicket() {
@@ -129,13 +198,13 @@ class Company extends MY_Controller {
 	
 			switch ($ticket->status) {
 				case 0:
-					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Not Used");
+					$status = "<span class='ticketStatusSpanNotUsed'>".$this->lang->line("Company Section Ticket Label Section Ticket Status Not Used")."</span>";
 					break;
 				case 1:
-					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Used");
+					$status = "<span class='ticketStatusSpanUsed'>".$this->lang->line("Company Section Ticket Label Section Ticket Status Used")."</span>";
 					break;
 				default:
-					$status = $this->lang->line("Company Section Ticket Label Section Ticket Status Validated");
+					$status = "<span class='ticketStatusSpanValidated'>".$this->lang->line("Company Section Ticket Label Section Ticket Status Validated")."</span>";
 				break;
 			}
 			$row['status'] = $status;

@@ -68,10 +68,7 @@ class Welcome extends MY_Controller {
 					# code...
 					break;
 			}
-				echo $currentPrecentageFromTicketTotal;
-					//var_dump($graphTicketsMaxPrecentages);
-					//echo $data['levelSelect'];
-					//die();
+				
 			$this->load->view('layouts_after_login/index',$data);
 		} else {
 			$this->load->view('layouts/index');

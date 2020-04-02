@@ -4,7 +4,7 @@ $lang['Company Section Menu Label Loyalty Bank'] = "Loyalty Bank";
 $lang['Company Section Menu Label Generate Tickets'] = "Add Tickets";
 $lang['Company Section Ticket Label Section Title Tickets'] = "Tickets";
 $lang['Company Section Ticket Label Section Ticket Serial'] = "Serial";
-$lang['Company Section Ticket Label Section Ticket Discount'] = "Discount";
+$lang['Company Section Ticket Label Section Ticket Discount'] = "Bonus";
 $lang['Company Section Ticket Label Section Ticket Value'] = "Value";
 $lang['Company Section Ticket Label Section Ticket Date'] = "Date";
 $lang['Company Section Ticket Label Section Ticket Client ID'] = "Client ID";
@@ -17,6 +17,28 @@ $lang['Company Section Ticket Label Section Ticket Status Used'] = "To be Valida
 $lang['Company Section Ticket Label Section Ticket Status Validated'] = "Validated";
 $lang['Company Section Ticket Label Section Ticket Validate Ticket'] = "Validate";
 $lang['Company Section Ticket Label Section Ticket Validate Ticket Question'] = "Are you sure you want to validate this ticket?";
+$lang['Company Section Ticket Label Section Ticket Add Tickets'] = "Add";
+$lang['Company Section Ticket Label Section Ticket Download Tickets'] = "Download";
+$lang['Company Section Ticket Label Pdf Ticket Company'] = "Company";
+$lang['Company Section Ticket Label Pdf Ticket Serial'] = "Serial";
+$lang['Company Section Ticket Label Pdf Ticket Value'] = "Value";
+$lang['Company Section Ticket Label Pdf Ticket Date of issue'] = "Date of issue";
+$lang['Company Section Ticket Label Pdf Ticket Discount'] = "Bonus";
+$lang['Company Section Ticket Label Pdf Ticket Check List'] = "Ticket check list";
+$lang['Company Section Ticket Label Pdf Ticket Date'] = "Date";
+$lang['Company Section Ticket Label Pdf Ticket Client ID'] = "Client ID";
+$lang['Company Section Ticket Label Pdf Ticket Download'] = "View";
+$lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
+$lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
+
+
+
+
+
+
+
+
+
 
 
 

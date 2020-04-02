@@ -221,6 +221,29 @@ var company = {
                 });
             });
 
+           
+            $(document).on("click",".download-tickets-btn", function () {
+                var link = $(this).attr("url");
+                btn = $(this);
+                btnSubmitText = $(this).html();
+                btnLoadindText = $(this).attr("data-loading-text");
+                pattern = $('input[name="nr-of-tickets"]').attr("pattern");
+                if(!btnLoadindText)
+                    btnLoadindText = "Loading...";
+                $.ajax({
+                        url: link,
+                        beforeSend: function( xhr ) {
+                            btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'+btnLoadindText+'');
+                            btn.prop("disabled",true);
+                        }
+                }).done(function (data) {
+                    $('body').append('<a id="link" href="'+data+'"  download="Tickets.pdf">&nbsp;</a>');
+                    $('#link')[0].click();
+                    btn.html(btnSubmitText);
+                    
+                    btn.prop("disabled",false);
+                });
+            });
             
             
         });

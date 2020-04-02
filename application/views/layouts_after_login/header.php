@@ -38,6 +38,7 @@
     <link href="<?=site_url("assets/lib/leaflet.markercluster/MarkerCluster.Default.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/css/theme".($this->darkMode ? '-dark' : '').".css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/css/app.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/css/company.css")?>" rel="stylesheet">
 
   </head>
 
