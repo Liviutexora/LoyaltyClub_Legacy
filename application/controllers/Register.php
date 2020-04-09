@@ -74,6 +74,7 @@ class Register extends MY_Controller {
 				$sponsor=trim($this->input->post('sponsor'));
 				
 				if($sponsor=='') $sponsor=11;
+
 				//cauta sponsor real
 				$sponsor=$this->users_actions->checkChilds($sponsor);
 				

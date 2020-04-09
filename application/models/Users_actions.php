@@ -27,7 +27,7 @@ class Users_actions extends CI_model
 
     public function checkChilds($id)
 	{
-		$query="SELECT `id_user` FROM `contact` WHERE `sponsor`=".(int)$id;
+		$query="SELECT `id_user` FROM `contact` WHERE `id_user`=".(int)$id;
 		$childs=$this->db->query($query)->result();
 		
 		
