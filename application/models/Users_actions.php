@@ -71,23 +71,22 @@ class Users_actions extends CI_model
 		->where('tk.id_user',$user)
 		->get('tickets tk')->row_array();
 		$suma = $rez["suma"];
-		$network=$this->getNetwork($user);
-		
+		$network = array();
+		$network=$this->getNetwork($user,$network);
 		$total=0.00; 
 		foreach($network as $key=>$level)
 		{
-			if($suma<50) break;
-			else if($suma<210 && $key>3) break;
-			else if($suma<490 && $key>7) break;
+			//if($suma<500) break;
+			//else if($suma<2100 && $key>3) break;
+			//else if($suma<4900 && $key>7) break;
 			
 			foreach($level as $leaf)
 			{
 				$CastigOferit=$this->getEarnedOffered($user,$leaf->id); 
-
 				$total+=$CastigOferit;
 			}
 		}
-		
+	
 		return number_format($total,2);
 	}	
     
@@ -201,7 +200,7 @@ class Users_actions extends CI_model
 	{
 		$network=array();
 		$this->getUserChilds($id,1,$network);
-	return $network;
+		return $network;
 	}
 
 	//count subcategories

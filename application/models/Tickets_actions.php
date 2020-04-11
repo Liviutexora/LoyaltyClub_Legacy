@@ -52,15 +52,16 @@ class Tickets_actions extends CI_model
 		
         $CI = get_instance();
         $CI -> load -> model('users_actions');
-		//scoate parinti clientului
-		$parents= $CI->users_actions->getUserParents($ticketDetails['id_user']);
+        //scoate parinti clientului
+        $parents = array();
+        $CI->users_actions->getUserParents($ticketDetails['id_user'],$parents);
 		
 		//calculeaza suma pentru cele 3 parti
 		$sum=($ticketDetails['valoare']*($ticketDetails['reducere']/100))/3;
 		$dataToInsertEarnings = array();
 		//contruieste query de inserare
         $dataToInsert = array();
-        $dataToInsert['id_user'] = 10;
+        $dataToInsert['id_user'] = 11;
         $dataToInsert['id_user_from'] = $ticketDetails['id_user'];
         $dataToInsert['ticket'] = $ticketDetails['ticket'];
         $dataToInsert['suma'] = $sum;
@@ -77,7 +78,7 @@ class Tickets_actions extends CI_model
         $dataToInsert['bifat'] = 1;
         $dataToInsertEarnings[] = $dataToInsert;
     
-		if ( $sponsor_id )
+		if ( isset($sponsor_id) )
 		{
             /*
             $sponsorDetails = $this->db->select('id', FALSE)
@@ -119,6 +120,7 @@ class Tickets_actions extends CI_model
 				{
 					if( $value->email )
 					{
+                        /*
 						$catre_utilizator=$value->email;
 						//$catre_utilizator='ucostea@yahoo.fr';
 						$subiect_utilizator=lang('Profit nou pe Loyalty-Club');
@@ -135,20 +137,18 @@ class Tickets_actions extends CI_model
 						
 						
 						//trimite mail
-						mail($catre_utilizator, $subiect_utilizator, $mesaj_utilizator, $headere);
+						mail($catre_utilizator, $subiect_utilizator, $mesaj_utilizator, $headere); */
 				
 					}
 				}
 			
 			foreach($parents as $parent)
 			{
-				
-                $sql_val.=",(".$parent.",".$bilet->id_user.",'".$bilet->ticket."','".($amount)."',NOW(),0)";
                 $dataToInsert = array();
                 $dataToInsert['id_user'] = $parent;
-                $dataToInsert['id_user_from'] = $sponsorDetails['id_user'];
+                $dataToInsert['id_user_from'] = $ticketDetails['id_user'];
                 $dataToInsert['ticket'] = $ticketDetails['ticket'];
-                $dataToInsert['suma'] = ($suma/count($parents));
+                $dataToInsert['suma'] = ($sum/count($parents));
                 $dataToInsert['data'] = date("Y-m-d");
                 $dataToInsert['bifat'] = 1;
                 $dataToInsertEarnings[] = $dataToInsert;
