@@ -29,7 +29,9 @@ class Welcome extends MY_Controller {
 			switch ($this->current_user['tip']) {
 				case 1:
 					$data['nrOfTickets'] = $this->tickets_actions->getNrTickets($this->current_user['id']);
-					$data['totalReceived'] = $this->users_actions->getTotalReceived($this->current_user['id']);
+					$userMoney = $this->users_actions->getOfferedGain($this->current_user['id'],$this->current_user['id']);
+					$receivedMoney = $this->users_actions->getTotalReceived($this->current_user['id']);
+					$data['totalReceived'] = $userMoney + $receivedMoney;
 					$my_network = $this->users_actions->getNetwork($this->current_user['id']);
 					$generalTotalNrUsers = 0;
 					foreach($my_network as $level=>$levelChilds){

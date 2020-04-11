@@ -95,7 +95,7 @@ class User extends MY_Controller {
 			$levels[$level]['users'] = $usersList;
 			$levels[$level]['nr'] = count($levelChilds);
 		}
-		$generalTotalProfit+=$totalAmount;
+		$generalTotalProfit+=$userMoney;
 		$data['levels'] = $levels;
 		$data['totalAmount'] = $totalAmount;
 		$data['userMoney'] = $userMoney;
