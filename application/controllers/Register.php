@@ -72,7 +72,6 @@ class Register extends MY_Controller {
 				$msg=$this->lang->line('Congratulations! You have been registered.');
 				//parametri tabela adiacenta contact
 				$sponsor=trim($this->input->post('sponsor'));
-				
 				if($sponsor=='') $sponsor=11;
 
 				//cauta sponsor real
@@ -87,7 +86,7 @@ class Register extends MY_Controller {
 				
 				//construieste query
 				$sql_tab="`contact`";
-				$sql_val="'".$this->input->post('sponsor')."'";
+				$sql_val="'".$sponsor."'";
 				$sql_ins="`id_user`,`sponsor`";
 				$status=1;
 				
