@@ -77,7 +77,7 @@ $(document).ready(function(){
                  }
       
                   if (jQuery.inArray(index, search_columns) !== -1) {
-                      $(this).append('<input class="form-control" placeholder="'+$(this).attr("input-placeholder")+'" style="width:100%;" type="'+inputType+'"/>');
+                      $(this).append('<input class="form-control col-sm-12" placeholder="'+$(this).attr("input-placeholder")+'" type="'+inputType+'"/>');
                   }
             });
             
