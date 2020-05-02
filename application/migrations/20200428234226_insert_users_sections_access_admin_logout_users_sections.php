@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_insert_users_sections_access_admin_users_sections extends CI_Migration {
+class Migration_insert_users_sections_access_admin_logout_users_sections extends CI_Migration {
 
         public function up()
         {
