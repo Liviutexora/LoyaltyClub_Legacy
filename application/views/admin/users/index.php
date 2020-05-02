@@ -25,7 +25,7 @@
        
         <div class="dashboard-data-table">
         <p class="search-by-label"><?=$this->lang->line("Search by")?>:</p>
-        <table class="search-table table table-sm table-dashboard fs--1 datatable-table">
+        <table class="search-table table table-sm table-dashboard fs--1 responsive">
             <thead class="bg-200 text-900">
             <tr>
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Name')?>"></td>                                
