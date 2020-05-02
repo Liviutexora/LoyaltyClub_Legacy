@@ -83,6 +83,8 @@
         <?php $this->load->view("menu/user") ?>
       <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 2) { ?>
         <?php $this->load->view("menu/company") ?>
+      <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 3) { ?>
+        <?php $this->load->view("menu/admin") ?>
       <?php } ?>
         <div class="content">
           <nav class="navbar navbar-light navbar-glass fs--1 font-weight-semi-bold row navbar-top sticky-kit navbar-expand">

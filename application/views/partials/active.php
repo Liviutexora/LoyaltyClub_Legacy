@@ -1,0 +1,1 @@
+<span class="badge badge-primary"><?=$this->lang->line("Status Enabled Label")?></span>

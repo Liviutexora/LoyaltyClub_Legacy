@@ -133,7 +133,11 @@ class Users_actions extends CI_model
 		$query="SELECT * FROM `user` us
 				WHERE `username`='".stripslashes($email)."' AND `password`='".md5($data['password'])."' AND `status`=1";		
 		$exeQuery=$this->db->query($query)->row_array();
-
+		
+		
+		$query="SELECT * FROM `administrator`
+				WHERE `email`='".stripslashes($email)."' AND `password`='".md5($data['password'])."' ";		
+		$exeQueryAdmin=$this->db->query($query)->row_array();
 		if(count($exeQuery))
 		{
 			$user_info = $exeQuery;
@@ -149,7 +153,13 @@ class Users_actions extends CI_model
 			$this->session->set_userdata(array("user" => $exeQuery));	
           
 			return true;
+		}elseif(count($exeQueryAdmin))
+		{
+			$exeQueryAdmin['tip'] = 3;
+			$this->session->set_userdata(array("user" => $exeQueryAdmin));	
+			return true;
 		}
+
 			
 	return false;		
 	}
@@ -250,7 +260,7 @@ class Users_actions extends CI_model
 	}
 	
 	function getUserDetails($userId) {
-		return $this->db->select('ct.*,us.*', FALSE)
+		return $this->db->select('ct.id as contact_id,ct.sponsor,ct.sex,ct.data_nasterii,ct.iban,ct.banca, us.*', FALSE)
 						   ->join("user us","ct.id_user =us.id", "LEFT")
 						   ->where('us.id', $userId)
 						   ->get('contact ct')->row_array();

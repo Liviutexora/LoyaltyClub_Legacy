@@ -117,7 +117,7 @@ $autoload['config'] = array("website_settings");
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-$autoload['language'] = array('register','general','user','company');
+$autoload['language'] = array('register','general','user','company','admin');
 
 /*
 | -------------------------------------------------------------------

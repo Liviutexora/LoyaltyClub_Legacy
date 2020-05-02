@@ -1,0 +1,1 @@
+<a href="<?=site_url("generate-user-legitimation/".$user->id."")?>" target="_blank"><?=$user->userName?></a>

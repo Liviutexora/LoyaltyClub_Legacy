@@ -30,9 +30,13 @@
 /* Datables */
 
 .dashboard-data-table {margin:5px;}
+.search-table input {padding-top: 0px;padding-bottom: 0px;padding-left:3px;height: 30px;}
+.search-table th {padding-bottom: 0px;margin-bottom: 0px;padding-left: 5px;}
+.search-table td {padding-left: 5px;}
 /* End Datables */
 
 /* General */
 .required-sign-label {color:red;}
 .card-datables {overflow: hidden; overflow-x: auto;}
+.search-by-label {margin-left:5px;padding-bottom:0px;margin-bottom:2px;}
 /* End General */

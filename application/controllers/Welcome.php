@@ -24,6 +24,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
+		
 		if(isset($this->current_user['id'])) {
 			$data = array();
 			switch ($this->current_user['tip']) {

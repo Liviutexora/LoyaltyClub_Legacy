@@ -78,6 +78,21 @@ $route['download-tickets'] = 'company/downloadTickets';
 /* End company user type routes */
 
 
+/* Admin user type routes */
+
+
+$route['users-data-tables'] = 'admin/usersDataTables';
+$route['delete-user'] = 'admin/deleteUser';
+$route['change-user-status'] = 'admin/changeUserStatus';
+$route['edit-user/:num'] = 'admin/editUser';
+$route['generate-user-legitimation/(:any)'] = 'admin/generateUserLegitimation';
+
+
+
+
+/* End admin user type routes */
+
+
 
 
 

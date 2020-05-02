@@ -15,7 +15,7 @@ class MY_Controller extends CI_Controller {
 			if(isset($this->current_user['id'])) {
 				$this->checkUsersSectionsAccess();
 				$rez = $this->users_actions->getUserSettings('dark-mode',$this->current_user['id']);
-				if(isset($rez['settings_value']) && $rez['settings_value'])
+				if(isset($rez['settings_value']) && $rez['settings_value'] || $this->current_user['tip'] == 3)
 					$this->darkMode = true;
 					$rez = $this->users_actions->getUserSettings('avatar-image',$this->current_user['id']);
 				$this->avatarImage = "";
@@ -57,7 +57,7 @@ class MY_Controller extends CI_Controller {
 		$callers=debug_backtrace();
 		$controllerName = (isset($callers[1]['object']->uri->rsegments[1]) ? $callers[1]['object']->uri->rsegments[1]  : "");
 		$methodName = (isset($callers[1]['object']->uri->rsegments[2])  ? $callers[2]['object']->uri->rsegments[2] : "");
-		
+
 		if($controllerName && $methodName) {
 			$dataToCheck = array("user_section_access_user_type" => $this->current_user['tip'], "user_section_access_class_name" => $controllerName, "user_section_access_method_name" => $methodName );
 			$rez = $this->users_actions->checkUserSectionAccess($dataToCheck);

@@ -1,0 +1,1 @@
+<span class="badge badge-danger"><?=$this->lang->line("Status Disabled Label")?></span>

@@ -36,6 +36,15 @@ $lang['Delete Action'] = "Delete";
 $lang['Delete Action Question'] = "Are you sure you want to perform this?";
 $lang['Home Page Slider Slogan'] = "With the power of Loyalty Club, you can now focus only on your favourite shopping, while leaving the deep work on us!";
 $lang['Loading Btn Text General'] = "Loading Btn Text General";
+$lang['Action Edit Btn Label'] = "Edit";
+$lang['Action Delete Btn Label'] = "Delete";
+$lang['Action Enable Btn Label'] = "Enable";
+$lang['Action Disable Btn Label'] = "Disable";
+$lang['Status Disabled Label'] = "Disabled";
+$lang['Status Enabled Label'] = "Enabled";
+$lang['DataTable PlaceHolder Search Label'] = "Search value";
+$lang['Search by'] = "Search by";
+
 
 
 
