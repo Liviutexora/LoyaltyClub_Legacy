@@ -287,8 +287,18 @@ class Register extends MY_Controller {
 			}
 			$response['error'] = 0;
 			$message = "";
+			$redirectUrl =  site_url();
+			switch ($this->session->userdata('user')['tip']) {
+				case '3':
+					$redirectUrl =  site_url('admin/users');
+					break;
+				
+				default:
+					# code...
+					break;
+			}
 			$message .= $this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Register Success')), true);
-			$message .= $this -> load -> view('layouts/redirect', array('url' => site_url()/*, 'close_only_modal' => true*/), true);
+			$message .= $this -> load -> view('layouts/redirect', array('url' =>$redirectUrl/*, 'close_only_modal' => true*/), true);
 			$response['message'] = $message;
 			exit(json_encode($response));
 		}
