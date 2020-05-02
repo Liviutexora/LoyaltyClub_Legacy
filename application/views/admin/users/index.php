@@ -25,7 +25,7 @@
        
         <div class="dashboard-data-table">
         <p class="search-by-label"><?=$this->lang->line("Search by")?>:</p>
-        <table class="search-table table table-sm table-dashboard fs--1 responsive">
+        <table class="search-table  table-sm table-dashboard fs--1 table-responsive">
             <thead class="bg-200 text-900">
             <tr>
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Name')?>"></td>                                
@@ -77,7 +77,7 @@ $(document).ready(function(){
                  }
       
                   if (jQuery.inArray(index, search_columns) !== -1) {
-                      $(this).append('<input class="form-control col-sm-12" placeholder="'+$(this).attr("input-placeholder")+'" type="'+inputType+'"/>');
+                      $(this).append('<input class="form-control" placeholder="'+$(this).attr("input-placeholder")+'" type="'+inputType+'"/>');
                   }
             });
             
