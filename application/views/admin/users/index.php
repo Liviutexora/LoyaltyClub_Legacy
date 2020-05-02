@@ -25,8 +25,8 @@
        
         <div class="dashboard-data-table">
         <p class="search-by-label"><?=$this->lang->line("Search by")?>:</p>
-        <table class="search-table  table-sm table-dashboard fs--1 table-responsive">
-            <thead class="bg-200 text-900">
+        <table class="search-table table table-sm table-dashboard fs--1 datatable-table">
+            <tbody class="bg-200 text-900">
             <tr>
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Name')?>"></td>                                
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Reference')?>"></td>
@@ -36,7 +36,7 @@
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Address')?>"></td>
                 <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Status')?>"></td>
             </tr>
-            </thead>
+            </tbody>
         </table>
         <table class="table table-sm table-dashboard fs--1 datatable-table users-table border-bottom" width="100%" data-language-label='{"Datatables Label Display" : "<?=$this->lang->line('Datatables Label Display')?>","Datatables Label Per Page" : "<?=$this->lang->line('Datatables Label Per Page')?>","Datatables Label No Data" : "<?=$this->lang->line('Datatables Label No Data')?>","Datatables Label Page" : "<?=$this->lang->line('Datatables Label Page')?>","Datatables Label Of" : "<?=$this->lang->line('Datatables Label Of')?>","Datatables Label No Records Available" : "<?=$this->lang->line('Datatables Label No Records Available')?>","Datatables Label Total Records" : "<?=$this->lang->line('Datatables Label Total Records')?>","Datatables Label Next" : "<?=$this->lang->line('Datatables Label Next')?>","Datatables Label Previous" : "<?=$this->lang->line('Datatables Label Previous')?>" }' data-options='{"responsive":false,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
             <thead class="bg-200 text-900">
@@ -77,7 +77,7 @@ $(document).ready(function(){
                  }
       
                   if (jQuery.inArray(index, search_columns) !== -1) {
-                      $(this).append('<input class="form-control" placeholder="'+$(this).attr("input-placeholder")+'" type="'+inputType+'"/>');
+                      $(this).append('<input class="form-control" placeholder="'+$(this).attr("input-placeholder")+'"  type="'+inputType+'"/>');
                   }
             });
             
