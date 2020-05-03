@@ -6,6 +6,8 @@ class Admin extends MY_Controller {
 			parent::__construct();
 			$this -> load -> model('admin_actions');
 			$this -> load -> model('users_actions');
+			$this -> load -> model('company_actions');
+			
 			$this->checkUserLogged();
 	}
 	/**
@@ -166,6 +168,71 @@ class Admin extends MY_Controller {
         );
         //output to json format
         echo json_encode($output);
+	}
+
+	public function companies() {
+		$this->load->view('admin/companies/index');
+	}
+
+	public function companiesDataTables() {
+		$list = $this->admin_actions->get_companies_datatables();
+        $data = array();
+		$no = $_POST['start'];
+	  
+        foreach ($list as $user) {
+			$row = array();
+            $row['companyName'] = $this->load->view('admin/companies/partials/companyName',array('user' => $user),true);;
+			$row['userName'] = $user->userName;
+			$row['amount'] = number_format($user->amount,2);
+            $row['email'] = $user->email;
+			$row['phone'] = $user->phone;
+			$row['iban'] = $user->iban;
+			$row['nr_orc'] = $user->nr_orc;
+			$row['cui'] = $user->cui;
+			$row['reference'] = $user->reference;
+			$row['street'] = $user->street;
+			$row['status'] = ($user->status ? $this->load->view('partials/active',array(),true) : $this->load->view('partials/disabled',array(),true) );
+			$row['actions'] = $this->load->view('admin/companies/partials/actions',array('user' => $user),true);
+			$data[] = $row;
+        }
+   
+        $output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->admin_actions->count_companies_all(),
+			"recordsFiltered" => $this->admin_actions->count_companies_filtered(),
+			"data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+	}
+
+	public function editCompany() {
+		if($this->input->post()) {
+			$validation = array();
+			$validation[] =  array('field' => 'name', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'reference', 'rules' => 'required|trim');
+
+			$this -> form_validation -> set_rules($validation);
+			$response = array();
+			if ($this -> form_validation -> run() == FALSE) {
+				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
+			}
+
+			$reference=$this->users_actions->checkChilds($this->input->post("reference"));
+			if(!$reference) {
+				exit($this -> load -> view('layouts/error', array('message' => 'The sponsor is invalid'),true));
+			}
+
+			$data['nume'] = $this->input->post("name");
+			$this->users_actions->updateUserDetails(array("nume" => $this->input->post("name")),$this->uri->segment(2));
+			$this->users_actions->updateUserContactDetails(array("sponsor" => $this->input->post("reference")),$this->uri->segment(2));
+			
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => site_url("admin/users")));
+		} else {
+			$data['companyDetails'] = $this->company_actions->getCompanyDetails($this->uri->segment(2));
+			$this->load->view('admin/companies/partials/editCompanyModal',$data);
+		}
 	}
 
 

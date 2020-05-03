@@ -87,6 +87,9 @@ $route['change-user-status'] = 'admin/changeUserStatus';
 $route['edit-user/:num'] = 'admin/editUser';
 $route['generate-user-legitimation/(:any)'] = 'admin/generateUserLegitimation';
 
+$route['companies-data-tables'] = 'admin/companiesDataTables';
+$route['edit-company/:num'] = 'admin/editCompany';
+
 
 
 

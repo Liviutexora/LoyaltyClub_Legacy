@@ -5,9 +5,8 @@ class Users_actions extends CI_model
     {
             if (isset($data)) {
                     $this->db->where('email', $data);
-                    $this->db->where('email !=', '');
             }
-            $query = $this->db->get("user");
+			$query = $this->db->get("user");
             return $query->num_rows();
 	}
 

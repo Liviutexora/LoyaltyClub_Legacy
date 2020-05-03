@@ -25,8 +25,9 @@
             </div>
         </a>
         <ul class="nav collapse show" id="loyalty-bank" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/users')?>"><?=$this->lang->line("Admin Section Menu Label Customers")?></a>
-            </li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/users')?>"><?=$this->lang->line("Admin Section Menu Label Customers")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/companies')?>"><?=$this->lang->line("Admin Section Menu Label Companies")?></a></li>
+        
         </ul>
         </li>
         

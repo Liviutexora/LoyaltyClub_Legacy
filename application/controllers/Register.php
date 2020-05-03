@@ -48,6 +48,7 @@ class Register extends MY_Controller {
 			}
 
 			$rez = $this->users_actions->email_exists($this->input->post("email"));
+
 			if($rez) {
 				$response['error'] = 1;
 				$response['message'] = $this -> load -> view('layouts/error', array('message' => 'The email already exist!'), true);
@@ -65,14 +66,15 @@ class Register extends MY_Controller {
 			} else {
 				$tip =1;
 			}
+			$sponsor=trim($this->input->post('sponsor'));
+			if($sponsor=='') $sponsor=11;
 			//verifica tipul de user
 			if(isset($tip) && $tip==1)
 			{
 				//mesajde confirmare
 				$msg=$this->lang->line('Congratulations! You have been registered.');
 				//parametri tabela adiacenta contact
-				$sponsor=trim($this->input->post('sponsor'));
-				if($sponsor=='') $sponsor=11;
+				
 
 				//cauta sponsor real
 				$sponsor=$this->users_actions->checkChilds($sponsor);
@@ -120,7 +122,7 @@ class Register extends MY_Controller {
 				
 				//construieste query
 				$sql_tab="`firma`";
-				$sql_val="'".$nume_firma."','".base64_encode($cui)."' ,'".trim($this->input->post('sponsor'))."' ";
+				$sql_val="'".$nume_firma."','".base64_encode($cui)."' ,'".trim($sponsor)."' ";
 				$sql_ins="`id_firma`,`nume_firma`,`cui`,`sponsor_id`";
 				$status=1;
 				
