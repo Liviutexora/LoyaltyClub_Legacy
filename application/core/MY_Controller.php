@@ -20,7 +20,8 @@ class MY_Controller extends CI_Controller {
 					$rez = $this->users_actions->getUserSettings('avatar-image',$this->current_user['id']);
 				$this->avatarImage = "";
 				if(isset($rez['settings_value']) && $rez['settings_value']){
-					$this->avatarImage = site_url('/uploads/users/'.$this->current_user['id'].'/avatar-image/'.$rez['settings_value']);
+					
+					$this->avatarImage = site_url('/uploads/'.($this->current_user['tip'] == 2 ? 'companies' : 'users' ).'/'.$this->current_user['id'].'/avatar-image/'.$rez['settings_value']);
 				}
 			}
 			

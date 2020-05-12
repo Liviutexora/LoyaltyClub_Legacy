@@ -224,11 +224,11 @@ class Admin extends MY_Controller {
 			}
 
 			$data['nume'] = $this->input->post("name");
-			$this->users_actions->updateUserDetails(array("nume" => $this->input->post("name")),$this->uri->segment(2));
-			$this->users_actions->updateUserContactDetails(array("sponsor" => $this->input->post("reference")),$this->uri->segment(2));
+
+			$this->company_actions->updateCompanyDetails(array("nume_firma" => $this->input->post("name"), "sponsor_id" => $this->input->post("reference") ),$this->uri->segment(2)); 
 			
 			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
-			$this -> load -> view('layouts/redirect', array('url' => site_url("admin/users")));
+			$this -> load -> view('layouts/redirect', array('url' => site_url("admin/companies")));
 		} else {
 			$data['companyDetails'] = $this->company_actions->getCompanyDetails($this->uri->segment(2));
 			$this->load->view('admin/companies/partials/editCompanyModal',$data);

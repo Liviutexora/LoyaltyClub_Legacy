@@ -2,6 +2,31 @@
 
 $lang['Company Section Menu Label Loyalty Bank'] = "Loyalty Bank";
 $lang['Company Section Menu Label Generate Tickets'] = "Add Tickets";
+$lang['Company Section Menu Label Settings'] = "Account Details";
+$lang['Company Section Menu Label Edit Profile Info'] = "Profile";
+$lang['Company Section Menu Label Edit Profile Company Details'] = "Company Details";
+$lang['Company Section Company Details Label Edit Company Details'] = "Edit Company Details";
+$lang['Company Section Company Details Label Company Name'] = "Name";
+$lang['Company Section Company Details Label Contact Name'] = "Added By";
+$lang['Company Section Company Details Label Company Email'] = "Email";
+$lang['Company Section Company Details Label Company Phone'] = "Phone";
+$lang['Company Section Company Details Label Company IBAN'] = "IBAN";
+$lang['Company Section Company Details Label Company Nr. ORC'] = "Nr. ORC";
+$lang['Company Section Company Details Label Company CUI'] = "CUI";
+$lang['Company Section Company Details Label Company Reference'] = "Reference";
+$lang['Company Section Company Details Label Company Address'] = "Address";
+$lang['Company Section Company Details Label Company Bank'] = "Bank";
+$lang['Company Section Company Details Label Company Website'] = "Website";
+$lang['Company Section Company Details Label Company Phone'] = "Phone";
+$lang['Company Section Company Details Label Company Country'] = "Country";
+$lang['Company Section Company Details Label Company District'] = "District";
+$lang['Company Section Company Details Label Company Locality'] = "Locality";
+$lang['Company Section Company Details Label Company Street'] = "Street";
+$lang['Company Section Company Details Label Company Number'] = "Number";
+$lang['Company Section Company Details Label Company Postal Code'] = "Postal Code";
+$lang['Company Section Company Details Label Company Activity domain'] = "Activity Domain";
+
+$lang['Company Section Company Details Label Edit Company Details Address'] = "Address Details";
 $lang['Company Section Ticket Label Section Title Tickets'] = "Tickets";
 $lang['Company Section Ticket Label Section Ticket Serial'] = "Serial";
 $lang['Company Section Ticket Label Section Ticket Discount'] = "Bonus";

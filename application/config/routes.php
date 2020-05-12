@@ -89,6 +89,17 @@ $route['generate-user-legitimation/(:any)'] = 'admin/generateUserLegitimation';
 
 $route['companies-data-tables'] = 'admin/companiesDataTables';
 $route['edit-company/:num'] = 'admin/editCompany';
+$route['company/my-profile'] = 'company/myProfile';
+$route['company/change-cover-image'] = 'company/changeCoverImage';
+$route['company/change-avatar-image'] = 'company/changeAvatarImage';
+$route['company/change-password'] = 'company/changePassword';
+$route['company/change-email'] = 'company/changeEmail';
+$route['company/confirm-email-address'] = 'company/confirmEmailAddress';
+$route['company/company-details'] = 'company/companyDetails';
+$route['company-details'] = 'company/companyDetails';
+
+
+
 
 
 

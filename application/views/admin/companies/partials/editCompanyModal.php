@@ -2,7 +2,7 @@
 <div class="modal show" id="general-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.5)">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form action="<?=site_url('edit-user/'.$companyDetails['id'].'')?>" method="post" id="edit-user-form" class="needs-validation" novalidate>
+        <form action="<?=site_url('edit-company/'.$companyDetails['id'].'')?>" method="post" id="edit-user-form" class="needs-validation" novalidate>
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"><?=$this->lang->line('Admin Section Company Label Edit Company')?></h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span class="font-weight-light" aria-hidden="true">&times;</span></button>
@@ -12,7 +12,7 @@
                 <div class="form-group row">
                     <label for="name" class="col-sm-6 col-form-label"><?=$this->lang->line('Admin Section Company Label Company Name')?> <span class="required-sign-label">*</span>: </label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="name" name="name" value="<?=$companyDetails['nume_firma']?>" required="required">
+                        <input type="text" class="form-control" id="name" name="name" value="<?=$companyDetails['companyName']?>" required="required">
                     </div>
                 </div>
                 <div class="form-group row">

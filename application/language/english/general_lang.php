@@ -44,6 +44,7 @@ $lang['Status Disabled Label'] = "Disabled";
 $lang['Status Enabled Label'] = "Enabled";
 $lang['DataTable PlaceHolder Search Label'] = "Search value";
 $lang['Search by'] = "Search by";
+$lang['To Select Multiple Values Label Multiselect'] = "*To select multiple domains, press CTRL+click";
 
 
 

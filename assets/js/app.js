@@ -42,7 +42,8 @@ function submit_form(form_selector, target, callback) {
             $(form_selector).ajaxSubmit({
                 beforeSubmit: function (arr, $form) {
                     tabs_ids = [];
-                    
+                    $(".loading-div").css("display","block");
+                    $( form_selector ).find("button[type='submit']").prop("disabled",true);
                     if ($($form).valid() == true) {
                         return true;
         
@@ -54,6 +55,8 @@ function submit_form(form_selector, target, callback) {
                 success: function (data) {
         
                     $(target).html(data);
+                     $(".loading-div").css("display","none");
+                     $( form_selector ).find("button[type='submit']").prop("disabled",false);
                    
                 }
             });
