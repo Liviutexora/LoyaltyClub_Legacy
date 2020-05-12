@@ -9,6 +9,12 @@ class Migration_create_countries_table extends CI_Migration {
              
                 $sql = file_get_contents(dirname(__FILE__)."/countries.sql");
                 mysqli_multi_query($this->db->conn_id,$sql);
+                $conn = $this->db->conn_id;
+                do {
+                if ($result = mysqli_store_result($conn)) {
+                        mysqli_free_result($result);
+                }
+                } while (mysqli_more_results($conn) && mysqli_next_result($conn));
                
         }
 
