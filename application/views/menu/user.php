@@ -75,7 +75,7 @@
             </div>
         </a>
         <ul class="nav collapse" id="contact-us" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Comming Soon")?></a>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('contact')?>"><?=$this->lang->line("Contact Menu Label")?></a>
             </li>
         </ul>
         </li>

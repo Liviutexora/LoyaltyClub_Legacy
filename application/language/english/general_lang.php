@@ -45,6 +45,9 @@ $lang['Status Enabled Label'] = "Enabled";
 $lang['DataTable PlaceHolder Search Label'] = "Search value";
 $lang['Search by'] = "Search by";
 $lang['To Select Multiple Values Label Multiselect'] = "*To select multiple domains, press CTRL+click";
+$lang['Contact Menu Label'] = 'Contact';
+$lang['Contact Page Name'] = 'Contact';
+$lang['Contact Page Please send an email at'] = 'Please send an email';
 
 
 

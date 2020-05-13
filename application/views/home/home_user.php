@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<!--div class="card mb-3">
     <div class="card-body rounded-soft bg-gradient"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
         <div class="row text-white align-items-center no-gutters">
         <div class="col">
@@ -15,12 +15,12 @@
         </div>
         <canvas class="max-w-100 rounded chartjs-render-monitor" id="chart-line" width="820" height="190" aria-label="Line chart" role="img" style="display: block; width: 820px; height: 190px;"></canvas>
     </div>
-</div>
-<div class="card bg-light mb-3">
+</div-->
+<!--div class="card bg-light mb-3">
     <div class="card-body p-3">
-        <p class="fs--1 mb-0"><span class="fas fa-exchange-alt mr-2" data-fa-transform="rotate-90"></span><!--  --><?=$this->lang->line('User Section Tasks Label New Tasks')?> (<?=$this->lang->line("Comming Soon")?>)</p>
+        <p class="fs--1 mb-0"><span class="fas fa-exchange-alt mr-2" data-fa-transform="rotate-90"></span><?=$this->lang->line('User Section Tasks Label New Tasks')?> (<?=$this->lang->line("Comming Soon")?>)</p>
     </div>
-</div>
+</div-->
 <div class="card-deck">
     <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
         <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-1.png);">
