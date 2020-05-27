@@ -37,7 +37,7 @@
                                             <?php } ?>
                                     </ul>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-9 mt-3">
                                   <?php echo  $list; ?>
                                   <div class="col-md-12 text-center">
                                         <?php echo $paginationLinks; ?>
