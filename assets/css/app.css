@@ -41,6 +41,24 @@
 .card-datables {overflow: hidden; overflow-x: auto;}
 .search-by-label {margin-left:5px;padding-bottom:0px;margin-bottom:2px;}
 /* End General */
+
+/* Companies Page */
+.card-body-companies-page .list-group-categories .list-group-item-category:hover,.card-body-companies-page .list-group-categories .list-group-item-category-selected {
+  background-color: #27bcfd;
+  color: white;
+  cursor: pointer;
+}
+
+.card-body-companies-page .list-group-categories .list-group-item-category {
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.card-body-companies-page .list-group-categories .list-group-item-category a {
+  color:inherit;
+  text-decoration: none;
+}
+/* End */
 @media screen and (max-width: 992px) {
   .search-table input {width: 70px;}
 }

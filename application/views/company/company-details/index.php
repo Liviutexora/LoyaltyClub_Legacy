@@ -68,10 +68,21 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="activity-domain"><?=$this->lang->line("Company Section Company Details Label Company Activity domain")?></label>
+                            <label for="main-activity-domain"><?=$this->lang->line("Company Section Company Details Label Company Main Activity Domain")?></label>
+                            <select class="form-control" id="main-activity-domain" name="main-activity-domain" required>
+                                    <option></option>
+                                <?php foreach ($allActivities as $activity) { ?>
+                                    <option value="<?=$activity['id']?>" <?=($activity['id'] == $mainActivityDomain ? "selected='selected'": "")?>><?=ucwords($activity['titlu_eng'])?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="activity-domain"><?=$this->lang->line("Company Section Company Details Label Company Additionals Activity Domains")?></label>
                             <select multiple class="form-control" id="activity-domain" name="activity-domain[]" required size="8">
                                 <?php foreach ($allActivities as $activity) { ?>
-                                    <option value="<?=$activity['id']?>" <?=(in_array($activity['id'],$companyActivitiesIds) ? "selected='selected'": "")?>><?=ucwords($activity['titlu_eng'])?></option>
+                                        <option value="<?=$activity['id']?>" <?=(in_array($activity['id'],$companyActivitiesIds) ? "selected='selected'": "")?>><?=ucwords($activity['titlu_eng'])?></option>
                                 <?php } ?>
                             </select>
                             <p><?=$this->lang->line('To Select Multiple Values Label Multiselect')?></p>

@@ -1,21 +1,18 @@
-<nav class="navbar navbar-dark fs--1 font-weight-semi-bold navbar-standard navbar-theme navbar-expand-lg fixed-top">
+<nav class="navbar <?=(isset($setNavabarDarkModeCssClass) && $setNavabarDarkModeCssClass ? $setNavabarDarkModeCssClass : "")?> navbar-dark fs--1 font-weight-semi-bold navbar-standard navbar-theme navbar-expand-lg fixed-top">
         <div class="container"><a class="navbar-brand" href="<?=site_url('/')?>">
             <div class="d-flex align-items-center text-primary"><span class="text-white"><img src="<?=site_url('assets/img/icons/loyaltyclub-white.png')?>" width="100px"></span></div>
           </a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarStandard">
             <ul class="navbar-nav align-items-center">
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Pages")?></a>
+              <!--li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Pages")?></a>
                 <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownPages">
                   <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Comming Soon")?></a>
                   </div>
                 </div>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownDocumentation" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Companies")?></a>
-                <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownDocumentation">
-                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Comming Soon")?></a>
-                  </div>
-                </div>
+              </li-->
+              <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownDocumentation" href="<?=site_url("companies")?>" ><?=$this->lang->line("Companies")?></a>
+               
               </li>
               
             </ul>

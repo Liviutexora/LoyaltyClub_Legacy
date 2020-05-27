@@ -276,8 +276,10 @@ utils.$document.ready(function () {
     var windowHeight = utils.$window.height();
     utils.$window.scroll(function () {
       var scrollTop = utils.$window.scrollTop();
-      var alpha = scrollTop / windowHeight * 2;
+      
+      var alpha = scrollTop / windowHeight * 4;
       alpha >= 1 && (alpha = 1);
+      console.log(alpha)
       $navbar.css({
         'background-color': "rgba(11, 23, 39, " + alpha + ")"
       });

@@ -24,8 +24,8 @@ $lang['Company Section Company Details Label Company Locality'] = "Locality";
 $lang['Company Section Company Details Label Company Street'] = "Street";
 $lang['Company Section Company Details Label Company Number'] = "Number";
 $lang['Company Section Company Details Label Company Postal Code'] = "Postal Code";
-$lang['Company Section Company Details Label Company Activity domain'] = "Activity Domain";
-
+$lang['Company Section Company Details Label Company Main Activity Domain'] = "Main Activity Domain";
+$lang['Company Section Company Details Label Company Additionals Activity Domains'] = "Additionals Activity Domains";
 $lang['Company Section Company Details Label Edit Company Details Address'] = "Address Details";
 $lang['Company Section Ticket Label Section Title Tickets'] = "Tickets";
 $lang['Company Section Ticket Label Section Ticket Serial'] = "Serial";

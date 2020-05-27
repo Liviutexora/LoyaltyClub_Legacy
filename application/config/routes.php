@@ -77,16 +77,12 @@ $route['download-tickets'] = 'company/downloadTickets';
 
 /* End company user type routes */
 
-
 /* Admin user type routes */
-
-
 $route['users-data-tables'] = 'admin/usersDataTables';
 $route['delete-user'] = 'admin/deleteUser';
 $route['change-user-status'] = 'admin/changeUserStatus';
 $route['edit-user/:num'] = 'admin/editUser';
 $route['generate-user-legitimation/(:any)'] = 'admin/generateUserLegitimation';
-
 $route['companies-data-tables'] = 'admin/companiesDataTables';
 $route['edit-company/:num'] = 'admin/editCompany';
 $route['company/my-profile'] = 'company/myProfile';
@@ -97,20 +93,13 @@ $route['company/change-email'] = 'company/changeEmail';
 $route['company/confirm-email-address'] = 'company/confirmEmailAddress';
 $route['company/company-details'] = 'company/companyDetails';
 $route['company-details'] = 'company/companyDetails';
-
-
-
-
-
-
-
 /* End admin user type routes */
 
+/* Pages routes */
+$route['companies/(.*)'] = 'pages/companies/$1';
+$route['companies'] = 'pages/companies';
 
-
-
-
-
+/* End pages routes
 
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = FALSE;*/

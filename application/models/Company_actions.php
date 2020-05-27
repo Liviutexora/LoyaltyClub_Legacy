@@ -23,6 +23,45 @@ class Company_actions extends CI_model
 						   ->get('firma_activitate')->result_array();
 	}
 
+	function getAllCompanyActivitiesGroupByActivity() {
+		$this->db->select('c_a.*,c.*', FALSE);
+		$this->db->join("categorii-produse as c","c_a.id_activitate =c.id");		
+		return $this->db->group_by('c.titlu_eng')->get('firma_activitate as c_a')->result_array();
+	}
+
+	function getAllCompanies($categoryName, $allRows = false) {
+		$mainActivitySql = "(SELECT cp.titlu_eng from firma_activitate as c_a_m INNER JOIN `categorii-produse` as cp ON c_a_m.id_activitate = cp.id WHERE c_a_m.main = 1 and c_a_m.id_firma = f.id_firma )";
+		$this->db->select(' '.$mainActivitySql.' as mainActivity,f.nume_firma,u.data,us.settings_value as logo,f.id_firma', FALSE);
+		$this->db->join("firma_activitate as c_a","c_a.id_firma =f.id_firma");	
+		$this->db->join("user as u","f.id_firma =u.id");
+		
+		$this->db->join("categorii-produse as cp","c_a.id_activitate = cp.id","LEFT");	
+		$this->db->join("user_settings as us","f.id_firma =us.settings_user_id AND us.settings_name = 'avatar-image'","LEFT");
+		if($categoryName) {
+			$parts = explode("-",$categoryName);
+			if(count($parts)){
+				$this->db->where("cp.id",$parts[0]);
+			}
+			
+		}
+		if(!$allRows) {
+			$offset = 12;
+			$start = 0;
+			if($this->input->get('page')) {
+				$start = $this->input->get('page')*12;
+				$start = $start - $offset;
+			}
+		}
+		$this->db->group_by('f.id_firma')->order_by('f.id',"desc");
+		if(!$allRows) {
+			$this->db->limit($offset,$start);
+		}
+
+		return $this->db->get('firma as f')->result_array();
+		//echo $this->db->last_query();die();
+
+	}
+
 	function insertCompanyActivities($activitiesToInsert,$companyId) {
 		$this->db->delete('firma_activitate', array('id_firma' => $companyId));
 		$this->db->insert_batch('firma_activitate', $activitiesToInsert);

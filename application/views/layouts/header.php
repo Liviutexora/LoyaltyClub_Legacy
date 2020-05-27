@@ -44,5 +44,6 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-    <?php $this->load->view("menu/before_login.php") ?>
+    <?php $setNavabarDarkModeCssClas = (isset($setNavabarDarkModeCssClass) ? $setNavabarDarkModeCssClass : ""); ?>
+    <?php $this->load->view("menu/before_login.php", array('setNavabarDarkModeCssClass' => $setNavabarDarkModeCssClas)) ?>
     <?php $this->load->view("register/register_modal.php") ?>

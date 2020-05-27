@@ -274,10 +274,17 @@ class Company extends MY_Controller {
 			$this->users_actions->updateUserDetails($userData,$this->current_user['id']);
 			$activitiesToInsert = array();
 			$activitiesSelected = $postData['activity-domain'];
+			$mainActivityDomain = $postData['main-activity-domain'];
+			
+			$isPresentMainActivityId = false;
 			foreach ($activitiesSelected as $activityId) {
-				$activitiesToInsert[] = array("id_firma" => $this->current_user['id'], "id_activitate" => $activityId);
+				if($mainActivityDomain == $activityId)
+					$isPresentMainActivityId = true;
+				$activitiesToInsert[] = array("id_firma" => $this->current_user['id'], "id_activitate" => $activityId, "main" => $isPresentMainActivityId);
 			}
-		
+
+			if(!$isPresentMainActivityId)
+				$activitiesToInsert[] = array("id_firma" => $this->current_user['id'], "id_activitate" => $mainActivityDomain, "main" => 1);
 			$this->company_actions->insertCompanyActivities($activitiesToInsert,$this->current_user['id']);
 			
 			$companyContryZonesToInsert = array();
@@ -293,14 +300,20 @@ class Company extends MY_Controller {
 		} else {
 			$allCompanyActivities = $this->company_actions->getAllCompanyActivities($this->current_user['id']);
 			$companyActivitiesIds = array();
+			$mainActivityDomain = 0;
 			foreach ($allCompanyActivities as $activity) {
-				array_push($companyActivitiesIds,$activity['id_activitate']);
+				if($activity['main']) 
+					$mainActivityDomain = $activity['id_activitate'];
+				else
+					array_push($companyActivitiesIds,$activity['id_activitate']);
 			}
 			$data['companyActivitiesIds'] = $companyActivitiesIds;
 		
 			$data['allActivities'] = $this->company_actions->getAllActivities();
 			$getAllCountries =  $this->company_actions->getAllCountries();
 			$data['getAllCountries'] = $getAllCountries;
+			$data['mainActivityDomain'] = $mainActivityDomain;
+			
 			$data['getAllCountryZones'] = $this->company_actions->getAllCountryZones($getAllCountries[0]['id']);
 			$data['companyDetails'] = $this->company_actions->getCompanyDetails($this->current_user['id']);
 			$companyCountryZones = $this->company_actions->getCompanyCountryZones($this->current_user['id']);

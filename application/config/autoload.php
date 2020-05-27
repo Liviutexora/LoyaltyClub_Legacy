@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation','user_agent');
+$autoload['libraries'] = array('database','session','form_validation','user_agent','pagination');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array("url","form","file");
+$autoload['helper'] = array("url","form","file","cookie");
 
 /*
 | -------------------------------------------------------------------
@@ -117,7 +117,7 @@ $autoload['config'] = array("website_settings");
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-$autoload['language'] = array('register','general','user','company','admin');
+$autoload['language'] = array('register','general','user','company','admin','pages');
 
 /*
 | -------------------------------------------------------------------

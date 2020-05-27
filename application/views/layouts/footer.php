@@ -46,7 +46,7 @@
     <script src="<?=site_url("assets/lib/is_js/is.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/lodash/lodash.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/perfect-scrollbar/perfect-scrollbar.js")?>"></script>
-    <link href="fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <script src="<?=site_url('assets/lib/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')?>"></script>
     <script src="<?=site_url('assets/lib/jquery-validation/jquery.validate.min.js')?>"></script>
     <script src="<?=site_url("assets/lib/owl.carousel/owl.carousel.js")?>"></script>
