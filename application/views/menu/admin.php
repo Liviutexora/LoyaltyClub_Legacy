@@ -20,16 +20,24 @@
         </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link dropdown-indicator collapsed" href="#loyalty-bank" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
-            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-user" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("Admin Section Menu Label Users")?></span>
+          <a class="nav-link dropdown-indicator collapsed" href="#loyalty-private" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-user-shield" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("Admin Section Menu Label Customers")?></span>
             </div>
         </a>
-        <ul class="nav collapse show" id="loyalty-bank" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/users')?>"><?=$this->lang->line("Admin Section Menu Label Customers")?></a></li>
-            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/companies')?>"><?=$this->lang->line("Admin Section Menu Label Companies")?></a></li>
-        
+        <ul class="nav collapse" id="loyalty-private" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/users')?>"><?=$this->lang->line("Admin Section Menu Label Customers List")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/documentation')?>"><?=$this->lang->line("Admin Section Menu Label Customers Documentation")?></a></li>
         </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-indicator collapsed" href="#loyalty-company" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-building" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("Admin Section Menu Label Companies")?></span>
+            </div>
+        </a>
+        <ul class="nav collapse" id="loyalty-company" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/companies')?>"><?=$this->lang->line("Admin Section Menu Label Companies List")?></a></li>
+        </ul>
+        </li> 
         
     </ul>
     </div>

@@ -1,7 +1,11 @@
 <?php
 $lang['Admin Section Menu Label Users'] = "Users";
-$lang['Admin Section Menu Label Customers'] = "Customers";
-$lang['Admin Section Menu Label Companies'] = "Companies";
+$lang['Admin Section Menu Label Customers'] = "Private";
+$lang['Admin Section Menu Label Customers Documentation'] = "Documentation";
+$lang['Admin Section Menu Label Customers Terms And Conditions'] = "Terms and Conditions";
+$lang['Admin Section Menu Label Companies'] = "Company";
+$lang['Admin Section Menu Label Customers List'] = "List";
+$lang['Admin Section Page Title Label Customers'] = "Customers";
 $lang['Admin Section Users Label User Name'] = "Name";
 $lang['Admin Section Users Label User Reference'] = "Reference";
 $lang['Admin Section Users Label User Email'] = "Email";
@@ -24,6 +28,18 @@ $lang['Admin Section Company Label Company Address'] = "Address";
 $lang['Admin Section Company Label Company Status'] = "Status";
 $lang['Admin Section Company Label Company Amount'] = "Amount";
 $lang['Admin Section Company Label Edit Company'] = "Edit Company";
+$lang['Admin Section Page Name Documentation'] = "Documentation";
+$lang['Admin Section Pages Label Page Edit'] = "Edit";
+$lang['Admin Section Documentation Page Label Add Page'] = "Add Page";
+$lang['Admin Section Documentation Label Title Add New Page Title'] = "Add Page";
+$lang['Admin Section Pages Page From Label Page Title'] = "Title";
+$lang['Admin Section Pages Page From Label Page Content'] = "Content";
+$lang['Admin Section Pages Page From Alert Page Content'] = "Please insert the page content";
+
+
+
+
+
 
 
 

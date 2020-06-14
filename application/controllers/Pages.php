@@ -21,10 +21,29 @@ class Pages extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('company_actions');
+		$this -> load -> model('admin_actions');
 	}
-	public function index()
+	public function documentation($pageName = "")
 	{
-	
+
+		if($pageName) {
+			$pageId = "";
+			$parts = explode("-",$pageName);
+			if(count($parts)){
+				$pageId = $parts[0];
+			}
+			$pageDetails = $this->admin_actions->getPageDetails($pageId);
+			if(count($pageDetails)) {
+				$title = strtolower($pageDetails['id']."-".preg_replace('/[\s,\']+/', '-', $pageDetails['titlu_eng']));
+				$pageName = urldecode($pageName);
+				if($title == $pageName) {
+					$this->load->view('pages_after_login/index',array("pageDetails" => $pageDetails));
+				} else {
+					redirect(site_url("/"));
+				}
+			}
+			
+		}
 	}
 
 	public function companies($categoryName = "") {
@@ -78,6 +97,10 @@ class Pages extends MY_Controller {
 		$list = $this -> load -> view('pages/all-companies/list/'.($displayType == "grid" ? "grid": "list").'', array('allCompanies' => $allCompanies),true);
 		$data['list'] = $list;
 		$this->load->view('pages/all-companies/index',$data);
+	}
+
+	public function pages() {
+
 	}
 
 }

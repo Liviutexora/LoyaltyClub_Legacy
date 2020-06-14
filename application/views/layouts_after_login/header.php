@@ -80,7 +80,7 @@
       <div class="container" data-layout="container">
       <div id="modal_window"></div>
       <?php if(isset($this->current_user['tip']) && $this->current_user['tip'] == 1) { ?>
-        <?php $this->load->view("menu/user") ?>
+        <?php $this->load->view("menu/user",array("allPagesDocumentation" => (isset($this->allPagesDocumentation) ? $this->allPagesDocumentation : array()))) ?>
       <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 2) { ?>
         <?php $this->load->view("menu/company") ?>
       <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 3) { ?>

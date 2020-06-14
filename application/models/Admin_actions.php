@@ -275,5 +275,138 @@ class Admin_actions extends CI_model
         return $this->db->count_all_results();
     }
 
+
+    function _get_datatables_pages_query($pagesType = "",$userType = "") {
+        $this->table_pages = 'pagini as p';
+        $this->column_order_pages = array(
+                'p.titlu_eng',
+                'p.status'
+        ); //set column field database for datatable orderable
+        $this->column_search_pages = array(
+            'p.titlu_eng',
+            'p.status'
+            
+       ); //set column field database for datatable searchable 
+       $this->column_search_type_pages = array('where','where'); //set where or having clause for each column
+       $this->order_pages = array('p.id' => 'desc'); // default order 
+
+        $this->db->select(' p.id,
+                            p.titlu_eng,
+                            p.status
+                          '); 
+        $this->db->from($this->table_pages);
+
+        $i = 0;
+       
+        foreach ($this->column_search_pages as $column_search_key => $item) { // loop column 
+             $search_value = (isset($_POST['columns'][$column_search_key]['search']['value']) ? $_POST['columns'][$column_search_key]['search']['value'] : "");
+             switch ($item) {
+                case 'p.status':
+                    switch (strtolower($search_value)) {
+                        case 'e':
+                        case 'en':
+                        case 'ena':
+                        case 'enab':
+                        case 'enabl':
+                        case 'enable':
+                        case 'enabled':
+                            $search_value = 1;
+                        break;
+
+                        case 'd':
+                        case 'di':
+                        case 'dis':
+                        case 'disa':
+                        case 'disab':
+                        case 'disabl':
+                        case 'disable':
+                        case 'disabled':
+                            $search_value = 0;
+                        break;
+                    }
+                   
+                    break;
+                default:
+                
+                break;
+              }
+
+           
+             
+              //var_dump($_POST['columns'][$column_search_key]['search']['value']);die();
+              if(!empty($search_value) || $search_value === 0) { // if datatable send POST for search 
+
+                  if($i===0) { // first loop
+                      // open brackeu. query Where with OR clause better with brackeu. because maybe can combine with other WHERE with AND.
+                      if($this->column_search_type_pages[$column_search_key] == 'where') {
+                          $this->db->like($item, $search_value);
+                      } else {
+                          $this->db->having($item."= ", $search_value);
+                      }
+                      
+                  } else {
+                      if($this->column_search_type_pages[$column_search_key] == 'where') {
+                           $this->db->like($item, $search_value);
+                      } else {
+                           $this->db->having($item."= ",$search_value);
+                      }
+                  }
+              }
+              $i++;
+          }
+          $this->pages_datatables_where_conditions($pagesType,$userType);
+                 
+        if(isset($_POST['order'])) {  // here order processing
+            $this->db->order_by($this->column_order_pages[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } 
+        else if(isset($this->order)) {
+            $order = $this->order_pages;
+            $this->db->order_by(key($order), $order[key($order)]);
+        } 
+    }
+
+    function get_pages_datatables($pagesType = "",$userType = "") {
+		$this->_get_datatables_pages_query($pagesType,$userType);
+        $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function pages_datatables_where_conditions($pagesType = "",$userType = "") {
+        $this->db->where_in('p.page_type',$pagesType);
+        $this->db->where('p.user_type',$userType);
+        $this->db->where('p.deleted',0);
+    }
+ 
+    function count_pages_filtered($pagesType = "",$userType = "") {
+        $this->_get_datatables_pages_query($pagesType,$userType);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+ 
+    public function count_pages_all($pagesType = "",$userType = "") {
+        $this->db->from($this->table_pages);
+        $this->pages_datatables_where_conditions($pagesType,$userType);
+        //$this->db->where('u.id_firma', $this->session->userdata('user')['id']);
+        return $this->db->count_all_results();
+    }
+
+    function insertPage($data) {
+		$this->db->insert('pagini', $data);
+    }
+    
+    function getPageDetails($id){
+		return $this->db->select('*', FALSE)->where('id',$id)->get('pagini')->row_array();
+    }
+
+    function updatePageDetails($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('pagini', $data);
+    }
+    
+    function getAllPages($pageType = "",$userType = ""){
+		return $this->db->select('*', FALSE)->where('status',1)->where('page_type',$pageType)->where('user_type',$userType)->order_by("titlu_eng","asc")->get('pagini')->result_array();
+    }
+
 }
 ?>

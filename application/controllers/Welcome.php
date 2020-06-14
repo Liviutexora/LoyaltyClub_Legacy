@@ -65,6 +65,7 @@ class Welcome extends MY_Controller {
 						
 						$data['currentGraphPercentage']['level3'] = ($currentPrecentageFromTicketTotal - $graphTicketsMaxPrecentages['level2']);
 					}
+
 					break;
 				
 				default:

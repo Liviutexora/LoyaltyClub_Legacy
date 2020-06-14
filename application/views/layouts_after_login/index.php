@@ -1,4 +1,4 @@
-<?php $this->load->view("layouts_after_login/header") ?>
+<?php $this->load->view("layouts_after_login/header",array("allPagesDocumentation" =>(isset($this->allPagesDocumentation) ? $this->allPagesDocumentation : array()))) ?>
   <?php if(isset($this->current_user['tip']) && $this->current_user['tip'] == 1) { ?>
     <?php $this->load->view("home/home_user") ?>
   <?php } elseif(isset($this->current_user['tip']) && $this->current_user['tip'] == 2) { ?>

@@ -21,6 +21,7 @@ $lang['No'] = "No";
 $lang['Success'] = "Success";
 $lang['Comming Soon'] = "Comming Soon";
 $lang['Forms Successful Saving Data'] = "The data were inserted successfully";
+$lang['Forms Successful Updating Data'] = "The data were updated successfully";
 $lang['Datatables Label Display'] = "Display";
 $lang['Datatables Label Per Page'] = "per page";
 $lang['Datatables Label No Data'] = "No data";

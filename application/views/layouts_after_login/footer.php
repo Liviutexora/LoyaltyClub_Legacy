@@ -42,8 +42,11 @@
        <?php echo '<script src="'.site_url("assets/js/$file").'"></script>' ?>
      <?php } ?>
     <?php } ?>
-   
-
+    <?php if(isset($jslibs)) { ?>
+      <?php foreach ($jslibs as $file) { ?>
+       <?php echo '<script src="'.site_url("$file").'"></script>' ?>
+     <?php } ?>
+    <?php } ?>
   </body>
 
 </html>

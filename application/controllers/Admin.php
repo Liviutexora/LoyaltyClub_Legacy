@@ -235,5 +235,108 @@ class Admin extends MY_Controller {
 		}
 	}
 
+	public function documentation() {
+		$this->load->view('admin/documentation/index');
+	}
+
+	public function addPage($pageType="",$userType="") {
+
+		$pageTypes = array("documentation");
+		$userTypes = array("private");
+		if(in_array($pageType,$pageTypes) && in_array($userType,$userTypes)) {
+			if($this->input->post()) {
+				$validation[] =  array('field' => 'page-title', 'rules' => 'required|trim');
+				$validation[] =  array('field' => 'page-content', 'rules' => 'required|trim');
+				$this -> form_validation -> set_rules($validation);
+				$response = array();
+				if ($this -> form_validation -> run() == FALSE) {
+					exit($this -> load -> view('layouts/error', array('message' => 'Admin Section Pages Page From Alert Page Content'),true));
+				}
+			
+				$pageDetails = array(	"titlu_eng" => $this->input->post("page-title"), 
+										"text_eng" => $this->input->post("page-content"),
+										"status" => 1,
+										"user_type" => "private",
+										"page_type" => "documentation"
+									);
+				$this->admin_actions->insertPage($pageDetails);
+				$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+				$this -> load -> view('layouts/redirect', array('url' => site_url("/admin/documentation")));
+			} else {
+				$this->load->view('admin/documentation/add_edit_page');
+			}
+		} else {
+			redirect(site_url('/'));
+		}
+	}
+
+	public function editPage($pageId="") {
+
+		$pageDetails = $this->admin_actions->getPageDetails($pageId);
+		if(count($pageDetails)) {
+			if($this->input->post()) {
+				$validation[] =  array('field' => 'page-title', 'rules' => 'required|trim');
+				$validation[] =  array('field' => 'page-content', 'rules' => 'required|trim');
+				$this -> form_validation -> set_rules($validation);
+				$response = array();
+				if ($this -> form_validation -> run() == FALSE) {
+					exit($this -> load -> view('layouts/error', array('message' => 'Admin Section Pages Page From Alert Page Content'),true));
+				}
+			
+				$pageDetails = array(	"titlu_eng" => $this->input->post("page-title"), 
+										"text_eng" => $this->input->post("page-content")
+									);
+				$this->admin_actions->updatePageDetails($pageDetails,$pageId);
+				$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Updating Data')));
+				$this -> load -> view('layouts/redirect', array('url' => site_url("/admin/documentation")));
+			} else {
+				$this->load->view('admin/documentation/add_edit_page', array("pageDetails" => $pageDetails));
+			}
+		} else {
+			redirect(site_url('/'));
+		}
+	}
+
+	public function changePageStatus(){
+		if($this->input->post("id")) {
+			$this->admin_actions->updatePageDetails(array("status" => $this->input->post("pageStatus")),$this->input->post("id"));
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Updating Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		}
+	}
+
+	public function deletePage(){
+		if($this->input->post("id")) {
+			$this->admin_actions->updatePageDetails(array("deleted" => 1),$this->input->post("id"));
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Updating Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		}
+	}
+
+	public function pagesDataTables($pagesType,$userType) {
+		$pagesType = "documentation";
+		$userType = "private";
+		$list = $this->admin_actions->get_pages_datatables($pagesType,$userType);
+        $data = array();
+		$no = $_POST['start'];
+	  
+        foreach ($list as $page) {
+			$row = array();
+			$row['title'] = $page->titlu_eng;
+			$row['status'] = ($page->status ? $this->load->view('partials/active',array(),true) : $this->load->view('partials/disabled',array(),true) );
+			$row['actions'] = $this->load->view('admin/documentation/partials/actions',array('page' => $page),true);
+			$data[] = $row;
+        }
+   
+        $output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->admin_actions->count_pages_all($pagesType,$userType),
+			"recordsFiltered" => $this->admin_actions->count_pages_filtered($pagesType,$userType),
+			"data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+	}
+
 
 }

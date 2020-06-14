@@ -103,3 +103,14 @@ $route['companies'] = 'pages/companies';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;*/
+
+/* Admin routes */
+$route['pages-data-tables/(.*)/(.*)'] = 'admin/pagesDataTables/$1/$2';
+$route['add-page/(.*)/(.*)'] = 'admin/addPage/$1/$2';
+$route['edit-page/(.*)'] = 'admin/editPage/$1';
+$route['change-page-status'] = 'admin/changePageStatus';
+$route['delete-page'] = 'admin/deletePage';
+$route['pages/(:num)-(.*)'] = 'pages/documentation/$1-$2';
+
+
+/* End Admin routes */

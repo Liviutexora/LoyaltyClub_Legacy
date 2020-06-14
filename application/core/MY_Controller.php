@@ -7,6 +7,7 @@ class MY_Controller extends CI_Controller {
 	{
 			parent::__construct();
 			$this -> load -> model('users_actions');
+			$this -> load -> model('admin_actions');
 			$this->run_migrations();
 			
 			// Your own constructor code
@@ -23,6 +24,7 @@ class MY_Controller extends CI_Controller {
 					
 					$this->avatarImage = site_url('/uploads/'.($this->current_user['tip'] == 2 ? 'companies' : 'users' ).'/'.$this->current_user['id'].'/avatar-image/'.$rez['settings_value']);
 				}
+				$this->allPagesDocumentation = $this->admin_actions->getAllPages($pageType = "documentation",$userType = "private");
 			}
 			
 

@@ -3,51 +3,32 @@
     <div class="card-header">
         <div class="row align-items-center justify-content-between">
         <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
-            <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"><?=$this->lang->line('Admin Section Page Title Label Customers')?></h5>
+            <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"><?=$this->lang->line('Admin Section Page Name Documentation')?></h5>
         </div>
-        <div class="col-6 col-sm-auto ml-auto text-right pl-0">
-            <div class="d-none" id="purchases-actions">
-            <div class="input-group input-group-sm">
-                <select class="custom-select cus" aria-label="Bulk actions">
-                <option selected="">Bulk actions</option>
-                <option value="Refund">Refund</option>
-                <option value="Delete">Delete</option>
-                <option value="Archive">Archive</option>
-                </select>
-                <button class="btn btn-falcon-default btn-sm ml-2" type="button">Apply</button>
-            </div>
-            </div>
-            
-        </div>
+        
         </div>
     </div>
+    
     <div class="card-body px-0 pt-0  card-datables">
-       
+   
         <div class="dashboard-data-table">
+        <a class="btn btn-warning mr-1 mb-1 float-right" target="_blank" href="<?=site_url('add-page/documentation/private')?>" role="button"><?=$this->lang->line('Admin Section Documentation Page Label Add Page')?></a>
         <p class="search-by-label"><?=$this->lang->line("Search by")?>:</p>
         <table class="search-table table table-sm table-dashboard fs--1 datatable-table">
             <tbody class="bg-200 text-900">
             <tr>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Name')?>"></td>                                
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Reference')?>"></td>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Email')?>"></td>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Phone')?>"></td>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User IBAN')?>"></td>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Address')?>"></td>
-                <td input-placeholder="<?=$this->lang->line('Admin Section Users Label User Status')?>"></td>
+                <td input-placeholder="<?=$this->lang->line('Admin Section Company Label Company Name')?>"></td>                                
+                <td input-placeholder="<?=$this->lang->line('Admin Section Company Label Company Status')?>"></td>
+
+
             </tr>
             </tbody>
         </table>
-        <table class="table table-sm table-dashboard fs--1 datatable-table users-table border-bottom" width="100%" data-language-label='{"Datatables Label Display" : "<?=$this->lang->line('Datatables Label Display')?>","Datatables Label Per Page" : "<?=$this->lang->line('Datatables Label Per Page')?>","Datatables Label No Data" : "<?=$this->lang->line('Datatables Label No Data')?>","Datatables Label Page" : "<?=$this->lang->line('Datatables Label Page')?>","Datatables Label Of" : "<?=$this->lang->line('Datatables Label Of')?>","Datatables Label No Records Available" : "<?=$this->lang->line('Datatables Label No Records Available')?>","Datatables Label Total Records" : "<?=$this->lang->line('Datatables Label Total Records')?>","Datatables Label Next" : "<?=$this->lang->line('Datatables Label Next')?>","Datatables Label Previous" : "<?=$this->lang->line('Datatables Label Previous')?>" }' data-options='{"responsive":false,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
+        <table class="table table-sm table-dashboard fs--1 datatable-table documentation-table border-bottom" width="100%" data-language-label='{"Datatables Label Display" : "<?=$this->lang->line('Datatables Label Display')?>","Datatables Label Per Page" : "<?=$this->lang->line('Datatables Label Per Page')?>","Datatables Label No Data" : "<?=$this->lang->line('Datatables Label No Data')?>","Datatables Label Page" : "<?=$this->lang->line('Datatables Label Page')?>","Datatables Label Of" : "<?=$this->lang->line('Datatables Label Of')?>","Datatables Label No Records Available" : "<?=$this->lang->line('Datatables Label No Records Available')?>","Datatables Label Total Records" : "<?=$this->lang->line('Datatables Label Total Records')?>","Datatables Label Next" : "<?=$this->lang->line('Datatables Label Next')?>","Datatables Label Previous" : "<?=$this->lang->line('Datatables Label Previous')?>" }' data-options='{"responsive":false,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":11}'>
             <thead class="bg-200 text-900">
             <tr>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Name')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Reference')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Email')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Phone')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User IBAN')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Address')?></th>
-                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Users Label User Status')?></th>
+                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Company Label Company Name')?></th>
+                <th class="sort pr-1 align-middle"><?=$this->lang->line('Admin Section Company Label Company Status')?></th>
                 <th class="no-sort pr-1 align-middle"></th>
             </tr>
             
@@ -62,12 +43,12 @@
 <?php $this->load->view("layouts_after_login/footer") ?>
 <script>
 $(document).ready(function(){
-            if($('.users-table').length){
+            if($('.documentation-table').length){
                 
-                languageLabels = $('.users-table').attr("data-language-label");
+                languageLabels = $('.documentation-table').attr("data-language-label");
                 languageLabels = JSON.parse(languageLabels);
             }
-            var search_columns = new Array(0,1,2,3,4,5,6,7);
+            var search_columns = new Array(0,1,2,3,4,5,6,7,8,9,10);
 	        var date_columns = new Array(-1,-2);
             $('.search-table tr td').each(function (index, element) {
                 //datepicker class
@@ -82,7 +63,7 @@ $(document).ready(function(){
             });
             
             //datatables
-            usersTable = $('.users-table').DataTable({ 
+            companiesTable = $('.documentation-table').DataTable({ 
          
                 "processing": true, //Feature control the processing indicator.
                 "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -90,7 +71,7 @@ $(document).ready(function(){
                 "order": [[ 0, "desc" ]],
                 // Load data for the table's content from an Ajax source
                 "ajax": {
-                    "url": url+"users-data-tables",
+                    "url": url+"pages-data-tables/documentation/private",
                     "type": "POST"
                 },
          
@@ -117,12 +98,7 @@ $(document).ready(function(){
                        }
                 },
                 "columns": [
-                    { "data": "userName" },
-                    { "data": 'referrerName' },
-                    { "data": 'email' },
-                    { "data": 'phone' },
-                    { "data": 'iban' },
-                    { "data": 'address' },
+                    { "data": "title" },
                     { "data": 'status' },
                     { "data": 'actions' }
                    
@@ -130,20 +106,18 @@ $(document).ready(function(){
             });
           
             $(document).on('keyup change','.search-table input', function () {
-                usersTable
+                companiesTable
                     .column($(this).parent().index() + ':visible')
                     .search(this.value)
                     .draw();
             });
-            $(document).on('#general-modal','hidden.bs.modal', function (e) {
-                tickets_table.ajax.reload();
-            });
-            $(document).on('click','#delete-user',function(event) {
+           
+            $(document).on('click','#delete-page',function(event) {
                 content = $(this).attr("lang-content");
                 yes = $(this).attr("lang-yes");
                 no = $(this).attr("lang-no");
                 url = $(this).attr("url");
-                id = $(this).attr("userId");
+                id = $(this).attr("pageId");
                 var dialog = bootbox.dialog({
                         message: content,
                         closeButton: false,
@@ -177,13 +151,13 @@ $(document).ready(function(){
                         }
                 });
             });
-            $(document).on('click','#change-user-status',function(event) {
+            $(document).on('click','#change-page-status',function(event) {
                 content = $(this).attr("lang-content");
                 yes = $(this).attr("lang-yes");
                 no = $(this).attr("lang-no");
                 url = $(this).attr("url");
-                id = $(this).attr("userId");
-                userStatus = $(this).attr("userStatus");
+                id = $(this).attr("pageId");
+                status = $(this).attr("pageStatus");
                 var dialog = bootbox.dialog({
                         message: content,
                         closeButton: false,
@@ -198,7 +172,7 @@ $(document).ready(function(){
                                                 url:  url,
                                                 data: {
                                                     id: id,
-                                                    userStatus: userStatus
+                                                    status: status
                             
                                                 },
                                                 error: function (xhr, textStatus, errorThrown) {
