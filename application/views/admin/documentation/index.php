@@ -3,7 +3,7 @@
     <div class="card-header">
         <div class="row align-items-center justify-content-between">
         <div class="col-6 col-sm-auto d-flex align-items-center pr-0">
-            <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"><?=$this->lang->line('Admin Section Page Name Documentation')?></h5>
+            <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"><?=(isset($documentationType) &&  $documentationType == "documentation"  ? $this->lang->line('Admin Section Page Name Documentation') : $this->lang->line('Admin Section Page Name Terms and Conditions'))?></h5>
         </div>
         
         </div>
@@ -12,7 +12,7 @@
     <div class="card-body px-0 pt-0  card-datables">
    
         <div class="dashboard-data-table">
-        <a class="btn btn-warning mr-1 mb-1 float-right" target="_blank" href="<?=site_url('add-page/documentation/private')?>" role="button"><?=$this->lang->line('Admin Section Documentation Page Label Add Page')?></a>
+        <a class="btn btn-warning mr-1 mb-1 float-right" target="_blank" href="<?=site_url('add-page/'.$documentationType.'/'.$userType.'')?>" role="button"><?=$this->lang->line('Admin Section Documentation Page Label Add Page')?></a>
         <p class="search-by-label"><?=$this->lang->line("Search by")?>:</p>
         <table class="search-table table table-sm table-dashboard fs--1 datatable-table">
             <tbody class="bg-200 text-900">
@@ -71,7 +71,7 @@ $(document).ready(function(){
                 "order": [[ 0, "desc" ]],
                 // Load data for the table's content from an Ajax source
                 "ajax": {
-                    "url": url+"pages-data-tables/documentation/private",
+                    "url": url+"pages-data-tables/<?=$documentationType?>/<?=$userType?>",
                     "type": "POST"
                 },
          
@@ -157,7 +157,7 @@ $(document).ready(function(){
                 no = $(this).attr("lang-no");
                 url = $(this).attr("url");
                 id = $(this).attr("pageId");
-                status = $(this).attr("pageStatus");
+                status = $(this).attr("pagestatus");
                 var dialog = bootbox.dialog({
                         message: content,
                         closeButton: false,

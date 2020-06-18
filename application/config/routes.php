@@ -111,6 +111,10 @@ $route['edit-page/(.*)'] = 'admin/editPage/$1';
 $route['change-page-status'] = 'admin/changePageStatus';
 $route['delete-page'] = 'admin/deletePage';
 $route['pages/(:num)-(.*)'] = 'pages/documentation/$1-$2';
+$route['add-page/(.*)/(.*)'] = 'admin/addPage/$1/$2';
+$route['dynamic-content/(.*)/(.*)'] = 'admin/documentation/$1/$2';
+$route['dynamic-content/(.*)'] = 'admin/documentation/$1';
+
 
 
 /* End Admin routes */

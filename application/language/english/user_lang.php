@@ -8,6 +8,7 @@ $lang['User Section Dark Mode Modal Disable Title'] = "Are you sure you want to 
 $lang['User Section Menu Label Business'] = "Business";
 $lang['User Section Menu Label Dashboard'] = "Dashboard";
 $lang['User Section Menu Label Documentation'] = "Documentation";
+$lang['User Section Menu Label Terms and Conditions'] = "Terms and Conditions";
 $lang['User Section Menu Label Companies'] = "Companies";
 $lang['User Section Menu Label Profile'] = "Profile";
 $lang['User Section Menu Label My Network'] = "My Network";

@@ -13,7 +13,7 @@
        
         <div class="dashboard-data-table">
         <div class="container">
-            <form action="<?=site_url(''.(isset($pageDetails['id']) ? "/edit-page/".$pageDetails['id'] : "add-page/documentation/private" ).'')?>" method="post" id="add-edit-form" class="needs-validation" novalidate>
+            <form action="<?=site_url(''.(isset($pageDetails['id']) ? "/edit-page/".$pageDetails['id'] : "add-page/".(isset($pageType) ? $pageType : '')."/".(isset($userType) ? $userType : '')."" ).'')?>" method="post" id="add-edit-form" class="needs-validation" novalidate>
                 <div id="save-result"></div>
                 <div class="form-group">
                     <label for="page-title" class="col-form-label"><?=$this->lang->line('Admin Section Pages Page From Label Page Title')?> <span class="required-sign-label">*</span>: </label>

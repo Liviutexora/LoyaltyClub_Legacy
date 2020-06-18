@@ -26,7 +26,8 @@
         </a>
         <ul class="nav collapse" id="loyalty-private" data-parent="#navbarVerticalCollapse">
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/users')?>"><?=$this->lang->line("Admin Section Menu Label Customers List")?></a></li>
-            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/documentation')?>"><?=$this->lang->line("Admin Section Menu Label Customers Documentation")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/documentation/private')?>"><?=$this->lang->line("Admin Section Menu Label Customers Documentation")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/terms-and-conditions/private')?>"><?=$this->lang->line("Admin Section Menu Label Customers Terms And Conditions")?></a></li>
         </ul>
         </li>
         <li class="nav-item">
@@ -36,6 +37,8 @@
         </a>
         <ul class="nav collapse" id="loyalty-company" data-parent="#navbarVerticalCollapse">
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/companies')?>"><?=$this->lang->line("Admin Section Menu Label Companies List")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/documentation/company')?>"><?=$this->lang->line("Admin Section Menu Label Customers Documentation")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/terms-and-conditions/company')?>"><?=$this->lang->line("Admin Section Menu Label Customers Terms And Conditions")?></a></li>
         </ul>
         </li> 
         

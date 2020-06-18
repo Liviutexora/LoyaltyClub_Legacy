@@ -24,7 +24,10 @@ class MY_Controller extends CI_Controller {
 					
 					$this->avatarImage = site_url('/uploads/'.($this->current_user['tip'] == 2 ? 'companies' : 'users' ).'/'.$this->current_user['id'].'/avatar-image/'.$rez['settings_value']);
 				}
-				$this->allPagesDocumentation = $this->admin_actions->getAllPages($pageType = "documentation",$userType = "private");
+				$this->allPagesDocumentation = $this->admin_actions->getAllPages($pageType = "documentation",$userType = ($this->current_user['tip'] == 2 ? 'company' : 'private' ));
+				$this->allPagesTermsAndDocumentations = $this->admin_actions->getAllPages($pageType = "terms-and-conditions",$userType = ($this->current_user['tip'] == 2 ? 'company' : 'private' ));
+			
+				
 			}
 			
 

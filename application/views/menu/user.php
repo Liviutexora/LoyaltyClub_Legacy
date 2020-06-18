@@ -35,6 +35,22 @@
         </ul>
         </li>
         <?php } ?>
+        <?php if(count($this->allPagesTermsAndDocumentations)) { ?>
+        <li class="nav-item">
+          <a class="nav-link dropdown-indicator collapsed" href="#terms-and-conditions" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><svg class="svg-inline--fa fa-copy fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"></path></svg></span><span class="nav-link-text"><?=$this->lang->line("User Section Menu Label Terms and Conditions")?></span>
+            </div>
+        </a>
+        <ul class="nav collapse" id="terms-and-conditions" data-parent="#navbarVerticalCollapse">
+            <?php foreach ($this->allPagesTermsAndDocumentations as $key => $pageDetails) { ?>
+             
+              <?php $categoryUrl = $pageDetails['id']."-".preg_replace('/[\s,\']+/', '-', $pageDetails['titlu_eng']); ?>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('/pages/'.urlencode(strtolower($categoryUrl)).'')?>"><?=ucfirst(strtolower($pageDetails['titlu_eng']))?></a>
+            </li>
+            <?php } ?>
+        </ul>
+        </li>
+        <?php } ?>
         <li class="nav-item">
           <a class="nav-link dropdown-indicator collapsed" href="#companies" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
             <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fa fa-home fa-building" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("User Section Menu Label Companies")?></span>

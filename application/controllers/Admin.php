@@ -235,14 +235,30 @@ class Admin extends MY_Controller {
 		}
 	}
 
-	public function documentation() {
-		$this->load->view('admin/documentation/index');
+	public function documentation($documentationType = "documentation", $userType = "private") {
+			if( ($documentationType == "documentation" && $userType == "private") || 
+				($documentationType == "terms-and-conditions" && $userType == "private") || 
+				($documentationType == "documentation" && $userType == "company") || 
+				($documentationType == "terms-and-conditions" && $userType == "company")
+			) {
+				$data['userType'] = $userType;
+				$data['documentationType'] = $documentationType;
+				$this->load->view('admin/documentation/index',$data);
+			} else {
+				
+				redirect(site_url());
+			}
+	}
+
+	public function termsAndConditions($userType = "private") {
+		$data['userType'] = $userType;
+		$this->load->view('admin/terms_and_conditions/index',$data);
 	}
 
 	public function addPage($pageType="",$userType="") {
 
-		$pageTypes = array("documentation");
-		$userTypes = array("private");
+		$pageTypes = array("documentation","terms-and-conditions");
+		$userTypes = array("private","company");
 		if(in_array($pageType,$pageTypes) && in_array($userType,$userTypes)) {
 			if($this->input->post()) {
 				$validation[] =  array('field' => 'page-title', 'rules' => 'required|trim');
@@ -256,14 +272,16 @@ class Admin extends MY_Controller {
 				$pageDetails = array(	"titlu_eng" => $this->input->post("page-title"), 
 										"text_eng" => $this->input->post("page-content"),
 										"status" => 1,
-										"user_type" => "private",
-										"page_type" => "documentation"
+										"user_type" => $userType,
+										"page_type" => $pageType
 									);
 				$this->admin_actions->insertPage($pageDetails);
 				$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
-				$this -> load -> view('layouts/redirect', array('url' => site_url("/admin/documentation")));
+				$this -> load -> view('layouts/redirect', array('url' => site_url("/dynamic-content/".$pageType."/".$userType."")));
 			} else {
-				$this->load->view('admin/documentation/add_edit_page');
+				$data['userType'] = $userType;
+				$data['pageType'] = $pageType;
+				$this->load->view('admin/documentation/add_edit_page',$data);
 			}
 		} else {
 			redirect(site_url('/'));
@@ -273,8 +291,12 @@ class Admin extends MY_Controller {
 	public function editPage($pageId="") {
 
 		$pageDetails = $this->admin_actions->getPageDetails($pageId);
+		//echo "<pre>";
+		//var_dump($pageDetails);die();
 		if(count($pageDetails)) {
 			if($this->input->post()) {
+				$page_type = $pageDetails['page_type'];
+				$user_type = $pageDetails['user_type'];
 				$validation[] =  array('field' => 'page-title', 'rules' => 'required|trim');
 				$validation[] =  array('field' => 'page-content', 'rules' => 'required|trim');
 				$this -> form_validation -> set_rules($validation);
@@ -288,7 +310,7 @@ class Admin extends MY_Controller {
 									);
 				$this->admin_actions->updatePageDetails($pageDetails,$pageId);
 				$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Updating Data')));
-				$this -> load -> view('layouts/redirect', array('url' => site_url("/admin/documentation")));
+				$this -> load -> view('layouts/redirect', array('url' => site_url("/dynamic-content/{$page_type}/{$user_type}")));
 			} else {
 				$this->load->view('admin/documentation/add_edit_page', array("pageDetails" => $pageDetails));
 			}
@@ -299,7 +321,7 @@ class Admin extends MY_Controller {
 
 	public function changePageStatus(){
 		if($this->input->post("id")) {
-			$this->admin_actions->updatePageDetails(array("status" => $this->input->post("pageStatus")),$this->input->post("id"));
+			$this->admin_actions->updatePageDetails(array("status" => $this->input->post("status")),$this->input->post("id"));
 			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Updating Saving Data')));
 			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
 		}
@@ -314,12 +336,9 @@ class Admin extends MY_Controller {
 	}
 
 	public function pagesDataTables($pagesType,$userType) {
-		$pagesType = "documentation";
-		$userType = "private";
 		$list = $this->admin_actions->get_pages_datatables($pagesType,$userType);
         $data = array();
 		$no = $_POST['start'];
-	  
         foreach ($list as $page) {
 			$row = array();
 			$row['title'] = $page->titlu_eng;

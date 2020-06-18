@@ -1,13 +1,13 @@
 <?php $this->load->view("layouts_after_login/header") ?>
 <div class="card mb-3">
-    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(<?=(site_url("assets/img/illustrations/corner-4.png"))?>);">
+    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(<?=(site_url("".( $pageDetails['page_type'] == "terms-and-conditions" ? 'assets/img/illustrations/corner-1.png' : 'assets/img/illustrations/corner-4.png').""))?>);">
     </div>
     <!--/.bg-holder-->
     <div class="card-body">
     <div class="row">
                 <div class="col-lg-12">
                     <div class="card mb-3">
-                        <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);">
+                        <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../<?=( $pageDetails['page_type'] == "terms-and-conditions" ? 'assets/img/illustrations/corner-1.png' : 'assets/img/illustrations/corner-4.png')?>);">
                         </div>
                         <div class="card-body">
                             <div class="row">

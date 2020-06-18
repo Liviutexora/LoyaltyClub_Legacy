@@ -369,11 +369,12 @@ class Admin_actions extends CI_model
 		$this->_get_datatables_pages_query($pagesType,$userType);
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
+        //echo $this->db->last_query();die();
         return $query->result();
     }
 
     function pages_datatables_where_conditions($pagesType = "",$userType = "") {
-        $this->db->where_in('p.page_type',$pagesType);
+        $this->db->where('p.page_type',$pagesType);
         $this->db->where('p.user_type',$userType);
         $this->db->where('p.deleted',0);
     }
