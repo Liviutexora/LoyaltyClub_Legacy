@@ -2,7 +2,7 @@
     <div class="card-body rounded-soft bg-gradient"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
         <div class="row text-white align-items-center no-gutters">
         <div class="col">
-            <h4 class="text-white mb-0"><?=$this->lang->line('User Section Graph Label Today')?> 764.39 kr (<?=$this->lang->line("Comming Soon")?>)</h4>
+            <h4 class="text-white mb-0"><?=$this->lang->line('User Section Graph Label Today')?> 764.39 kr (<?=$this->lang->line("Coming Soon")?>)</h4>
             <p class="fs--1 font-weight-semi-bold"><?=$this->lang->line("User Section Graph Label This Month")?> <span class="opacity-50">684.87 kr</span></p>
         </div>
         <div class="col-auto d-none d-sm-block">
@@ -18,7 +18,7 @@
 </div-->
 <!--div class="card bg-light mb-3">
     <div class="card-body p-3">
-        <p class="fs--1 mb-0"><span class="fas fa-exchange-alt mr-2" data-fa-transform="rotate-90"></span><?=$this->lang->line('User Section Tasks Label New Tasks')?> (<?=$this->lang->line("Comming Soon")?>)</p>
+        <p class="fs--1 mb-0"><span class="fas fa-exchange-alt mr-2" data-fa-transform="rotate-90"></span><?=$this->lang->line('User Section Tasks Label New Tasks')?> (<?=$this->lang->line("Coming Soon")?>)</p>
     </div>
 </div-->
 <div class="card-deck">
@@ -93,8 +93,8 @@
                 
                 <h5 class="text-warning"><?=$this->lang->line('User Section Label Subscription Your subscription will be renewed in')?></h5>
                 <p class="fs--1 mb-0"><?=$this->lang->line('User Section Label Subscription Your subscription will expire on')?>: 12-03-2021</p>
-                <button class="btn btn-falcon-success fs--1 mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional (<?=$this->lang->line("Comming Soon")?>)</button>
-                <a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0 pr-0 float-right" href="#!"><?=$this->lang->line('User Section Label Subscription Keep Me')?> standard (<?=$this->lang->line("Comming Soon")?>)<svg class="svg-inline--fa fa-chevron-right fa-w-10 ml-1" data-fa-transform="shrink-4 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg="" style="transform-origin: 0.3125em 0.5625em;"><g transform="translate(160 256)"><g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" transform="translate(-160 -256)"></path></g></g></svg><!-- <span class="fas fa-chevron-right ml-1" data-fa-transform="shrink-4 down-1"></span> --></a>
+                <button class="btn btn-falcon-success fs--1 mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional (<?=$this->lang->line("Coming Soon")?>)</button>
+                <a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0 pr-0 float-right" href="#!"><?=$this->lang->line('User Section Label Subscription Keep Me')?> standard (<?=$this->lang->line("Coming Soon")?>)<svg class="svg-inline--fa fa-chevron-right fa-w-10 ml-1" data-fa-transform="shrink-4 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg="" style="transform-origin: 0.3125em 0.5625em;"><g transform="translate(160 256)"><g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" transform="translate(-160 -256)"></path></g></g></svg><!-- <span class="fas fa-chevron-right ml-1" data-fa-transform="shrink-4 down-1"></span> --></a>
                
             </div>
             </div>

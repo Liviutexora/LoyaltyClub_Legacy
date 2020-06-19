@@ -7,7 +7,7 @@
             <ul class="navbar-nav align-items-center">
               <!--li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$this->lang->line("Pages")?></a>
                 <div class="dropdown-menu dropdown-menu-card" aria-labelledby="navbarDropdownPages">
-                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Comming Soon")?></a>
+                  <div class="bg-white rounded-soft py-2"><a class="dropdown-item" href="#"><?=$this->lang->line("Coming Soon")?></a>
                   </div>
                 </div>
               </li-->

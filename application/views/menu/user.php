@@ -57,7 +57,7 @@
             </div>
         </a>
         <ul class="nav collapse" id="companies" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Comming Soon")?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Coming Soon")?></a>
             </li>
         </ul>
         </li>

@@ -8,7 +8,7 @@
 
         <div class="container">
           <div class="row justify-content-center align-items-center pt-8 pt-lg-10 pb-lg-9 pb-xl-0">
-            <div class="col-md-11 col-lg-8 col-xl-4 pb-7 pb-xl-9 text-center text-xl-left"><a class="btn btn-outline-danger mb-4 fs--1 border-2x rounded-pill" href="#"><span class="mr-2" role="img" aria-label="Gift">🎁</span><?=$this->lang->line("Become a professional")?> (<?=$this->lang->line("Comming Soon")?>)</a>
+            <div class="col-md-11 col-lg-8 col-xl-4 pb-7 pb-xl-9 text-center text-xl-left"><a class="btn btn-outline-danger mb-4 fs--1 border-2x rounded-pill" href="#"><span class="mr-2" role="img" aria-label="Gift">🎁</span><?=$this->lang->line("Become a professional")?> (<?=$this->lang->line("Coming Soon")?>)</a>
               <h1 class="text-white font-weight-light"><?=$this->lang->line("Bring")?> <span class="typed-text font-weight-bold" data-typed-text='["<?=$this->lang->line('hope')?>","<?=$this->lang->line('freedom')?>","<?=$this->lang->line('friends')?>","<?=$this->lang->line('success')?>","<?=$this->lang->line('loyalty')?>"]'></span><br /><?=$this->lang->line('in your life')?></h1>
               <p class="lead text-white opacity-75"><?=$this->lang->line("Home Page Slider Slogan")?></p><a cbeautylass="btn btn-outline-light border-2x rounded-pill btn-lg mt-4 fs-0 py-2" href="#!" data-toggle="modal" data-target="#exampleModal"><?=$this->lang->line("Become one of us")?><span class="fas fa-play" data-fa-transform="shrink-6 down-1 right-5"></span></a>
             </div>
@@ -163,7 +163,7 @@
           <div class="row justify-content-center text-center">
             <div class="col-lg-8">
               <p class="fs-3 fs-sm-4 text-white"><?=$this->lang->line('Join our community')?></p>
-              <button class="btn btn-outline-light border-2x rounded-pill btn-lg mt-4 fs-0 py-2" type="button"><?=$this->lang->line('Start our business')?> (<?=$this->lang->line("Comming Soon")?>)</button>
+              <button class="btn btn-outline-light border-2x rounded-pill btn-lg mt-4 fs-0 py-2" type="button"><?=$this->lang->line('Start our business')?> (<?=$this->lang->line("Coming Soon")?>)</button>
             </div>
           </div>
         </div>

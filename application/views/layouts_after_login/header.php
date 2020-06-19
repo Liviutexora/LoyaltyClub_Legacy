@@ -107,7 +107,7 @@
                         </div>
                       </div>
                       <div class="list-group list-group-flush font-weight-normal fs--1">
-                        <div class="list-group-title"><?=$this->lang->line("Comming Soon")?></div>
+                        <div class="list-group-title"><?=$this->lang->line("Coming Soon")?></div>
                         
                        
                       </div>
