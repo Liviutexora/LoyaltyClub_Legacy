@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" id="wizard-checkbox-company" type="checkbox" name="terms" required="required" />
-                                            <label class="custom-control-label" for="wizard-checkbox-company"><?=$this->lang->line("Register Terms Label")?></label>
+                                            <label class="custom-control-label" for="wizard-checkbox-company"><?=$this->lang->line("Register Terms Label Company")?></label>
                                         </div>
                                     </form>
                                 </div>
@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" id="wizard-checkbox-private" type="checkbox" name="terms" required="required" />
-                                            <label class="custom-control-label" for="wizard-checkbox-private"><?=$this->lang->line("Register Terms Label")?></label>
+                                            <label class="custom-control-label" for="wizard-checkbox-private"><?=$this->lang->line("Register Terms Label Private")?></label>
                                         </div>
                                     </form>
                                 </div>

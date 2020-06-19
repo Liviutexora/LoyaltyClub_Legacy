@@ -406,7 +406,7 @@ class Admin_actions extends CI_model
     }
     
     function getAllPages($pageType = "",$userType = ""){
-		return $this->db->select('*', FALSE)->where('status',1)->where('page_type',$pageType)->where('user_type',$userType)->order_by("titlu_eng","asc")->get('pagini')->result_array();
+		return $this->db->select('*', FALSE)->where('deleted',0)->where('status',1)->where('page_type',$pageType)->where('user_type',$userType)->order_by("titlu_eng","asc")->get('pagini')->result_array();
     }
 
 }

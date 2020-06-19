@@ -46,6 +46,45 @@ class Pages extends MY_Controller {
 		}
 	}
 
+	public function termsAndConditions($type = "", $pageName = "")
+	{
+		$types = array("company","private");
+		if(!in_array($type,$types))
+			redirect(site_url("/"));
+
+		$pageId = "";
+		$allPagesTermsAndDocumentations = $this->admin_actions->getAllPages($pageType = "terms-and-conditions",$userType = $type);	
+	
+		if(!$pageName) {
+			$pageName = $allPagesTermsAndDocumentations[0]['titlu_eng'];
+			$pageId = $allPagesTermsAndDocumentations[0]['id'];
+			$pageName =  strtolower(urldecode($allPagesTermsAndDocumentations[0]['id']."-".preg_replace('/[\s,\']+/', '-', $allPagesTermsAndDocumentations[0]['titlu_eng'])));
+			
+		}
+		else {
+			$parts = explode("-",$pageName);
+			if(count($parts)){
+				$pageId = $parts[0];
+			}
+		}
+	
+		$pageDetails = $this->admin_actions->getPageDetails($pageId);
+		if(count($pageDetails)) {	
+			$originalPageName = strtolower(urldecode($pageDetails['id']."-".preg_replace('/[\s,\']+/', '-', $pageDetails['titlu_eng'])));
+			//echo $pageName . " ". $originalPageName;die();
+			if($pageName == $originalPageName) {
+			
+				$this->load->view('pages/terms-and-conditions/index',array("pageId" => $pageId,"pageDetails" => $pageDetails, "allPagesTermsAndDocumentations" => $allPagesTermsAndDocumentations));
+				
+			} else {
+				redirect(site_url("/"));
+			}
+		} else {
+			redirect(site_url("/"));
+		}
+	}
+	
+
 	public function companies($categoryName = "") {
 		$allActivities = $this->company_actions->getAllCompanyActivitiesGroupByActivity();
 		$allCompanies = $this->company_actions->getAllCompanies($categoryName);
