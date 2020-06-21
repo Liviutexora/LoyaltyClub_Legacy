@@ -31,7 +31,7 @@ class Company_actions extends CI_model
 		return $this->db->group_by('c.titlu_eng')->get('firma_activitate as c_a')->result_array();
 	}
 
-	function getAllCompanies($categoryName, $allRows = false) {
+	function getAllCompanies($categoryName, $allRows = false,$offset = 10) {
 		$mainActivitySql = "(SELECT cp.titlu_eng from firma_activitate as c_a_m INNER JOIN `categorii-produse` as cp ON c_a_m.id_activitate = cp.id and cp.status = 1 and cp.deleted =0 WHERE c_a_m.main = 1 and c_a_m.id_firma = f.id_firma )";
 		$this->db->select(' '.$mainActivitySql.' as mainActivity,f.nume_firma,u.data,us.settings_value as logo,f.id_firma', FALSE);
 		$this->db->join("firma_activitate as c_a","c_a.id_firma =f.id_firma");	
@@ -47,10 +47,10 @@ class Company_actions extends CI_model
 			
 		}
 		if(!$allRows) {
-			$offset = 12;
+
 			$start = 0;
 			if($this->input->get('page')) {
-				$start = $this->input->get('page')*12;
+				$start = $this->input->get('page')*$offset;
 				$start = $start - $offset;
 			}
 		}

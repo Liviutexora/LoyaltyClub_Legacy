@@ -16,8 +16,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                <h3 class="mb-0 float-left"><?=$this->lang->line('Companies Page Title Label')?></h3>
-                                <a class="text-600 float-right" href="<?=site_url('companies/'.$this->uri->segment(2).'?display='.(!$displayType || $displayType == "list" ? "grid" : "list"))?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?=$this->lang->line('Companies Page Display Comapnies '.ucfirst((!$displayType || $displayType == "list" ? "grid" : "list")).'')?>"><span class="fas fa-th"></span> </a>
+                                    <div class="container-total-companies"><h7 class="mb-0 float-left"><?=$this->lang->line('Companies Page Showing')?> <?=$start?>-<?=$end?> <?=$this->lang->line('Companies Page Of')?> <?=$total?> <?=$this->lang->line('Companies Page Title Label')?></h7></div>
+                                    <div class="container-display-type"> 
+                                        <a class="text-600 float-right display-type-control" href="<?=site_url('companies/'.$this->uri->segment(2).'?display='.(!$displayType || $displayType == "list" ? "grid" : "list"))?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?=$this->lang->line('Companies Page Display Comapnies '.ucfirst((!$displayType || $displayType == "list" ? "grid" : "list")).'')?>"><span class="fas fa-th"></span> </a>
+                                    </div>
+                                    <div class="container-display-per-page"> 
+                                        <?=$this->lang->line('Companies Show Companies')?><select class="form-control"><option value="10" <?=($companiesPerPage == 10 ? "selected='selected'" : "")?>>10</option><option value="20" <?=($companiesPerPage == 20 ? "selected='selected'" : "")?>>20</option><option value="30" <?=($companiesPerPage == 30 ? "selected='selected'" : "")?>>30</option><option value="40" <?=($companiesPerPage == 40 ? "selected='selected'" : "")?>>40</option><option value="50" <?=($companiesPerPage == 50 ? "selected='selected'" : "")?>>50</option></select><?=$this->lang->line('Companies Per Page')?>
+                                    </div>
+                                    
                                 </div>
                               
                             </div>
@@ -57,3 +63,13 @@
 <!-- <section> close ============================-->
 <!-- ============================================-->
 <?php $this->load->view("layouts/footer") ?>
+<script>
+$(document).ready(function(){
+    $( ".container-display-per-page select" ).change(function() {
+        eraseCookie("companiesPerPage");
+        setCookie("companiesPerPage",$(this).val(),365);
+        window.location.reload();
+    });
+});
+
+</script>

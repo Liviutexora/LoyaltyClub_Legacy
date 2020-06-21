@@ -55,7 +55,10 @@ $lang['Company Section Ticket Label Pdf Ticket Client ID'] = "Client ID";
 $lang['Company Section Ticket Label Pdf Ticket Download'] = "View";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
-
+$lang['Companies Page Showing'] = "Showing";
+$lang['Companies Page Of'] = "of";
+$lang['Companies Show Companies'] = "Show companies";
+$lang['Companies Per Page'] = "per page";
 
 
 

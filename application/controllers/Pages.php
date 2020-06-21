@@ -86,14 +86,37 @@ class Pages extends MY_Controller {
 	
 
 	public function companies($categoryName = "") {
+	
+		if(!get_cookie('companiesPerPage')) {
+			$companiesPerPage = 10;
+			set_cookie('companiesPerPage',$companiesPerPage,'2592000'); 
+		} else {
+			$companiesPerPage = get_cookie('companiesPerPage');
+
+		}
+		$data['companiesPerPage'] = $companiesPerPage; 
+		$start = 0;
+		if($this->input->get('page')) {
+			$start = $this->input->get('page')*$companiesPerPage;
+			$start = $start - $companiesPerPage;
+		}
+		$end = $start + $companiesPerPage;
+		if(!$start)
+			$start = 1;
+		
+		$data['start'] = $start;
+		$data['end'] = $end;
+
 		$allActivities = $this->company_actions->getAllCompanyActivitiesGroupByActivity();
-		$allCompanies = $this->company_actions->getAllCompanies($categoryName);
+		$allCompanies = $this->company_actions->getAllCompanies($categoryName,false,$companiesPerPage);
+		
 		$allCompaniesPagination = $this->company_actions->getAllCompanies($categoryName,true);
+		$data['total'] = count($allCompaniesPagination);
 		$config['base_url'] = site_url('companies'.($this->uri->segment(2) ? "/".$this->uri->segment(2) : "").'');
 		$config['total_rows'] = count($allCompaniesPagination);
 		//$config['num_links'] =  count($allCompaniesPagination);
 		$config['use_page_numbers'] = TRUE;
-		$config['per_page'] = 12;
+		$config['per_page'] = $companiesPerPage;
 		$config['prefix'] = "?page=";
 		$config['first_link'] = 'First';
 		$config["full_tag_open"] = '<nav aria-label="Page navigation example"><ul class="pagination">';
@@ -123,7 +146,7 @@ class Pages extends MY_Controller {
 			if(in_array($displayType,array("grid","list")))
 				set_cookie('displayListType',$displayType,'2592000'); 
 		}
-		
+		$data['companiescompaniesPerPage'] = get_cookie('companiescompaniesPerPage');
 		$displayListTypeCookie = get_cookie('displayListType'); 
 
 		if(!$displayType)
