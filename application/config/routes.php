@@ -116,6 +116,14 @@ $route['pages/(:num)-(.*)'] = 'pages/documentation/$1-$2';
 $route['add-page/(.*)/(.*)'] = 'admin/addPage/$1/$2';
 $route['dynamic-content/(.*)/(.*)'] = 'admin/documentation/$1/$2';
 $route['dynamic-content/(.*)'] = 'admin/documentation/$1';
+$route['domains-data-tables'] = 'admin/domainsDataTables';
+$route['add-domain'] = 'admin/addDomain';
+$route['edit-domain/(.*)'] = 'admin/editDomain/$1';
+$route['change-domain-status'] = 'admin/changeDomainStatus';
+$route['delete-domain'] = 'admin/deleteDomain';
+
+
+
 
 
 

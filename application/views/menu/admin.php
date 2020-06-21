@@ -39,6 +39,7 @@
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/companies')?>"><?=$this->lang->line("Admin Section Menu Label Companies List")?></a></li>
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/documentation/company')?>"><?=$this->lang->line("Admin Section Menu Label Customers Documentation")?></a></li>
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('dynamic-content/terms-and-conditions/company')?>"><?=$this->lang->line("Admin Section Menu Label Customers Terms And Conditions")?></a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('admin/domains')?>"><?=$this->lang->line("Admin Section Menu Label Domains List")?></a></li>
         </ul>
         </li> 
         

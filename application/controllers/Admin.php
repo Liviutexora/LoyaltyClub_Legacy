@@ -291,8 +291,6 @@ class Admin extends MY_Controller {
 	public function editPage($pageId="") {
 
 		$pageDetails = $this->admin_actions->getPageDetails($pageId);
-		//echo "<pre>";
-		//var_dump($pageDetails);die();
 		if(count($pageDetails)) {
 			if($this->input->post()) {
 				$page_type = $pageDetails['page_type'];
@@ -355,6 +353,114 @@ class Admin extends MY_Controller {
         );
         //output to json format
         echo json_encode($output);
+	}
+
+	public function domains() {
+		$this->load->view('admin/domains/index');
+	}
+
+	public function domainsDataTables() {
+		$list = $this->admin_actions->get_domains_datatables();
+        $data = array();
+		$no = $_POST['start'];
+        foreach ($list as $domain) {
+			$row = array();
+			$row['domainName'] = $domain->domainName;
+			$row['domainOrder'] = $domain->domainOrder;
+			$row['domainStatus'] = ($domain->domainStatus ? $this->load->view('partials/active',array(),true) : $this->load->view('partials/disabled',array(),true) );
+			$row['actions'] = $this->load->view('admin/domains/partials/actions',array('domain' => $domain),true);
+			$data[] = $row;
+        }
+   
+        $output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->admin_actions->count_domains_all(),
+			"recordsFiltered" => $this->admin_actions->count_domains_filtered(),
+			"data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+	}
+
+	public function addDomain() {
+		if($this->input->post()) {
+			$validation[] =  array('field' => 'title', 'rules' => 'required|trim');
+			$validation[] =  array('field' => 'order', 'rules' => 'required|trim');
+			$this -> form_validation -> set_rules($validation);
+			$response = array();
+			if ($this -> form_validation -> run() == FALSE) {
+				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
+			}
+			$name = trim($this->input->post('title'));
+			$order = trim($this->input->post('order'));
+
+			$domainExist = $this->admin_actions->getDomainByName($name);
+			if(count($domainExist)) {
+				exit($this -> load -> view('layouts/error', array('message' => 'The Domain Already Exist Error'),true));
+			}
+
+			$domainDetails = array(	"titlu_eng" => $name, 
+									"pozitia" => $order,
+									"status" => 1
+								);
+			$this->admin_actions->insertDomain($domainDetails);
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		} else {
+			$this->load->view('admin/domains/partials/addEditDomainModal');
+		}
+		
+	}
+
+	public function editDomain($domainId="") {
+
+		$domainDetails = $this->admin_actions->getDomainDetails($domainId);
+		if(count($domainDetails)) {
+			if($this->input->post()) {
+				$validation[] =  array('field' => 'title', 'rules' => 'required|trim');
+				$validation[] =  array('field' => 'order', 'rules' => 'required|trim');
+				$this -> form_validation -> set_rules($validation);
+				$response = array();
+				if ($this -> form_validation -> run() == FALSE) {
+					exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
+				}
+
+				$name = trim($this->input->post('title'));
+				$order = trim($this->input->post('order'));
+				$domainExist = $this->admin_actions->getDomainByName($name, $id = $domainId);
+				if(count($domainExist)) {
+					exit($this -> load -> view('layouts/error', array('message' => 'The Domain Already Exist Error'),true));
+				}
+				
+				$domainDetails = array(	"titlu_eng" => $name, 
+										"pozitia" => $order,
+										);
+				$this->admin_actions->updateDomainDetails($domainDetails,$domainId);
+				$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Successful Updating Data')));
+				$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+			} else {
+				$domainDetails = $this->admin_actions->getDomainDetails($domainId);
+				$this->load->view('admin/domains/partials/addEditDomainModal', array("domainDetails" => $domainDetails));
+			}
+		} else {
+			redirect(site_url('/'));
+		}
+	}
+
+	public function changeDomainStatus(){
+		if($this->input->post("id")) {
+			$this->admin_actions->updateDomainDetails(array("status" => $this->input->post("domainStatus")),$this->input->post("id"));
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Updating Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		}
+	}
+
+	public function deleteDomain(){
+		if($this->input->post("id")) {
+			$this->admin_actions->updateDomainDetails(array("deleted" => 1),$this->input->post("id"));
+			$this -> load -> view('layouts/success', array('message' => $this -> lang -> line('Forms Updating Saving Data')));
+			$this -> load -> view('layouts/redirect', array('url' => $this->agent->referrer()));
+		}
 	}
 
 

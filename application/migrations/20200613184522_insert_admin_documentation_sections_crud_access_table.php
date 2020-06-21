@@ -11,11 +11,8 @@ class Migration_insert_admin_documentation_sections_crud_access_table extends CI
                         (3,"admin","deletePage"),
                         (3,"admin","editPage"),
                         (3,"admin","changePageStatus")
-                       
-
                 ';
                  $this->db->query($sql); 
-          
         }
 
         public function down()

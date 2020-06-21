@@ -1,0 +1,30 @@
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Migration_insert_domains_edit_access_table extends CI_Migration {
+
+        public function up()
+        {
+                $sql = 'INSERT INTO users_sections_access (user_section_access_user_type,user_section_access_class_name,user_section_access_method_name) VALUES
+                        (3,"admin","addDomain"),
+                        (3,"admin","deleteDomain"),
+                        (3,"admin","editDomain"),
+                        (3,"admin","changeDomainStatus"),
+                        (3,"admin","domainsDataTables"),
+                        (3,"admin","domains")
+                ';
+                $this->db->query($sql);
+        }
+
+        public function down()
+        {
+                $sql = '
+                        DELETE FROM users_sections_access WHERE user_section_access_user_type = 3 
+                        and user_section_access_class_name ="admin" 
+                        and user_section_access_method_name IN("domains","domainsDataTables","changeDomainStatus","editDomain","deleteDomain","addDomain");
+                ';
+                $this->db->query($sql); 
+        }
+
+}

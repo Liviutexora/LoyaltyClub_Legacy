@@ -409,5 +409,144 @@ class Admin_actions extends CI_model
 		return $this->db->select('*', FALSE)->where('deleted',0)->where('status',1)->where('page_type',$pageType)->where('user_type',$userType)->order_by("titlu_eng","asc")->get('pagini')->result_array();
     }
 
+    function _get_datatables_domains_query() {
+        
+        $this->table_domains = 'categorii-produse as d';
+        $this->column_order_domains = array(
+                'd.titlu_eng',
+                'd.pozitia',
+                'd.status'
+        ); //set column field database for datatable orderable
+        $this->column_search_domains = array(
+            'd.titlu_eng',
+            'd.pozitia',
+            'd.status'
+            
+       ); //set column field database for datatable searchable 
+       $this->column_search_type_domains = array('where','where','where'); //set where or having clause for each column
+       $this->order_domains = array('d.id' => 'desc'); // default order 
+
+        $this->db->select(' d.titlu_eng as domainName,
+                            d.pozitia as domainOrder,
+                            d.status as domainStatus,
+                            d.id
+                          '); 
+        $this->db->from($this->table_domains);
+        $i = 0;
+       
+        foreach ($this->column_search_domains as $column_search_key => $item) { // loop column 
+             $search_value = (isset($_POST['columns'][$column_search_key]['search']['value']) ? $_POST['columns'][$column_search_key]['search']['value'] : "");
+             switch ($item) {
+                case 'd.status':
+                    switch (strtolower($search_value)) {
+                        case 'e':
+                        case 'en':
+                        case 'ena':
+                        case 'enab':
+                        case 'enabl':
+                        case 'enable':
+                        case 'enabled':
+                            $search_value = 1;
+                        break;
+
+                        case 'd':
+                        case 'di':
+                        case 'dis':
+                        case 'disa':
+                        case 'disab':
+                        case 'disabl':
+                        case 'disable':
+                        case 'disabled':
+                            $search_value = 0;
+                        break;
+                    }
+                   
+                    break;
+                default:
+                
+                break;
+              }
+             
+              //var_dump($_POST['columns'][$column_search_key]['search']['value']);die();
+              if(!empty($search_value) || $search_value === 0) { // if datatable send POST for search 
+
+                  if($i===0) { // first loop
+                      // open brackeu. query Where with OR clause better with brackeu. because maybe can combine with other WHERE with AND.
+                      if($this->column_search_type_domains[$column_search_key] == 'where') {
+                          $this->db->like($item, $search_value);
+                      } else {
+                          $this->db->having($item."= ", $search_value);
+                      }
+                      
+                  } else {
+                      if($this->column_search_type_domains[$column_search_key] == 'where') {
+                           $this->db->like($item, $search_value);
+                      } else {
+                           $this->db->having($item."= ",$search_value);
+                      }
+                  }
+              }
+              $i++;
+          }
+          $this->domains_datatables_where_conditions();
+
+        if(isset($_POST['order'])) {  // here order processing
+            $this->db->order_by($this->column_order_domains[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } 
+        else if(isset($this->order)) {
+            $order = $this->order_domains;
+           
+            $this->db->order_by(key($order), $order[key($order)]);
+        } 
+    }
+
+    function get_domains_datatables() {
+		$this->_get_datatables_domains_query();
+        $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function domains_datatables_where_conditions() {
+        $this->db->where('d.deleted',0);
+    }
+ 
+    function count_domains_filtered() {
+        $this->_get_datatables_domains_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+ 
+    public function count_domains_all() {
+        $this->db->from($this->table_domains);
+        $this->domains_datatables_where_conditions();
+        return $this->db->count_all_results();
+    }
+
+    function insertDomain($data) {
+		$this->db->insert('categorii-produse', $data);
+    }
+    
+    function getDomainDetails($id){
+		return $this->db->select('*', FALSE)->where('id',$id)->get('categorii-produse')->row_array();
+    }
+
+    function updateDomainDetails($data,$id) {
+		$this->db->where('id', $id);
+		$this->db->update('categorii-produse', $data);
+    }
+    
+    function getDomainByName($domainName, $id = ""){
+        $this->db->select('*', FALSE)->where('deleted',0)->where('titlu_eng',$domainName);
+        if($id)
+            $this->db->where('id !=',$id);
+            
+        return $this->db->get('categorii-produse')->result_array();
+    }
+
+    
+
+
 }
 ?>
