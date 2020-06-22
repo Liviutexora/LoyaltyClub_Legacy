@@ -19,7 +19,7 @@ $config['loyaltyclub_casa_mail']['charset'] = 'utf-8';
 $config['loyaltyclub_casa_mail']['mailtype'] = 'html';
 
 $config['versionJS'] = 1;
-$config['versionCSS'] = 1;
+$config['versionCSS'] = 1.1;
  
 
 ?>
