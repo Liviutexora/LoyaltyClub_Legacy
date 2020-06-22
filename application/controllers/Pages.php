@@ -67,13 +67,12 @@ class Pages extends MY_Controller {
 				$pageId = $parts[0];
 			}
 		}
-	
+		
 		$pageDetails = $this->admin_actions->getPageDetails($pageId);
 		if(count($pageDetails)) {	
 			$originalPageName = strtolower(urldecode($pageDetails['id']."-".preg_replace('/[\s,\']+/', '-', $pageDetails['titlu_eng'])));
 			//echo $pageName . " ". $originalPageName;die();
 			if($pageName == $originalPageName) {
-			
 				$this->load->view('pages/terms-and-conditions/index',array("pageId" => $pageId,"pageDetails" => $pageDetails, "allPagesTermsAndDocumentations" => $allPagesTermsAndDocumentations));
 				
 			} else {

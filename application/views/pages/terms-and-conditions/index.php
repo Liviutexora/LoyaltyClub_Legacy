@@ -27,10 +27,10 @@
                                 <div class="col-md-3 ">
                                     <p class="mb-1"><?=$this->lang->line('Pages Page Terms and Conditions Label Select a Page')?>:</p>
                                     <ul class="list-group list-group-categories">
-                                        <?php foreach ($allPagesTermsAndDocumentations as $pageDetails) { ?>
-                                            <?php $pageUrl = $pageDetails['id']."-".preg_replace('/[\s,\']+/', '-', $pageDetails['titlu_eng']); ?>
-                                            <a href="<?=site_url('/terms-and-conditions/'.$pageDetails['user_type'].'/'.urlencode(strtolower($pageUrl)).'')?>" class="list-group-item list-group-item-action list-group-item-category <?=($pageId == $pageDetails['id'] ? "list-group-item-category-selected": "")?>">
-                                            <?=ucfirst(strtolower($pageDetails['titlu_eng']))?>
+                                        <?php foreach ($allPagesTermsAndDocumentations as $pageDet) { ?>
+                                            <?php $pageUrl = $pageDet['id']."-".preg_replace('/[\s,\']+/', '-', $pageDet['titlu_eng']); ?>
+                                            <a href="<?=site_url('/terms-and-conditions/'.$pageDet['user_type'].'/'.urlencode(strtolower($pageUrl)).'')?>" class="list-group-item list-group-item-action list-group-item-category <?=($pageId == $pageDet['id'] ? "list-group-item-category-selected": "")?>">
+                                            <?=ucfirst(strtolower($pageDet['titlu_eng']))?>
                                             </a>
                                             <?php } ?>
                                     </ul>

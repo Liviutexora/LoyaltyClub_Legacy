@@ -32,9 +32,11 @@
                     <div class="card mb-3">
                         <div class="card-body card-body-companies-page">
                             <div class="row">
-                                <div class="col-md-3 ">
-                                    <p class="mb-1"><?=$this->lang->line('Companies Page Select A Category')?>:</p>
-                                    <ul class="list-group list-group-categories">
+                                <div class="col-md-3 container-all-categories">
+                                    <p class="mb-1 select-category-label"><?=$this->lang->line('Companies Page Select A Category')?>:</p><span class="fas fa-minus expand-categories-btn" data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false"></span>
+                                    
+                                    <ul class="list-group list-group-categories collapse show multi-collapse" id="multiCollapseExample1">
+                                    <a href="<?=site_url('/companies')?>" class="list-group-item list-group-item-action list-group-item-category <?=(!$categoryId ? "list-group-item-category-selected": "")?>"><?=$this->lang->line("Companies All Categories Label")?></a>
                                         <?php foreach ($allActivities as $activityDetails) { ?>
                                             <?php $categoryUrl = $activityDetails['id']."-".preg_replace('/[\s,\']+/', '-', $activityDetails['titlu_eng']); ?>
                                             <a href="<?=site_url('/companies/'.urlencode(strtolower($categoryUrl)).'')?>" class="list-group-item list-group-item-action list-group-item-category <?=($categoryId == $activityDetails['id'] ? "list-group-item-category-selected": "")?>">

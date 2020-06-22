@@ -33,8 +33,8 @@
     <link href="<?=site_url("assets/lib/perfect-scrollbar/perfect-scrollbar.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/owl.carousel/owl.carousel.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/flatpickr/flatpickr.min.css")?>" rel="stylesheet">
-    <link href="<?=site_url("assets/css/theme.css")?>" rel="stylesheet">
-    <link href="<?=site_url("assets/css/app.css?v=1")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/css/theme.css?v=".$this->config->item('versionCSS')."")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/css/app.css?v=".$this->config->item('versionCSS')."")?>" rel="stylesheet">
 
   </head>
 

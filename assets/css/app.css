@@ -49,6 +49,11 @@
   cursor: pointer;
 }
 
+.list-group-categories a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .card-body-companies-page .list-group-categories .list-group-item-category {
   font-size: 14px;
   padding-left: 8px;
@@ -95,6 +100,9 @@
   display: inherit !important;
 }
 
+.container-all-categories .select-category-label {float:left}
+.container-all-categories .expand-categories-btn {float:left;margin-left: 5px;margin-top:5px;cursor: pointer;}
+.container-all-categories .list-group-categories {float:left;}
 /* end emails block */
 /* End */
 @media screen and (max-width: 992px) {

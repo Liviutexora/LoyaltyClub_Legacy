@@ -34,12 +34,12 @@
     <script src="<?=site_url("assets/lib/datatables-bs4/dataTables.bootstrap4.min.js")?>"></script>
     <script src="<?=site_url("assets/lib/datatables.net-responsive/dataTables.responsive.js")?>"></script>
     <script src="<?=site_url("assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js")?>"></script>
-    <script src="<?=site_url("assets/js/theme.js")?>"></script>
+    <script src="<?=site_url("assets/js/theme.js?v=".$this->config->item('versionJS')."")?>"></script>
     <script src="<?=site_url("assets/js/bootbox.all.min.js")?>"></script>
-    <script src="<?=site_url("assets/js/app.js")?>"></script>
+    <script src="<?=site_url("assets/js/app.js?v=".$this->config->item('versionJS')."")?>"></script>
     <?php if(isset($jsFiles)) { ?>
       <?php foreach ($jsFiles as $file) { ?>
-       <?php echo '<script src="'.site_url("assets/js/$file").'"></script>' ?>
+       <?php echo '<script src="'.site_url("assets/js/$file").'?v='.$this->config->item("versionJS").'"></script>' ?>
      <?php } ?>
     <?php } ?>
     <?php if(isset($jslibs)) { ?>

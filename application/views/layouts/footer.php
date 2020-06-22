@@ -53,9 +53,9 @@
     <script src="<?=site_url("assets/lib/typed.js/typed.js")?>"></script>
     <script src="<?=site_url('assets/lib/dropzone/dropzone.min.js')?>"></script>
     <script src="<?=site_url('assets/lib/lottie/lottie.min.js')?>"></script>
-    <script src="<?=site_url("assets/js/theme.js")?>"></script>
-    <script src="<?=site_url("assets/js/register.js")?>"></script>
-    <script src="<?=site_url("assets/js/app.js")?>"></script>
+    <script src="<?=site_url("assets/js/theme.js?v=".$this->config->item('versionJS')."")?>"></script>
+    <script src="<?=site_url("assets/js/register.js?v=".$this->config->item('versionJS')."")?>"></script>
+    <script src="<?=site_url("assets/js/app.js?v=".$this->config->item('versionJS')."")?>"></script>
 
   </body>
 

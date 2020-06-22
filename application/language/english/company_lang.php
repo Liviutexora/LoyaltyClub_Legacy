@@ -59,6 +59,8 @@ $lang['Companies Page Showing'] = "Showing";
 $lang['Companies Page Of'] = "of";
 $lang['Companies Show Companies'] = "Show companies";
 $lang['Companies Per Page'] = "per page";
+$lang['Companies All Categories Label'] = "All Categories";
+
 
 
 

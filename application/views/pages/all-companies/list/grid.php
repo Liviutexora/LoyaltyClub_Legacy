@@ -12,7 +12,11 @@
     <div class="mb-4 p-2 col-md-6 col-lg-4">
         <div class="border rounded h-100 d-flex flex-column justify-content-between pb-2">
             <div class="overflow-hidden">
-                <div class="position-relative rounded-top overflow-hidden"><a class="d-block" href="#"><img class="img-fluid rounded-top" height="50px" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></a><?=($isThisCompanyNew ? '<span class="badge badge-pill badge-success position-absolute r-0 t-0 mt-2 mr-2 z-index-2">New</span>' : '')?>
+                <div class="position-relative rounded-top overflow-hidden"><a class="d-block" href="#">
+                <?php $imgUrl =  ($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") );?>
+              
+                <div style="background-image: url(<?=$imgUrl?>);height: 185px;background-size:contain;background-position: center top;background-repeat: no-repeat;"></div>
+              
                 </div>
                 <div class="pt-3 pl-3 pr-3 pb-0">
                     <h5 class="fs-0"><a class="text-dark" href="../e-commerce/product-details.html"><?=$companyDetails['nume_firma']?></a></h5>
