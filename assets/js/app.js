@@ -150,6 +150,7 @@ $(document).ready(function(){
         checkExpandCategoriesBtn();
     });
 }); 
+/*
 $(window).resize(function(){
     if(window.innerWidth < 800) {
         if($(".expand-categories-btn").hasClass('fa-minus')) {
@@ -173,7 +174,7 @@ if(window.innerWidth < 800) {
 } else {
     $(".expand-categories-btn").removeClass('fa-plus');
     $(".expand-categories-btn").addClass('fa-minus');
-}
+}*/
      
 function checkExpandCategoriesBtn() {
     if($(".expand-categories-btn").hasClass('fa-minus')) {

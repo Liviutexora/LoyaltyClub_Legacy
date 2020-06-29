@@ -117,7 +117,7 @@ class Register extends MY_Controller {
 				
 				//construieste query
 				$sql_tab="`firma`";
-				$sql_val="'".$nume_firma."','".base64_encode($cui)."' ,'".trim($sponsor)."' ";
+				$sql_val="'".$nume_firma."','".$cui."' ,'".trim($sponsor)."' ";
 				$sql_ins="`id_firma`,`nume_firma`,`cui`,`sponsor_id`";
 				$status=0;
 				$mesaj_utilizator = $this -> load -> view('register/emails/companies/after_registration_to_company', array('companyName' => $this->input->post('name'),"email" =>$this->input->post('email'), "password" => $this->input->post('password') ),true);
