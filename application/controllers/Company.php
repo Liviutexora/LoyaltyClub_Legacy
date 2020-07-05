@@ -249,6 +249,7 @@ class Company extends MY_Controller {
 			$validation[] =  array('field' => 'activity-domain[]', 'rules' => 'required');
 			$validation[] =  array('field' => 'district[]', 'rules' => 'required');
 			$validation[] =  array('field' => 'locality', 'rules' => 'required');
+			$validation[] =  array('field' => 'description', 'rules' => 'required');
 			$this -> form_validation -> set_rules($validation);
 			$response = array();
 			if ($this -> form_validation -> run() == FALSE) {
@@ -267,6 +268,8 @@ class Company extends MY_Controller {
 			$companyData['locality'] = $postData['locality'];
 			$companyData['street'] = $postData['street'];
 			$companyData['number'] = $postData['number'];
+			$companyData['google_maps_url'] = $postData['google_maps_url'];
+			$companyData['description'] = $postData['description'];
 			$companyData['postal_code'] = $postData['postal_code'];
 			$this->company_actions->updateCompanyDetails($companyData,$this->current_user['id']);
 			$userData = array();

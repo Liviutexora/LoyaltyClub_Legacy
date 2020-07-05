@@ -23,6 +23,15 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="description"><?=$this->lang->line("Company Section Company Details Label Description")?></label>
+                            <textarea class="form-control" id="description" required="required" rows="3" name="description" maxlength="300"><?=$companyDetails['description']?></textarea>
+                            <div class="description-nr-chars-container"><?=$this->lang->line("Company Description Nr. Chars Label")?> <span class="current_nr_chars"><?=strlen($companyDetails['description'])?></span>/<span class="max_nr_chars">300</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="cui"><?=$this->lang->line("Company Section Company Details Label Company CUI")?></label>
@@ -61,7 +70,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="website"><?=$this->lang->line("Company Section Company Details Label Company Website")?></label>
-                            <input class="form-control" value="<?=$companyDetails['website']?>" id="website" name="website"  type="text">
+                            <input class="form-control" value="<?=$companyDetails['website']?>" id="website" name="website"  type="url">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="google_maps_url"><?=$this->lang->line("Company Section Company Details Label Google Maps Url")?></label>
+                            <input class="form-control" value="<?=$companyDetails['google_maps_url']?>" id="google_maps_url" name="google_maps_url"  type="url">
                         </div>
                     </div>
                 </div>
@@ -152,4 +169,4 @@
         </div>
     </div>
 </div>
-<?php $this->load->view("layouts_after_login/footer") ?>
+<?php $this->load->view("layouts_after_login/footer",array("jsFiles" => array('company.js'))) ?>

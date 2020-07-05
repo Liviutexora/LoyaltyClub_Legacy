@@ -3,7 +3,11 @@ class Company_actions extends CI_model
 {
 	function getCompanyDetails($id)
 	{
-		return $this->db->select('us.id,us.telefon as phone,us.email,us.emailToChange,us.nume as addedBy,c.locality,c.nume_firma as companyName,c.nr_orc,c.cui,c.iban,c.banca as bank,c.website,c.sponsor_id,c.street,c.number,c.postal_code', FALSE)->join("user us","c.id_firma =us.id", "LEFT")->where('c.id_firma',$id)->get('firma as c')->row_array();
+		return $this->db->select('s.settings_value as logo,us.id,us.telefon as phone,us.email,us.emailToChange,us.nume as addedBy,c.description,c.google_maps_url,c.locality,c.nume_firma as companyName,c.nr_orc,c.id_firma,c.cui,c.iban,c.banca as bank,c.website,c.sponsor_id,c.street,c.number,c.postal_code', FALSE)
+						->join("user us","c.id_firma =us.id", "LEFT")->where('c.id_firma',$id)
+						->join("user_settings as s","c.id_firma =s.settings_user_id AND s.settings_name = 'avatar-image'","LEFT")
+						->get('firma as c')->row_array();
+						
 	}
 
 	function updateCompanyDetails($data,$companyId) {
@@ -18,9 +22,10 @@ class Company_actions extends CI_model
 	}
 
 	function getAllCompanyActivities($companyId) {
-		return $this->db->select('*', FALSE)
-						   ->where('id_firma',$companyId)
-						   ->get('firma_activitate')->result_array();
+		return $this->db->select('f_i.*,cp.titlu_eng', FALSE)
+						   ->join("categorii-produse as cp","f_i.id_activitate = cp.id")
+						   ->where('f_i.id_firma',$companyId)
+						   ->get('firma_activitate as f_i')->result_array();
 	}
 
 	function getAllCompanyActivitiesGroupByActivity() {

@@ -18,8 +18,8 @@ $config['loyaltyclub_casa_mail']['smtp_port'] = '26';
 $config['loyaltyclub_casa_mail']['charset'] = 'utf-8';
 $config['loyaltyclub_casa_mail']['mailtype'] = 'html';
 
-$config['versionJS'] = 1.1;
-$config['versionCSS'] = 1.1;
+$config['versionJS'] = 1.2;
+$config['versionCSS'] = 1.2;
  
 
 ?>
