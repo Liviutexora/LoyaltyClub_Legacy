@@ -10,12 +10,28 @@
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="product-slider position-relative">
                 <div class="owl-carousel owl-theme position-lg-absolute l-0 t-0 h-100 product-images" data-owl-carousel-controller=".product-thumbs" data-options='{"items":1,"nav":true,"dots":false,"slideBy":1}'>
-                    <div class="item h-100"><img class="rounded img-fluid h-100 <?=($companyDetails['logo'] ? 'fit-cover': '')?>" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></div>
+                    <?php 
+                
+                        $urlImage = ($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png"));
+                    
+                        $urlImageDet = getimagesize( $urlImage,$urlImageDet);
+                        $width =  $urlImageDet[0];
+                        $height =  $urlImageDet[1];
+
+                    ?>
+                    <div class="item h-100">
+                    <div style="background: url(<?=$urlImage?>); background-repeat: no-repeat;background-position-x: center;background-position-y: center;background-size: contain;height: 100%;"></div>
+                    <!--img class="rounded " style="<?=($height >= $width ? 'width:auto;height:100%;margin:0px auto;':'width:auto;height:100%;margin:0px auto;')?>" src=" <?=$urlImage?>" alt=""-->
+                    
+                    </div>
 
                 </div>
                 </div>
-                <div class="owl-carousel owl-theme mt-1 product-thumbs" data-options='{"items":5,"nav":true,"mouseDrag":false,"dots":false,"slideBy":1,"margin":4}'>
-                <div class="item"><img class="rounded preview-img" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></div>
+                <div class="owl-carousel owl-theme mt-1 product-thumbs" style="" data-options='{"items":5,"nav":true,"mouseDrag":false,"dots":false,"slideBy":1,"margin":4}'>
+                <div class="item h-100">
+                
+                <div style="background: url(<?=$urlImage?>); background-repeat: no-repeat;background-position-x: center;background-position-y: center;background-size: contain;height: 100%;"></div>
+                </div>
               
                 </div>
             </div>
