@@ -20,7 +20,7 @@
 
                     ?>
                     <div class="item h-100">
-                    <div style="background: url(<?=$urlImage?>); background-repeat: no-repeat;background-position-x: center;background-position-y: center;background-size: contain;height: 100%;"></div>
+                    <div class="slider_img" style="background: url(<?=$urlImage?>); background-repeat: no-repeat;background-position-x: center;background-position-y: center;background-size: contain;height: 100%;"></div>
                     <!--img class="rounded " style="<?=($height >= $width ? 'width:auto;height:100%;margin:0px auto;':'width:auto;height:100%;margin:0px auto;')?>" src=" <?=$urlImage?>" alt=""-->
                     
                     </div>

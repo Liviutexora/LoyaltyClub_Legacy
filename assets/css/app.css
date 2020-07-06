@@ -98,6 +98,7 @@
 
 .owl-stage-outer img.preview-img {width: auto !important;height: 67px;margin: 0px auto;}
 .product-thumbs .owl-item {height: 60px !important;}
+
 .email-content-container {
   display: inherit !important;
 }
@@ -109,4 +110,5 @@
 /* End */
 @media screen and (max-width: 992px) {
   .search-table input {width: 70px;}
+  .slider_img {height: 200px !important;}
 }
