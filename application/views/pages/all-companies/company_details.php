@@ -10,7 +10,7 @@
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="product-slider position-relative">
                 <div class="owl-carousel owl-theme position-lg-absolute l-0 t-0 h-100 product-images" data-owl-carousel-controller=".product-thumbs" data-options='{"items":1,"nav":true,"dots":false,"slideBy":1}'>
-                    <div class="item h-100"><img class="rounded h-100 <?=($companyDetails['logo'] ? 'fit-cover': '')?>" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></div>
+                    <div class="item h-100"><img class="rounded img-fluid h-100 <?=($companyDetails['logo'] ? 'fit-cover': '')?>" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></div>
 
                 </div>
                 </div>
@@ -29,7 +29,7 @@
                 <a class="fs--2 mb-3 d-block text-decoration-none" href="#review" data-tab-target="#review" data-fancyscroll data-offset="0"><span class="fa fa-star text-300"></span><span class="fa fa-star text-300"></span><span class="fa fa-star text-300"></span><span class="fa fa-star text-300"></span><span class="fa fa-star text-300 star-icon"></span><span class="ml-1 text-600">(0)</span></a>
                 <p class="fs--1"><?=($companyDetails['description'] ? $companyDetails['description'] : $this->lang->line('Company Description No Description Label'))?></p>
                 <p class="fs--1 mb-1"> <span><?=$this->lang->line('Company Section Company Details Label Company Website')?>: </span><?=($companyDetails['website'] ? "<a href='".$companyDetails['website']."'>".$companyDetails['website']."</a>" : "-" )?></p>
-                <p class="fs--1 mb-1"> <span><?=$this->lang->line('Company Section Company Details Label Company Address')?>: </span><?=($companyDetails['street'] ? $companyDetails['street']. ($companyDetails['number'] ? " ".$companyDetails['number'] : ""). ($companyDetails['postal_code'] ? " ".$companyDetails['postal_code'] : "") : "-" )?></p>
+                <p class="fs--1 mb-1"> <span><?=$this->lang->line('Company Section Company Details Label Company Address')?>: </span><?=($companyDetails['street'] ? $companyDetails['street']. ($companyDetails['number'] ? " ".$companyDetails['number'] : ""). ($companyDetails['locality'] ? " ".$companyDetails['locality'] : ""). ($companyDetails['postal_code'] ? " ".$companyDetails['postal_code'] : "") : "-" )?></p>
                 <p class="fs--1 mb-1"> <span><?=$this->lang->line('Company Section Company Details Label Company Phone')?>: </span><?=($companyDetails['phone'] ? '<a href="tel:'.$companyDetails['phone'].'">'.$companyDetails['phone'].'</a>' : "-" )?></p>
                 <div class="row">
                 <?php if($companyDetails['google_maps_url']) { ?>
