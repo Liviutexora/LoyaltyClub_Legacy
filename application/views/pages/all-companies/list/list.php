@@ -13,13 +13,15 @@
         <div class="p-1">
             <div class="row">
                 <div class="col-sm-5 col-md-4">
-                    <div class="position-relative h-sm-100"><a class="d-block h-100" href="#"><img class="img-fluid fit-cover w-sm-100 h-sm-200 rounded" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></a>
+                <?php $companyUrl = $companyDetails['id_firma']."-".preg_replace('/[\s,\']+/', '-', $companyDetails['nume_firma']); ?>
+                    <div class="position-relative h-sm-100"><a class="d-block h-100" href="<?=site_url('/company/'.urlencode(strtolower($companyUrl)).'')?>"><img class="img-fluid fit-cover w-sm-100 h-sm-200 rounded" src="<?=($companyDetails['logo'] ? site_url("uploads/companies/".$companyDetails['id_firma']."/avatar-image/".$companyDetails['logo']."") : site_url("assets/img/products/noimage2.png") )?>" alt=""></a>
                     <?=($isThisCompanyNew ? '<span class="badge badge-pill badge-success position-absolute r-0 t-0 mt-2 mr-2 z-index-2">'.$this->lang->line("New Company Label On Image").'</span>' : '')?>
                     </div>
                 </div>
                 <div class="col-sm-7 col-md-8">
                     <div class="row">
                         <div class="col-lg-8">
+                        
                         <h5 class="mt-3 mt-sm-0"><a class="text-dark fs-0 fs-lg-1" href="#"><?=$companyDetails['nume_firma']?></a></h5>
                         <p class="fs--1 mb-2 mb-md-3"><a class="text-500" href="#!"><?=ucfirst(strtolower($companyDetails['mainActivity']))?></a></p>
                         </div>

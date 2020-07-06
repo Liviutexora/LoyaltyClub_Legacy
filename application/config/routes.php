@@ -97,6 +97,7 @@ $route['company-details'] = 'company/companyDetails';
 
 /* Pages routes */
 $route['companies/(.*)'] = 'pages/companies/$1';
+$route['company/(.*)'] = 'pages/companyDetails/$1';
 $route['companies'] = 'pages/companies';
 $route['terms-and-conditions/(.*)/(.*)' ]= 'pages/termsAndConditions/$1/$2';
 $route['terms-and-conditions/(.*)' ]= 'pages/termsAndConditions/$1';

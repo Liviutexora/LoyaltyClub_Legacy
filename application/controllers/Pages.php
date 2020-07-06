@@ -82,6 +82,29 @@ class Pages extends MY_Controller {
 			redirect(site_url("/"));
 		}
 	}
+	public function companyDetails($company = "")
+	{
+		if($company) {
+			$companyId = "";
+			$parts = explode("-",$company);
+			if(count($parts)){
+				$companyId = $parts[0];
+			}
+			$companyDetails = $this->company_actions->getCompanyDetails($companyId);
+			if(count($companyDetails)) {
+				$title = strtolower($companyDetails['id_firma']."-".preg_replace('/[\s,\']+/', '-', $companyDetails['companyName']));
+				$title = urldecode($title);
+				if($title == $company) {
+					$allCompanyActivities = $this->company_actions->getAllCompanyActivities($companyDetails['id_firma']);
+					$this->load->view('pages/all-companies/company_details',array("companyDetails" =>$companyDetails, "allCompanyActivities" => $allCompanyActivities));
+				} else {
+					redirect(site_url("/"));
+				}
+				
+			}
+		}
+		
+	}
 	
 
 	public function companies($categoryName = "") {

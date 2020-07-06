@@ -1,3 +1,4 @@
 td> span.ticketStatusSpanNotUsed {color: #7f4320;background-color: #fde6d8;border-color: #fcdbc9;border-radius: 9px;padding: 5px;}
 td> span.ticketStatusSpanUsed {color: #146284;background-color: #d4f2ff;border-color: #c3ecfe;border-radius: 9px;padding: 5px;}
 td> span.ticketStatusSpanValidated {color: #006d3f;background-color: #ccf6e4;border-color: #b8f2da;border-radius: 9px;padding: 5px;}
+.description-nr-chars-container {float:right;}

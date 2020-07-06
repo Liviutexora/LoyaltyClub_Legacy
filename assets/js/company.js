@@ -67,12 +67,11 @@ function submit_form(form_selector, target, callback) {
 
 var company = {
     initTicketsDataTable : function(){
-        $(document).ready(function(){
             if($('.tickets-table').length){
                 
                 languageLabels = $('.tickets-table').attr("data-language-label");
                 languageLabels = JSON.parse(languageLabels);
-            }
+           
            // var search_columns = new Array(1,2,3,4,5);
 	      //  var date_columns = new Array(3);
             $('.tickets-table thead td').each(function (index, element) {
@@ -244,10 +243,19 @@ var company = {
                     btn.prop("disabled",false);
                 });
             });
+        }
             
-            
+    },
+    compnyDescriptionCount : function() {
+        $(document).on("keydown","#description", function () {
+            console.log('das');
+            $('.current_nr_chars').text($(this).val().length);
         });
     }
 };
-company.initTicketsDataTable();
+$(document).ready(function(){
+    company.initTicketsDataTable();
+    company.compnyDescriptionCount();
+});
+
 
