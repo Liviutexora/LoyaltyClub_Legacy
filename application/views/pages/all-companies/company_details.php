@@ -55,7 +55,74 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-12">
+                  <div class="fancy-tab overflow-hidden mt-4">
+                    <div class="nav-bar">
+                      <div class="nav-bar-item active pl-0 pr-2 pr-sm-4">
+                        <div class="mt-1 fs--1"><?=$this->lang->line('Company Section Company Details Label Our Offer')?></div>
+                      </div>
+                      <div class="nav-bar-item px-2 px-sm-4" id="review">
+                        <div class="mt-1 fs--1"><?=$this->lang->line('Company Section Company Details Label Reviews')?></div>
+                      </div>
+                    </div>
+                    <div class="tab-contents">
+                      <div class="tab-content active">
+                      <?php if(count($products)) { ?>
+                      <div class="card mb-3">
+                          <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);">
+                          </div>
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <div class="container-total-companies"><h7 class="mb-0 float-left"><?=$this->lang->line('Companies Page Showing')?> <?=$data['start']?>-<?=$data['end']?> <?=$this->lang->line('Companies Page Of')?> <?=$data['total']?> <?=$this->lang->line('Company Section Product Label Pagination Offers')?></h7></div>
+                                      <div class="container-display-type"> 
+                                          <a class="text-600 float-right display-type-control" href="<?=site_url('company/'.$this->uri->segment(2).'?display='.(!$data['displayType'] || $data['displayType'] == "list" ? "grid" : "list"))?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?=$this->lang->line('Company Section Product Display Products '.ucfirst((!$data['displayType'] || $data['displayType'] == "list" ? "grid" : "list")).'')?>"><span class="fas fa-th"></span> </a>
+                                      </div>
+                                      <div class="container-display-per-page"> 
+                                          <?=$this->lang->line('Company Section Product Label Show Offers')?><select class="form-control"><option value="10" <?=($data['companiesProductsPerPage'] == 10 ? "selected='selected'" : "")?>>10</option><option value="20" <?=($data['companiesProductsPerPage'] == 20 ? "selected='selected'" : "")?>>20</option><option value="30" <?=($data['companiesProductsPerPage'] == 30 ? "selected='selected'" : "")?>>30</option><option value="40" <?=($data['companiesProductsPerPage'] == 40 ? "selected='selected'" : "")?>>40</option><option value="50" <?=($data['companiesProductsPerPage'] == 50 ? "selected='selected'" : "")?>>50</option></select><?=$this->lang->line('Companies Per Page')?>
+                                      </div>
+                                      
+                                  </div>
+                                
+                              </div>
+                          </div>
+                      </div>
+                      <?php } ?>
+
+                       <?php 
+                        if(!$data['displayType'] || $data['displayType'] == "list") 
+                            $this->load->view("/pages/all-companies/products/list", array("products" => $products));
+                        else 
+                            $this->load->view("/pages/all-companies/products/grid", array("products" => $products));
+                       ?>
+                          
+                          <div class="col-md-12  text-right">
+                                <?php echo $data['paginationLinks']; ?>
+                          </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="row">
+                          <div class="col-lg-12 mb-12 mb-lg-0">
+                            <?=$this->lang->line("Coming Soon")?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </div>
 </div>
 </section >
 <?php $this->load->view("layouts/footer") ?>
+<script>
+$(document).ready(function(){
+    $( ".container-display-per-page select" ).change(function() {
+        eraseCookie("companiesProductsPerPage");
+        setCookie("companiesProductsPerPage",$(this).val(),365);
+        window.location.reload();
+    });
+});
+
+</script>

@@ -37,7 +37,6 @@ class Company extends MY_Controller {
 	public function tickets() {
 		if($this->input->post()) {
 			
-		
 		} else {
 			$this->load->view('company/tickets/index');
 		}

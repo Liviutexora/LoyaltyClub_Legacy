@@ -35,6 +35,9 @@
     <link href="<?=site_url("assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/leaflet/leaflet.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/leaflet.markercluster/MarkerCluster.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/lib/perfect-scrollbar/perfect-scrollbar.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/lib/prismjs/prism-okaidia.css")?>" rel="stylesheet">
+    <link href="<?=site_url("assets/lib/dropzone/dropzone.min.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/lib/leaflet.markercluster/MarkerCluster.Default.css")?>" rel="stylesheet">
     <link href="<?=site_url("assets/css/theme".($this->darkMode ? '-dark' : '').".css?v=".$this->config->item('versionCSS')."")?>" rel="stylesheet">
     <link href="<?=site_url("assets/css/app.css?v=".$this->config->item('versionCSS')."")?>" rel="stylesheet">
