@@ -74,6 +74,16 @@ $route['list-of-tickets'] = 'company/generatedTicketsDatables';
 $route['delete-ticket'] = 'company/deleteTicket';
 $route['validate-ticket'] = 'company/validateTicket';
 $route['download-tickets'] = 'company/downloadTickets';
+$route['products'] = 'products/index';
+$route['add-product'] = 'products/addProduct';
+$route['products-data-tables'] = 'products/productsDataTables';
+$route['upload-photos'] = 'products/uploadPhotos';
+$route['delete-product'] = 'products/deleteProduct';
+$route['delete-product-image'] = 'products/deleteProductImage';
+$route['change-product-status'] = 'products/changeProductStatus';
+$route['delete-product-image'] = 'products/deleteProductImage';
+$route['edit-product/(.*)'] = 'products/editProduct/$1';
+
 
 /* End company user type routes */
 

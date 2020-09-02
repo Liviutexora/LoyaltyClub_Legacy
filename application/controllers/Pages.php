@@ -22,6 +22,7 @@ class Pages extends MY_Controller {
 		parent::__construct();
 		$this -> load -> model('company_actions');
 		$this -> load -> model('admin_actions');
+		$this -> load -> model('products_actions');
 	}
 	public function documentation($pageName = "")
 	{
@@ -96,7 +97,67 @@ class Pages extends MY_Controller {
 				$title = urldecode($title);
 				if($title == $company) {
 					$allCompanyActivities = $this->company_actions->getAllCompanyActivities($companyDetails['id_firma']);
-					$this->load->view('pages/all-companies/company_details',array("companyDetails" =>$companyDetails, "allCompanyActivities" => $allCompanyActivities));
+					if(!get_cookie('companiesProductsPerPage')) {
+						$companiesProductsPerPage = 10;
+						set_cookie('companiesProductsPerPage',$companiesProductsPerPage,'2592000'); 
+					} else {
+						$companiesProductsPerPage = get_cookie('companiesProductsPerPage');
+			
+					}
+					$data['companiesProductsPerPage'] = $companiesProductsPerPage; 
+					$start = 0;
+					if($this->input->get('page')) {
+						$start = $this->input->get('page')*$companiesProductsPerPage;
+						$start = $start - $companiesProductsPerPage;
+					}
+					$end = $start + $companiesProductsPerPage;
+					if(!$start)
+						$start = 1;
+					
+					$data['start'] = $start;
+					$data['end'] = $end;
+					$products = $this->products_actions->getCompanyProducts($companyId, $allRows = false,$companiesProductsPerPage);
+					
+					$allCompaniesProducts = $this->products_actions->getCompanyProducts($companyId,true);
+					$data['total'] = count($allCompaniesProducts);
+					$config['base_url'] = site_url('company/'.$this->uri->segment(2).'');
+					$config['total_rows'] = count($allCompaniesProducts);
+					//$config['num_links'] =  count($allCompaniesPagination);
+					$config['use_page_numbers'] = TRUE;
+					$config['per_page'] = $companiesProductsPerPage;
+					$config['prefix'] = "?page=";
+					$config['first_link'] = 'First';
+					$config["full_tag_open"] = '<nav aria-label="Page navigation example"><ul class="pagination">';
+					//$config["first_tag_open"] = '<li class="page-item">';
+					//$config["first_tag_close"] = '</li>';
+					$config["full_tag_close"] = '</ul></nav>';
+					//$config["num_tag_open"] = '<li class="page-item">';
+					//$config["num_tag_close"] = '</li>';
+					//$config["cur_tag_open"] = '<li class="page-item">';
+					//$config["cur_tag_close"] = '</li>';
+					$config['cur_tag_open'] = '<li class="page-item"><a href="'.site_url('company/'.$this->uri->segment(2).'').'" class="page-link">';
+					$config['cur_tag_close'] = '</a></li>';
+					$config["next_link"] = "Next";
+					$config['attributes'] = array('class' => 'page-link');
+					$this->pagination->initialize($config);
+					$data['paginationLinks'] = $this->pagination->create_links();
+					$displayType = $this->input->get("display");
+					if($displayType) {
+						if(in_array($displayType,array("grid","list")))
+							set_cookie('displayListType',$displayType,'2592000'); 
+					}
+					$data['companiescompaniesPerPage'] = get_cookie('companiescompaniesPerPage');
+					$displayListTypeCookie = get_cookie('displayListType'); 
+
+					if(!$displayType)
+						$displayType = $displayListTypeCookie;
+
+					$data['displayType'] = $displayType;
+					foreach ($products as $productKey => $productDet) {
+						$products[$productKey]['photos'] = $this->products_actions->getProductPhotos($productDet['id']);
+					}
+					
+					$this->load->view('pages/all-companies/company_details',array("products" => $products, "companyDetails" =>$companyDetails, "allCompanyActivities" => $allCompanyActivities,"data" =>$data));
 				} else {
 					redirect(site_url("/"));
 				}

@@ -246,6 +246,205 @@ var company = {
         }
             
     },
+    initProductsDataTable : function(){
+        if($('.products-table').length){
+                
+                languageLabels = $('.products-table').attr("data-language-label");
+                languageLabels = JSON.parse(languageLabels);
+        
+        // var search_columns = new Array(1,2,3,4,5);
+        //  var date_columns = new Array(3);
+            $('.products-table thead td').each(function (index, element) {
+                //datepicker class
+                var inputType = 'text';
+                if (jQuery.inArray(index, date_columns) !== -1) {
+                    inputType = 'date';
+                }
+    
+                if (jQuery.inArray(index, search_columns) !== -1) {
+                    $(this).append('<input class="form-control " style="width:100%;" type="'+inputType+'"/>');
+                }
+            });
+            //datatables
+            products_table = $('.products-table').DataTable({ 
+        
+                "processing": true, //Feature control the processing indicator.
+                "serverSide": true, //Feature control DataTables' server-side processing mode.
+                "responsive":false,
+                "order": [], //Initial no order.
+                // Load data for the table's content from an Ajax source
+                "ajax": {
+                    "url": url+"products-data-tables",
+                    "type": "POST"
+                },
+        
+                //Set column definition initialisation properties.
+                "columnDefs": [
+                { 
+                    "targets": [ 0 ], //first column / numbering column
+                    "orderable": false, //set not orderable
+                },
+                {
+                    className: 'control',
+                    orderable: false,
+                    targets:   -1
+                }
+                ],
+                "bSort": false,
+                "sDom": 'lrtip',
+                "pageLength": 10,
+                "lengthMenu": [[5,10, 25, 50], [5, 10, 25, 50]],
+                "language": {
+                    "lengthMenu": ""+languageLabels['Datatables Label Display']+" _MENU_ "+languageLabels['Datatables Label Per Page']+"",
+                    "zeroRecords": ""+languageLabels['Datatables Label No Data']+"",
+                    "info": ""+languageLabels['Datatables Label Page']+" _PAGE_ "+languageLabels['Datatables Label Of']+" _PAGES_",
+                    "infoEmpty": ""+languageLabels['Datatables Label No Records Available']+"",
+                    "infoFiltered": "("+languageLabels["Datatables Label Total Records"]+" _MAX_)",
+                    "oPaginate": {
+                        "sNext": ""+languageLabels['Datatables Label Next']+"",
+                        "sPrevious": ""+languageLabels['Datatables Label Previous']+""
+                    }
+                },
+                "columns": [
+                    { "data": "title" },
+                    { "data": 'description' },
+                    { "data": 'price' },
+                    { "data": 'discount' },
+                    { "data": 'status' },
+                    { "data": 'actions' }
+                
+                ]
+            });
+           
+            $(document).on('click','#delete-product',function(event) {
+                content = $(this).attr("lang-content");
+                yes = $(this).attr("lang-yes");
+                no = $(this).attr("lang-no");
+                url = $(this).attr("url");
+                id = $(this).attr("idProduct");
+                var dialog = bootbox.dialog({
+                        message: content,
+                        closeButton: false,
+                        buttons: {
+                                noclose: {
+                                        label: yes,
+                                        className: "btn-success",
+                                        callback: function () {
+                                            $(".loading-div").css("display","block");
+                                            $.ajax({
+                                                type: "POST",
+                                                url:  url,
+                                                data: {
+                                                    id: id
+                            
+                                                },
+                                                error: function (xhr, textStatus, errorThrown) {
+                                                    console.log('Error: ' + xhr.responseText);
+                                                },
+                                                success: function (data) {
+                                                    dialog.find('.bootbox-body').prepend(data);
+                                                
+                                                }
+                                            });
+                                        }
+                                },
+                                danger: {
+                                        label: no,
+                                        className: "btn-danger",
+                                }
+                        }
+                });
+            });
+
+           
+
+            $(document).on('click','#change-product-status',function(event) {
+                content = $(this).attr("lang-content");
+                yes = $(this).attr("lang-yes");
+                no = $(this).attr("lang-no");
+                url = $(this).attr("url");
+                id = $(this).attr("productId");
+                productStatus = $(this).attr("productStatus");
+                var dialog = bootbox.dialog({
+                        message: content,
+                        closeButton: false,
+                        buttons: {
+                                noclose: {
+                                        label: yes,
+                                        className: "btn-success",
+                                        callback: function () {
+                                            $(".loading-div").css("display","block");
+                                            $.ajax({
+                                                type: "POST",
+                                                url:  url,
+                                                data: {
+                                                    id: id,
+                                                    productStatus: productStatus
+                            
+                                                },
+                                                error: function (xhr, textStatus, errorThrown) {
+                                                    console.log('Error: ' + xhr.responseText);
+                                                },
+                                                success: function (data) {
+                                                    dialog.find('.bootbox-body').prepend(data);
+                                                  
+                                                }
+                                            });
+                                        }
+                                },
+                                danger: {
+                                        label: no,
+                                        className: "btn-danger",
+                                }
+                        }
+                });
+            });
+
+     
+  
+        }
+        $(document).on('click','#delete-product-image',function(event) {
+            content = $(this).attr("lang-content");
+            yes = $(this).attr("lang-yes");
+            no = $(this).attr("lang-no");
+            url = $(this).attr("url");
+            id = $(this).attr("idImage");
+            currentObj = $(this);
+            var dialog = bootbox.dialog({
+                    message: content,
+                    closeButton: false,
+                    buttons: {
+                            noclose: {
+                                    label: yes,
+                                    className: "btn-success",
+                                    callback: function () {
+                                        $(".loading-div").css("display","block");
+                                        $.ajax({
+                                            type: "POST",
+                                            url:  url,
+                                            data: {
+                                                id: id
+                        
+                                            },
+                                            error: function (xhr, textStatus, errorThrown) {
+                                                console.log('Error: ' + xhr.responseText);
+                                            },
+                                            success: function (data) {
+                                               // dialog.find('.bootbox-body').prepend(data);
+                                               currentObj.parent().remove();
+                                               $(".loading-div").css("display","none");
+                                            }
+                                        });
+                                    }
+                            },
+                            danger: {
+                                    label: no,
+                                    className: "btn-danger",
+                            }
+                    }
+            });
+        });
+    },
     compnyDescriptionCount : function() {
         $(document).on("keydown","#description", function () {
             console.log('das');
@@ -255,6 +454,8 @@ var company = {
 };
 $(document).ready(function(){
     company.initTicketsDataTable();
+    company.initProductsDataTable();
+    
     company.compnyDescriptionCount();
 });
 

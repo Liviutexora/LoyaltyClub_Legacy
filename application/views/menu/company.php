@@ -41,6 +41,16 @@
             </li>
         </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link dropdown-indicator collapsed" href="#products" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
+            <div class="d-flex align-items-center"><span class="nav-link-icon"><i class="fab fa-product-hunt" aria-hidden="true"></i></span><span class="nav-link-text"><?=$this->lang->line("Company Section Menu Label Products")?></span>
+            </div>
+        </a>
+        <ul class="nav collapse" id="products" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('products')?>"><?=$this->lang->line("Company Section Menu Label Products List")?></a>
+            </li>
+        </ul>
+        </li>
         <?php if(count($this->allPagesDocumentation)) { ?>
         <li class="nav-item">
           <a class="nav-link dropdown-indicator collapsed" href="#documentation" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="home">
