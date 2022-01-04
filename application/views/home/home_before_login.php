@@ -15,6 +15,7 @@
             </div>
             <div class="col-xl-7 offset-xl-1 ">
             <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="64zROWOR0_8"></div>
+            
             </div>
           </div>
         </div>
