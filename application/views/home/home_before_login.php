@@ -14,8 +14,15 @@
              
             </div>
             <div class="col-xl-7 offset-xl-1 pb-4">
-            <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="64zROWOR0_8"></div>
-
+            <!-- div class="player" data-plyr-provider="youtube" data-plyr-embed-id="64zROWOR0_8"></div -->
+            <div class="plyr__video-embed" id="player">
+                <iframe
+                  src="https://www.youtube.com/embed/64zROWOR0_8"
+                  allowfullscreen
+                  allowtransparency
+                  allow="autoplay"
+                ></iframe>
+            </div>
             </div>
           </div>
         </div>
