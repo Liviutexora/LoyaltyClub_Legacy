@@ -1,11 +1,11 @@
 <?php
-$lang['Companies Page Title Label'] = "Companies";
-$lang['Companies Page Select A Category'] = "Select a category";
+$lang['Companies Page Title Label'] = "Comercianți";
+$lang['Companies Page Select A Category'] = "Selectează o Categorie";
 $lang['Companies Page Display Comapnies Grid'] = "Comapnies Grid";
 $lang['Companies Page Display Comapnies List'] = "Comapnies List";
-$lang['New Company Label On Image'] = "New";
-$lang['Pages Title Page Terms and Conditions'] = "Terms and Conditions";
-$lang['Pages Page Terms and Conditions Label Select a Page'] = "Select a page";
+$lang['New Company Label On Image'] = "Nou";
+$lang['Pages Title Page Terms and Conditions'] = "Termeni si conditii";
+$lang['Pages Page Terms and Conditions Label Select a Page'] = "Selecteaza o pagină";
 
 
 
