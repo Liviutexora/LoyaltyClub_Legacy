@@ -1,5 +1,5 @@
 <?php $this->load->view("layouts_after_login/header") ?>
-<div class="row">ss
+<div class="row">
     <div class="col-12">
         <div class="card mb-3 btn-reveal-trigger">
         <div class="card-header position-relative min-vh-25 mb-8">
