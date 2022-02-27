@@ -5,6 +5,7 @@ class MY_Controller extends CI_Controller {
 
 	public function __construct()
 	{
+			date_default_timezone_set('Europe/Bucharest');
 			parent::__construct();
 			$this -> load -> model('users_actions');
 			$this -> load -> model('admin_actions');
@@ -112,4 +113,11 @@ class MY_Controller extends CI_Controller {
 		}
 		return $randomString;
 	}
+
+	function generateListOfDistricts() {
+		$districts=array(1=>"Alba",2=> "Arad",3=> "Arges",4=> "Bacau",5=> "Bihor",6=> "Bistrita-Nasaud",7=> "Botosani",8=> "Braila",9=> "Brasov",10=> "Buzau",11=> "Caras Severin",12=> "Calarasi",13=> "Cluj",14=> "Constanta",15=> "Covasna",16=> "Dambovita",17=> "Botosani",18=> "Dolj",19=> "Galati",20=> "Giurgiu",21=> "Gorj",22=> "Harghita",23=> "Hunedoara",24=> "Ialomita",25=> "Iasi",26=> "Ilfov",27=> "Maramuresi",28=> "Mehedinti",29=> "Mures",30=> "Neamt",31=> "Olt",32=> "Prahova",33=> "Satu-Mare",34=> "Salaj",35=> "Sibiu",36=> "Suceava",37=> "Teleorman",38=> "Timis",39=> "Tulcea",40=> "Vaslui",41=> "Valcea",42=> "Vrancea");
+		return $districts;
+	}
+
+
 }

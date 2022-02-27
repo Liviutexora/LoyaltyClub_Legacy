@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'fideliza_dev',
+	'hostname' => '127.0.0.1',
+	'username' => 'generaluser',
+	'password' => 'Password123456!',
+	'database' => 'fideliza_loyaltyclub',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
