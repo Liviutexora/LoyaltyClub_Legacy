@@ -137,7 +137,7 @@ class Users_actions extends CI_model
 		$query="SELECT * FROM `administrator`
 				WHERE `email`='".stripslashes($email)."' AND `password`='".md5($data['password'])."' ";		
 		$exeQueryAdmin=$this->db->query($query)->row_array();
-		if(count($exeQuery))
+		if($exeQuery && count($exeQuery))
 		{
 			$user_info = $exeQuery;
            
@@ -152,7 +152,7 @@ class Users_actions extends CI_model
 			$this->session->set_userdata(array("user" => $exeQuery));	
           
 			return true;
-		}elseif(count($exeQueryAdmin))
+		}elseif($exeQueryAdmin && count($exeQueryAdmin))
 		{
 			$exeQueryAdmin['tip'] = 3;
 			$this->session->set_userdata(array("user" => $exeQueryAdmin));	

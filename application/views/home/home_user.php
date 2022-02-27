@@ -22,6 +22,21 @@
     </div>
 </div-->
 <div class="card-deck">
+
+	<div class="card mb-3 overflow-hidden" style="min-width: 12rem">
+        <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-3.png);">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="card-body position-relative">
+        <h6><?=$this->lang->line("User Section Label Revenue")?></h6>
+        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif" data-countupp="{&quot;count&quot;:43594,&quot;format&quot;:&quot;comma&quot;,&quot;prefix&quot;:&quot;&quot;}">
+		<?=number_format($totalReceived,2)?> <?=$this->config->item("currency")?></div>
+		<a href="<?=site_url('my-payment')?>" class="btn btn-success pt-1 pb-1 pl-2 pr-2 " style="font-size:14px; line-height:1;">New Payment <i class="fa fa-angle-right"></i></a>
+        </div>
+		
+    </div>
+	
     <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
         <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-1.png);">
         </div>
@@ -29,19 +44,11 @@
        
         <div class="card-body position-relative">
         <h6><?=$this->lang->line("User Section Label Loyalty Tickets")?></h6>
-        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-warning" data-countupp='{"count":36487,"format":"alphanumeric"}'><?=$nrOfTickets?></div><a class="font-weight-semi-bold fs--1 text-nowrap open-modal" ajaxlink="<?=site_url('insert-ticket')?>" href="#!"><?=$this->lang->line("User Section Label Btn Add Ticket")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span><!--  --></a>
+        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-warning" data-countupp='{"count":36487,"format":"alphanumeric"}'><?=$nrOfTickets?></div>
+		<a class="font-weight-semi-bold fs--1 text-nowrap open-modal" ajaxlink="<?=site_url('insert-ticket')?>" href="#!"><?=$this->lang->line("User Section Label Btn Add Ticket")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span><!--  --></a>
         </div>
     </div>
-    <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
-        <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-3.png);">
-        </div>
-        <!--/.bg-holder-->
-
-        <div class="card-body position-relative">
-        <h6><?=$this->lang->line("User Section Label Revenue")?></h6>
-        <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif" data-countupp="{&quot;count&quot;:43594,&quot;format&quot;:&quot;comma&quot;,&quot;prefix&quot;:&quot;&quot;}"><?=number_format($totalReceived,2)?> <?=$this->config->item("currency")?></div>
-        </div>
-    </div>
+    
     <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
         <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-2.png);">
         </div>
