@@ -69,6 +69,10 @@ $route['my-payment'] = 'user/myPayment';
 
 /* Company user type routes */
 
+$route['payments'] = 'company/payments';
+$route['invoices'] = 'company/invoices';
+$route['archives'] = 'company/archives';
+
 $route['add-tickets'] = 'company/addTickets';
 $route['tickets'] = 'company/tickets';
 $route['list-of-tickets'] = 'company/generatedTicketsDatables';

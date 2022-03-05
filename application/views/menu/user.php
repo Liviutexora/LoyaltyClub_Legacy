@@ -87,8 +87,9 @@
             </div>
         </a>
         <ul class="nav collapse" id="loyalty-bank" data-parent="#navbarVerticalCollapse">
+           
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('my-payment')?>">My Payments</a></li>
-            <li class="nav-item active"><a class="nav-link" href="<?=site_url('my-tickets')?>"><?=$this->lang->line("User Section Menu Label My Tickets")?></a>
+      <li class="nav-item active"><a class="nav-link" href="<?=site_url('my-tickets')?>"><?=$this->lang->line("User Section Menu Label My Tickets")?></a>
             </li>
         </ul>
         </li>
