@@ -79,7 +79,7 @@ class Company_actions extends CI_model
 		$rw = $this->db->insert_batch('firma_judete', $companyZonesToInsert);
 	}
 
-	function getAllCountries($countryName = "Norway") {
+	function getAllCountries($countryName = "Romania") {
 		 $this->db->select('*', FALSE);
 		 if($countryName) {
 			$this->db->where('name',$countryName);

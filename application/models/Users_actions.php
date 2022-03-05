@@ -137,7 +137,7 @@ class Users_actions extends CI_model
 		$query="SELECT * FROM `administrator`
 				WHERE `email`='".stripslashes($email)."' AND `password`='".md5($data['password'])."' ";		
 		$exeQueryAdmin=$this->db->query($query)->row_array();
-		if(count($exeQuery))
+		if(isset($exeQuery) && count($exeQuery))
 		{
 			$user_info = $exeQuery;
            
