@@ -59,7 +59,7 @@
         <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info" data-countup="{&quot;count&quot;:<?=$generalTotalNrUsers?>,&quot;format&quot;:&quot;comma&quot;}"><?=$generalTotalNrUsers?></div><a class="font-weight-semi-bold fs--1 text-nowrap" href="<?=site_url('my-network')?>"><?=$this->lang->line("User Section Label All Users")?><span class="fas fa-angle-right ml-1" data-fa-transform="down-1"></span></a>
         </div>
     </div>
-    </div>
+</div>
     <div class="row no-gutters">
         <div class="col-lg-6 col-xl-7 col-xxl-8 mb-3 pr-lg-2 mb-3">
             <div class="card h-lg-100">
@@ -107,3 +107,4 @@
             </div>
         </div>
     </div>
+
