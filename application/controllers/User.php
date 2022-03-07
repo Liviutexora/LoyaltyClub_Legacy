@@ -124,6 +124,7 @@ class User extends MY_Controller {
 		$data = array('coverImage' => $coverImage,'avatarImage' => $avatarImage);
 
 		$data['userDetails'] = $this->users_actions->getUserDetails($this->current_user['id']);
+		$data['districts'] = $this->generateListOfDistricts();
 		$this->load->view('users/my-profile/index',$data);
 	}
 
@@ -207,6 +208,7 @@ class User extends MY_Controller {
 			$validation = array();
 			$validation[] =  array('field' => 'name', 'rules' => 'trim|required');
 			$validation[] =  array('field' => 'address', 'rules' => 'trim|required');
+			$validation[] =  array('field' => 'district', 'rules' => 'trim|required');
 			$validation[] =  array('field' => 'date-of-birth', 'rules' => 'required');
 			$validation[] =  array('field' => 'phone', 'rules' => 'required|regex_match[/^[0-9]*/]');
 			$isDate = $this->is_date($this->input->post( 'date-of-birth'));
@@ -227,7 +229,7 @@ class User extends MY_Controller {
 				exit($this -> load -> view('layouts/error', array('message' => 'You must complete the required fileds'),true));
 			}
 
-			$data = array('nume' => $this->input->post('name'),'adresa' => $this->input->post('address'),'telefon' => $this->input->post('phone'));
+			$data = array('judet' => $this->input->post('district'),'nume' => $this->input->post('name'),'adresa' => $this->input->post('address'),'telefon' => $this->input->post('phone'));
 			$this->users_actions->updateUserDetails($data,$this->current_user['id']);
 			$data = array('data_nasterii' => date("Y-m-d",strtotime($this->input->post('date-of-birth'))),'iban' => $this->input->post('iban-account'),'banca' => $this->input->post('bank-name'));
 			$this->users_actions->updateUserContactDetails($data,$this->current_user['id']);

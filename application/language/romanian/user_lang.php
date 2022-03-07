@@ -53,6 +53,7 @@ $lang['User Section Profile Label Change Cover Photo'] = "Change cover photo";
 $lang['User Section Profile Label Change Avatar Photo'] = "Update";
 $lang['User Section Profile Label Full Name'] = "Full name";
 $lang['User Section Profile Label Address'] = "Address";
+$lang['User Section Profile Label District'] = "Judet"; // new
 $lang['User Section Profile Label Phone'] = "Phone";
 $lang['User Section Profile Label Date of Birth'] = "Date of Birth";
 $lang['User Section Profile Label IBAN Account'] = "IBAN Account";

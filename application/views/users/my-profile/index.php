@@ -63,6 +63,17 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group">
+                        <label for="distruct"><?=$this->lang->line("User Section Profile Label District")?></label>
+                        <select class="form-control" id="district" name="district" required>
+                            <option></option>
+                            <?php foreach ($districts as $district) { ?>
+                                <option value="<?=$district?>" <?=($district == $userDetails['judet'] ? "selected='selected'": "")?>><?=ucwords($district)?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <div class="form-group">
                         <label for="email1"><?=$this->lang->line("User Section Profile Label Date of Birth")?></label>
                         <input class="form-control datepicker" id="date-of-birth"  value="<?=($userDetails['data_nasterii'] !="0000-00-00" ? date("Y-m-d",strtotime($userDetails['data_nasterii'])) : "")?>" required="required" name="date-of-birth" type="date">
                     </div>
