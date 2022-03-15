@@ -64,8 +64,8 @@ class Company_actions extends CI_model
 			$this->db->limit($offset,$start);
 		}
 
-		return $this->db->get('firma as f')->result_array();
-		//echo $this->db->last_query();die();
+		$this->db->get('firma as f')->result_array();
+		echo $this->db->last_query();die();
 
 	}
 
