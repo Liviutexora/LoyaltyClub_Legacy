@@ -7,7 +7,7 @@
         <div class="row">
         <div class="col-lg-8">
             <h3 class="mb-0"><?=$this->lang->line("Contact Page Name")?></h3>
-            <p class="mt-2"><?=$this->lang->line('Contact Page Please send an email at')?>: <a href = "mailto:loyaltyclub.eu@gmail.com">loyaltyclub.eu@gmail.com</a></p>
+            <p class="mt-2"><?=$this->lang->line('Contact Page Please send an email at')?>: <a href = "mailto:loyaltyclubromania@gmail.com">loyaltyclubromania@gmail.com</a></p>
         </div>
         </div>
     </div>
