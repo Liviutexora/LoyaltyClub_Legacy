@@ -1,4 +1,4 @@
-<div class="card-deck">
+<div class="card-deck"> 
    <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
       <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-3.png);">
       </div>
@@ -6,7 +6,7 @@
       <div class="card-body position-relative">
          <h6>Sales</h6>
          <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif">
-            <?=$amountValidatedTicket?> kr
+            <?=($amountValidatedTicket ? $amountValidatedTicket : 0)?> kr
          </div>
       </div>
    </div>
