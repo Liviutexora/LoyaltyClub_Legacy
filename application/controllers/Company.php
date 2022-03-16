@@ -33,6 +33,18 @@ class Company extends MY_Controller {
 		}
 		
 	}
+	
+	public function payments() {
+		$this->load->view('company/payments/index');
+	}
+	
+	public function invoices() {
+		$this->load->view('company/invoices/index');
+	}
+	
+	public function archives() {
+		$this->load->view('company/archive/index');
+	}
 
 	public function tickets() {
 		if($this->input->post()) {

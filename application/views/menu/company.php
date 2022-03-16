@@ -37,8 +37,11 @@
             </div>
         </a>
         <ul class="nav collapse" id="loyalty-bank" data-parent="#navbarVerticalCollapse">
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('payments')?>">My Payments</a></li>
             <li class="nav-item active"><a class="nav-link" href="<?=site_url('tickets')?>"><?=$this->lang->line("Company Section Menu Label Generate Tickets")?></a>
             </li>
+			       <li class="nav-item active"><a class="nav-link" href="<?=site_url('invoices')?>">Invoices</a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?=site_url('archives')?>">Archive</a></li>
         </ul>
         </li>
         <li class="nav-item">

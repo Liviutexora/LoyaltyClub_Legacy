@@ -64,9 +64,14 @@ $route['confirm-email-address/(:any)'] = 'user/confirmEmailAddress/$1';
 $route['validated-tickets-datables'] = 'user/validatedTicketsDatables';
 $route['my-tickets'] = 'user/myTickets';
 $route['insert-ticket'] = 'user/insertTicket';
+$route['my-payment'] = 'user/myPayment';
 
 
 /* Company user type routes */
+
+$route['payments'] = 'company/payments';
+$route['invoices'] = 'company/invoices';
+$route['archives'] = 'company/archives';
 
 $route['add-tickets'] = 'company/addTickets';
 $route['tickets'] = 'company/tickets';
