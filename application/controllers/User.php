@@ -311,6 +311,12 @@ class User extends MY_Controller {
 		}
 	}
 
+	public function myPayment() {
+		
+		$this->load->view('users/payment/index');
+		
+	}
+
 	public function MyTickets() {
 		
 		$this->load->view('users/tickets/index');

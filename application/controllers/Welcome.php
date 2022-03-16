@@ -67,7 +67,12 @@ class Welcome extends MY_Controller {
 					}
 
 					break;
-				
+					case 2:
+						$data['nrOfTickets'] = $this->tickets_actions->getCompanyNrTickets($this->current_user['id'],$statuses = [0]);
+						$data['amountValidatedTicket'] = $this->tickets_actions->getCompanyAmountValidatedTickets($this->current_user['id'])['valoare'];
+						
+					break;
+
 				default:
 					# code...
 					break;

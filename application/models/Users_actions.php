@@ -152,7 +152,7 @@ class Users_actions extends CI_model
 			$this->session->set_userdata(array("user" => $exeQuery));	
           
 			return true;
-		}elseif(count($exeQueryAdmin))
+		}elseif($exeQueryAdmin && count($exeQueryAdmin))
 		{
 			$exeQueryAdmin['tip'] = 3;
 			$this->session->set_userdata(array("user" => $exeQueryAdmin));	

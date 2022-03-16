@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  loylatyclub_container:
+    build:
+      context: .
+      dockerfile: Dockerfile.yml
+    image: php:5.6-apache
+    ports:
+      - 88:80
+    hostname: loylatyclub.com
+    volumes:
+      - ../:/var/www/html
+      - ./httpd-vhosts.conf:/opt/homebrew/etc/httpd/extra
+
+  db:
+    image: mariadb:latest
+    restart: always
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: 'loyaltyclub'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'generaluser'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'Password123456!'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'Generalp1'
+      
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3308:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3308'
+      # Where our data will be persisted
+    volumes:
+      - ./volumes:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '8080:80'
+    restart: always
+    environment:
+        PMA_HOST: db
+        UPLOAD_LIMIT: 10000M
+    depends_on:
+        - db

@@ -36,12 +36,15 @@ class Tickets_actions extends CI_model
 		$this->db->where('id', $id);
 		$this->db->update('tickets', $data);
     }
+
     function getNrTickets($userId = null) {
         $this->db->from('tickets as t');
         $this->db->where_in('t.status', array(1,2)); 
         $this->db->where('t.id_user', ($userId ? $userId : $this->session->userdata('user')['id']));
         return $this->db->count_all_results();
     }
+
+
     
     function validateTicket($ticketDetails) {
        
@@ -257,6 +260,21 @@ class Tickets_actions extends CI_model
         $this->db->where_in('t.status', array(0,1)); 
         $this->db->where('t.id_firma', $this->session->userdata('user')['id']);
         return $this->db->count_all_results();
+    }
+
+    function getCompanyNrTickets($userId = null,$statuses = [1,2]) {
+        $this->db->from('tickets as t');
+        $this->db->where_in('t.status', $statuses); 
+        $this->db->where('t.id_firma', ($userId ? $userId : $this->session->userdata('user')['id']));
+        return $this->db->count_all_results();
+    }
+
+    function getCompanyAmountValidatedTickets($userId = null) {
+        $this->db->from('tickets as t');
+        $this->db->select_sum('valoare');
+        $this->db->where_in('t.status', array(2)); 
+        $this->db->where('t.id_firma', ($userId ? $userId : $this->session->userdata('user')['id']));
+        return $this->db->get()->row_array();
     }
 
 

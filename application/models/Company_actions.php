@@ -65,7 +65,6 @@ class Company_actions extends CI_model
 		}
 
 		return $this->db->get('firma as f')->result_array();
-		//echo $this->db->last_query();die();
 
 	}
 
