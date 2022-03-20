@@ -72,7 +72,7 @@ $lang['User Section Profile Label Profile Email Already Exist'] = "The email alr
 $lang['User Section Profile Label Profile Please Check Email Address'] = "Please check you email address and confirm the action";
 $lang['User Section Profile Label Profile To Confirm Change Of Email Content'] = "To confirm your email please click on this <a href='[changeEmailLink]'>Link</a>";
 $lang['User Section Profile Label Profile To Confirm Change Of Email Title'] = "Confirm your email address";
-$lang['User Section Profile Label Profile Reference'] = "Your reference is:";
+$lang['User Section Profile Label Profile Reference'] = "Referința dvs. este:";
 $lang['User Section Menu Label My Tickets'] = "My Tickets";
 $lang['User Section Tickets Page Label My Tickets'] = "My Tickets";
 $lang['User Section Tickets Page Label Insert Ticket'] = "Insert Ticket";

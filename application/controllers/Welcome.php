@@ -6,6 +6,7 @@ class Welcome extends MY_Controller {
 			parent::__construct();
 			$this -> load -> model('users_actions');
 			$this -> load -> model('tickets_actions');
+			$this -> load -> model('invoices_actions');
 	}
 	/**
 	 * Index Page for this controller.
@@ -24,7 +25,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		
+		//echo md5("97".$this->config->item("encryption_key"));die();
 		if(isset($this->current_user['id'])) {
 			$data = array();
 			switch ($this->current_user['tip']) {
@@ -70,7 +71,7 @@ class Welcome extends MY_Controller {
 					case 2:
 						$data['nrOfTickets'] = $this->tickets_actions->getCompanyNrTickets($this->current_user['id'],$statuses = [0]);
 						$data['amountValidatedTicket'] = $this->tickets_actions->getCompanyAmountValidatedTickets($this->current_user['id'])['valoare'];
-						
+						$data['amountInvoice'] = $this->invoices_actions->getInvoiceTotal($this->current_user['id'])['suma'];
 					break;
 
 				default:

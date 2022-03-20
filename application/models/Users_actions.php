@@ -14,6 +14,11 @@ class Users_actions extends CI_model
 	{
 		return $this->db->select('nume', FALSE)->where('email',$email)->get('user')->row_array();
 	}
+
+	function get_user_details_by_id($id)
+	{
+		return $this->db->select()->where('id',$id)->get('user')->row_array();
+	}
 	
 	function update_password_by_email($email) {
 		//generare parola random

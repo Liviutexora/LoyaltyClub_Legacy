@@ -1,0 +1,2 @@
+Firma <?=$companyDetails['companyName']?> a emis factura cu numarul <?=$invoiceDetails['id_factura']?><br/>
+Pentru a vizualiza factura dati click <a href="<?=site_url("company-view-invoice/".$idInvoiceUrl)?>">aici </a>

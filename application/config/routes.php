@@ -108,6 +108,8 @@ $route['company/change-email'] = 'company/changeEmail';
 $route['company/confirm-email-address'] = 'company/confirmEmailAddress';
 $route['company/company-details'] = 'company/companyDetails';
 $route['company-details'] = 'company/companyDetails';
+$route['company-generate-invoice'] = 'invoices/generateInvoice';
+$route['company-view-invoice/(.*)'] = 'invoices/viewInvoice/$1';
 /* End admin user type routes */
 
 /* Pages routes */
