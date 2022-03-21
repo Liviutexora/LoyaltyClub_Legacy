@@ -243,6 +243,51 @@ var company = {
                     btn.prop("disabled",false);
                 });
             });
+
+            $(document).on("click",".generate-invoice-btn", function (event) {
+                event.preventDefault();
+                var link = $(this).attr("url");
+                content = $(this).attr("lang-content");
+                yes = $(this).attr("lang-yes");
+                no = $(this).attr("lang-no");
+                btn = $(this);
+                btnSubmitText = $(this).html();
+                btnLoadindText = $(this).attr("data-loading-text");
+                var dialog = bootbox.dialog({
+                    message: content,
+                    closeButton: false,
+                    buttons: {
+                            noclose: {
+                                    label: yes,
+                                    className: "btn-success",
+                                    callback: function () {
+                                        $(".loading-div").css("display","block");
+                                        if(!btnLoadindText)
+                                            btnLoadindText = "Loading...";
+                                        window.location = link;
+                                        /*$.ajax({
+                                                url: link,
+                                                beforeSend: function( xhr ) {
+                                                    btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'+btnLoadindText+'');
+                                                    btn.prop("disabled",true);
+                                                }
+                                        }).done(function (data) {
+                                           // $('body').append('<a id="link" href="'+data+'"  download="Invoice.pdf">&nbsp;</a>');
+                                           // $('#link')[0].click();
+                                           // btn.html(btnSubmitText);
+                                            
+                                            //btn.prop("disabled",false);
+                                        }); */
+                                    }
+                            },
+                            danger: {
+                                    label: no,
+                                    className: "btn-danger",
+                            }
+                    }
+            });
+                
+            });
         }
             
     },

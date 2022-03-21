@@ -86,6 +86,18 @@ $lang['Company Section Product Label Pagination Offers'] = "Produse";
 $lang['Company Section Product Display Products List'] = "Offers List";
 $lang['Company Section Product Display Products Grid'] = "Offers Grid";
 
+$lang['Company Section Home Sales'] = "Vanzari";
+$lang['Company Section Home Tickets'] = "Tichete";
+$lang['Company Section Home Loyality Fee'] = "Comision Loyality";
+$lang['Company Section Home Are You Sure You Want To Generate Invoice'] = "Sunteți sigur că doriți să generați factura ?";
+$lang['Company Section Home Generate Invoice'] = "Generați factura ";
+
+/* Invoices Page */
+$lang['Company Section Ticket Label Section Title Invoices'] = "Invoices";
+
+/* Archive Page */
+$lang['Company Section Ticket Label Section Title Archive'] = "Arhivă";
+
 
 
 
