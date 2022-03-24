@@ -139,6 +139,7 @@ $route['add-domain'] = 'admin/addDomain';
 $route['edit-domain/(.*)'] = 'admin/editDomain/$1';
 $route['change-domain-status'] = 'admin/changeDomainStatus';
 $route['delete-domain'] = 'admin/deleteDomain';
+$route['login-as-company/(.*)'] = 'admin/loginAsCompany/$1';
 
 
 

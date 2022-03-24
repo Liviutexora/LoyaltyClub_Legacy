@@ -51,11 +51,21 @@ class MY_Controller extends CI_Controller {
 
 	public function sendEmail($to = array(),$title,$content) {
 		foreach ($to as $email) {
-			$headere  = "MIME-Version: 1.0\r\n";
+			
+			/*$headere  = "MIME-Version: 1.0\r\n";
 			$headere .= "Content-type: text/html; charset=iso-8859-1\r\n";
 			$headere .= "From: ".ucfirst($_SERVER['HTTP_HOST'])."<".$this->users_actions->getContactEmail().">\r\n";
 
-			mail($email,$title,$content,$headere);
+			mail($email,$title,$content,$headere); */
+			$loyaltyclub_casa_mail = config_item('loyaltyclub_casa_mail');
+			$this -> email -> initialize($loyaltyclub_casa_mail);
+			$this -> email -> from($loyaltyclub_casa_mail['smtp_user'], "Loyalty Club");
+			$this -> email -> to($email);
+			$this -> email -> cc('');
+			$this -> email -> bcc('');
+			$this->email->subject($title);
+			$this -> email -> message($content);
+			$this -> email -> send();
 		}
 		
 	}

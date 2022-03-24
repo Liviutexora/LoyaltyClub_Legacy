@@ -118,32 +118,21 @@ class Tickets_actions extends CI_model
                 $rez = $this->db->select('*', FALSE)
 						   ->where_in('id', implode(',',$parents ))
                            ->get('user')->result();
-				
+				$emailsToSend = [];
 				foreach( $rez as $key => $value)
 				{
 					if( $value->email )
 					{
-                        /*
-						$catre_utilizator=$value->email;
-						//$catre_utilizator='ucostea@yahoo.fr';
-						$subiect_utilizator=lang('Profit nou pe Loyalty-Club');
-						$mesaj_utilizator="
-									".lang('Salut')."
-									<br><br>
-									".lang('Felicitari echipa ta ti-a adus noi profituri')."
-									<br>
-									".lang('Logheazate in contul tau')." <a href='".$_SERVER['HTTP_HOST']."'>link</a> ".$_SERVER['HTTP_HOST']."
-									<br><br>
-									".lang('Va multumim.')."";
-						$headere  = "MIME-Version: 1.0\r\n";
-						$headere .= "Content-type: text/html; charset=iso-8859-1\r\n";
-						
-						
-						//trimite mail
-						mail($catre_utilizator, $subiect_utilizator, $mesaj_utilizator, $headere); */
-				
+                        array_push($emailsToSend,$value->email);
 					}
 				}
+
+                if(!empty($emailsToSend)) {
+                    $subject=$this->lang->line('Company Section Ticket Label New Earnings From Your Team');
+                    $message = $this -> load -> view('company/tickets/emails/new_earnings_from_your_team', array( ),true);
+                    $CI = get_instance();
+                    $CI->sendEmail($to = $emailsToSend,"Loyalty Club",$message);
+                }
 			
 			foreach($parents as $parent)
 			{

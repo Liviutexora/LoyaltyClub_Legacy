@@ -52,6 +52,7 @@ $lang['Admin Section Page Name Terms and Conditions'] = "Terms and Conditions";
 $lang['Admin Section Pages Page From Label Page Title'] = "Title";
 $lang['Admin Section Pages Page From Label Page Content'] = "Content";
 $lang['Admin Section Pages Page From Alert Page Content'] = "Please insert the page content";
+$lang['Admin Section Pages Login As Company Question'] = "Suntenti sigur ca doriti sa va logati cu aceasta firma?";
 
 
 

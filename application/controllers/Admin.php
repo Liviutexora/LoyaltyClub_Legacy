@@ -463,5 +463,22 @@ class Admin extends MY_Controller {
 		}
 	}
 
+	public function loginAsCompany($companyId = ""){
+		if($companyId) {
+			$companyDetails = $this->company_actions->getOnlyCompanyDetails($companyId);
+			if(!empty($companyDetails)) {
+				$companyDetails['tip'] = 2;
+				$this->session->set_userdata(array("user" => $companyDetails));	
+				redirect("/");
+			} else {
+				redirect("/");
+			}
+		} else {
+			redirect("/");
+		}
+	}
+
+
+
 
 }

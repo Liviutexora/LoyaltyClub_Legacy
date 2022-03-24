@@ -231,6 +231,31 @@ $(document).ready(function(){
                 });
             });
 
+            $(document).on('click','#login-as-company',function(event) {
+                content = $(this).attr("lang-content");
+                yes = $(this).attr("lang-yes");
+                no = $(this).attr("lang-no");
+                url = $(this).attr("url");
+                id = $(this).attr("userId");
+                var dialog = bootbox.dialog({
+                        message: content,
+                        closeButton: false,
+                        buttons: {
+                                noclose: {
+                                        label: yes,
+                                        className: "btn-success",
+                                        callback: function () {
+                                           window.location = url;
+                                        }
+                                },
+                                danger: {
+                                        label: no,
+                                        className: "btn-danger",
+                                }
+                        }
+                });
+            });
+
 
             
         });

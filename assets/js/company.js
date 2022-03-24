@@ -206,6 +206,7 @@ var company = {
                                                     console.log('Error: ' + xhr.responseText);
                                                 },
                                                 success: function (data) {
+                                                    $('.tickets-reload-page').html(data);
                                                     dialog.find('.bootbox-body').prepend(data);
                                                   
                                                 }
