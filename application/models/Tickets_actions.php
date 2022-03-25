@@ -116,8 +116,9 @@ class Tickets_actions extends CI_model
 			
 				// send mail for all parents to inform about their earning
                 $rez = $this->db->select('*', FALSE)
-						   ->where_in('id', implode(',',$parents ))
+						   ->where_in('id', $parents)
                            ->get('user')->result();
+               
 				$emailsToSend = [];
 				foreach( $rez as $key => $value)
 				{
@@ -126,7 +127,7 @@ class Tickets_actions extends CI_model
                         array_push($emailsToSend,$value->email);
 					}
 				}
-
+        
                 if(!empty($emailsToSend)) {
                     $subject=$this->lang->line('Company Section Ticket Label New Earnings From Your Team');
                     $message = $this -> load -> view('company/tickets/emails/new_earnings_from_your_team', array( ),true);
