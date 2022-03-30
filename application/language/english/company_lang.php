@@ -65,6 +65,9 @@ $lang['Company Section Ticket Label Pdf Ticket Client ID'] = "Client ID";
 $lang['Company Section Ticket Label Pdf Ticket Download'] = "View";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "To view the tickets please press";
+$lang['Company Section Ticket Label Congratulations New Earnings From Your Team'] = "Congratulations your team has brought you new profits";
+$lang['Company Section Ticket Label New Earnings From Your Team'] = "New profit on Loyalty Club";
+
 $lang['Companies Page Showing'] = "Showing";
 $lang['Companies Page Of'] = "of";
 $lang['Companies Show Companies'] = "Show companies";

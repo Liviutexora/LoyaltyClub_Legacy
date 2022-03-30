@@ -92,16 +92,8 @@ class Register extends MY_Controller {
 				$sql_ins="`id_user`,`sponsor`";
 				$status=1;
 		
-				$mesaj_utilizator = $this -> load -> view('register/emails/users/after_registration_to_user', array('userName' => $this->input->post('name'),"email" =>$this->input->post('email'), "password" => $this->input->post('password') ),true);
-				$loyaltyclub_casa_mail = config_item('loyaltyclub_casa_mail');
-				$this -> email -> initialize($loyaltyclub_casa_mail);
-				$this -> email -> from($loyaltyclub_casa_mail['smtp_user'], "Loyalty Club");
-				$this -> email -> to($this->input->post('email'));
-				$this -> email -> cc('');
-				$this -> email -> bcc('');
-				$this->email->subject("Loyalty Club");
-				$this -> email -> message($mesaj_utilizator);
-				$this -> email -> send();
+				$message = $this -> load -> view('register/emails/users/after_registration_to_user', array('userName' => $this->input->post('name'),"email" =>$this->input->post('email'), "password" => $this->input->post('password') ),true);
+				$this->sendEmail($to = [$this->input->post('email')],"Loyalty Club",$message);
 			}
 			else if(isset($tip) && $tip==2)
 			{
@@ -120,16 +112,10 @@ class Register extends MY_Controller {
 				$sql_val="'".$nume_firma."','".$cui."' ,'".trim($sponsor)."' ";
 				$sql_ins="`id_firma`,`nume_firma`,`cui`,`sponsor_id`";
 				$status=0;
-				$mesaj_utilizator = $this -> load -> view('register/emails/companies/after_registration_to_company', array('companyName' => $this->input->post('name'),"email" =>$this->input->post('email'), "password" => $this->input->post('password') ),true);
-				$loyaltyclub_casa_mail = config_item('loyaltyclub_casa_mail');
-				$this -> email -> initialize($loyaltyclub_casa_mail);
-				$this -> email -> from($loyaltyclub_casa_mail['smtp_user'], "Loyalty Club");
-				$this -> email -> to($this->input->post('email'));
-				$this -> email -> cc('');
-				$this -> email -> bcc('');
-				$this->email->subject("Loyalty Club");
-				$this -> email -> message($mesaj_utilizator);
-				$this -> email -> send();					
+				
+				$message = $this -> load -> view('register/emails/companies/after_registration_to_company', array('companyName' => $this->input->post('name'),"email" =>$this->input->post('email'), "password" => $this->input->post('password') ),true);
+				$this->sendEmail($to = [$this->input->post('email')],"Loyalty Club",$message);
+							
 			}
 
 			//adauga user
@@ -146,79 +132,54 @@ class Register extends MY_Controller {
 			$this->db->query($query);
 			$network = array();
 			$this->users_actions->getUserParents($last_id,$network);
-			/*
+			
+			
 			if( count($network) > 0 ) {
 				// send mail for all parents to inform about their earning
 				$rez = $this->db->query("SELECT * FROM user where id IN(".implode(',',$network ).")")->result();
-				
 				
 				foreach( $rez as $key => $value)
 				{
 			
 					if( $value->email )
 					{
-						$catre_utilizator=$value->email;
-						$subiect_utilizator=$this->lang->line('You have a new user in your team');
-						$mesaj_utilizator="
-									".$this->lang->line('Hello')."
-									<br><br>
-									".$this->lang->line('Congratulations a new user has registered in your team')."
-									<br>
-									".$this->lang->line('Please login into your account')." <a href='".$_SERVER['HTTP_HOST']."'>link</a> ".$_SERVER['HTTP_HOST']."
-									<br><br>
-									".$this->lang->line('Thank you')."";
-						$headere  = "MIME-Version: 1.0\r\n";
-						$headere .= "Content-type: text/html; charset=iso-8859-1\r\n";
-						
-						
-						//trimite mail
-						//mail($catre_utilizator, $subiect_utilizator, $mesaj_utilizator, $headere);
+						$to=$value->email;
+						$subject=$this->lang->line('You have a new user in your team');
+						$message = $this -> load -> view('register/emails/after_registration_new_user_in_the_team', array( ),true);
+						$this->sendEmail($to = [$to], $subject, $message);
 					}
 				}
-			}*/
+			}
 			//daca este firma inseram domeniile de activitate
 			if($tip==2)
 			{
 				//daca s-au ales activitati, atunci este firma, deci trimitem email
-				$catre_admin=$this->users_actions->getContactEmail();
-				$mesaj_admin = $this -> load -> view('register/emails/companies/after_registration_to_admin', array('companyName' => $this->input->post('name')),true);
-				$loyaltyclub_casa_mail = config_item('loyaltyclub_casa_mail');
-				$this -> email -> initialize($loyaltyclub_casa_mail);
-				$this -> email -> from($loyaltyclub_casa_mail['smtp_user'], "Loyalty Club");
-				$this -> email -> to($catre_admin);
-				$this -> email -> cc('');
-				$this -> email -> bcc('');
-				$subiect_adm="".$this->lang->line('The new account for the company')." ".$nume_firma;
-				$this->email->subject($subiect_adm);
-				$this -> email -> message($mesaj_admin);
-				$this -> email -> send();			
+				$to=$this->users_actions->getContactEmail();
+				$message = $this -> load -> view('register/emails/companies/after_registration_to_admin', array('companyName' => $this->input->post('name')),true);
+				$subject="".$this->lang->line('The new account for the company')." ".$nume_firma;
+				$this->sendEmail($to = [$to], $subject, $message);			
 			}
 			
 			if($tip==2)
 			{
-				/*
+				
 				//get all users
 				$all_users="SELECT * FROM `user` WHERE `email`!='' AND tip='1'";
 				$all_users=$this->db->query($all_users)->result();
+
+				$toSendMails = [];
 				//go through all users and send mail with details about new company
-				
+				/*
 				foreach( $all_users as $all_users_key => $all_users_value )
 				{
-					
-					$catre_utilizator=$all_users_value->email;
+					array_push($toSendMails,$all_users_value->email);
+				}
+
+				if(!empty($toSendMails)) {
 					$message = $this -> load -> view('register/emails/users/after_registration_to_users_new_company_registered',true);
-					$loyaltyclub_casa_mail = config_item('loyaltyclub_casa_mail');
-					$this -> email -> initialize($loyaltyclub_casa_mail);
-					$this -> email -> from($loyaltyclub_casa_mail['smtp_user'], "Loyalty Club");
-					$this -> email -> to($this->input->post('email'));
-					$this -> email -> cc('');
-					$this -> email -> bcc('');
-					$subiect_utilizator="".$this->lang->line('The new account for the company')." ".$nume_firma;
-					$this->email->subject($catre_utilizator);
-					$this -> email -> message($message);
-					$this -> email -> send();		
-					
-				}*/
+					$subject="".$this->lang->line('The new account for the company')." ".$nume_firma;
+					$this->sendEmail($to = $toSendMails, $subject, $message);
+				} */
 			}
 		
 

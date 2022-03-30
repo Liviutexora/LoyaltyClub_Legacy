@@ -12,13 +12,13 @@ $config['graphTicketsLevel3MaxValue'] = $config['personalShoppingMaxValue'];
 //mail config
 $config['loyaltyclub_casa_mail']['protocol'] = 'smtp';
 $config['loyaltyclub_casa_mail']['smtp_user'] = 'smtpuser@loyalty-club.com';
-$config['loyaltyclub_casa_mail']['smtp_pass'] = 'sL(2(f6Khyc,';
+$config['loyaltyclub_casa_mail']['smtp_pass'] = 't&g}Z9z1{@3+';
 $config['loyaltyclub_casa_mail']['smtp_host'] = 'mail.loyalty-club.com';
 $config['loyaltyclub_casa_mail']['smtp_port'] = '26';
 $config['loyaltyclub_casa_mail']['charset'] = 'utf-8';
 $config['loyaltyclub_casa_mail']['mailtype'] = 'html';
 
-$config['versionJS'] = 1.4;
+$config['versionJS'] = 1.5;
 $config['versionCSS'] = 1.4;
  
 

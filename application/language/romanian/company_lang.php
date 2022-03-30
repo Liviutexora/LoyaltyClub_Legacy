@@ -65,6 +65,9 @@ $lang['Company Section Ticket Label Pdf Ticket Client ID'] = "ID Client";
 $lang['Company Section Ticket Label Pdf Ticket Download'] = "Vizualizare";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "Pentru a vedea tichetele vă rugăm apăsați";
 $lang['Company Section Ticket Label Pdf Ticket To Download Please Click'] = "Pentru a vedea tichetele vă rugăm apăsați";
+$lang['Company Section Ticket Label Congratulations New Earnings From Your Team'] = "Felicitari echipa ta ti-a adus noi profituri";
+$lang['Company Section Ticket Label New Earnings From Your Team'] = "New profit on Loyalty Club";
+
 $lang['Companies Page Showing'] = "Arată";
 $lang['Companies Page Of'] = "din";
 $lang['Companies Show Companies'] = "Arată Comercianți";
@@ -93,7 +96,7 @@ $lang['Company Section Home Are You Sure You Want To Generate Invoice'] = "Sunte
 $lang['Company Section Home Generate Invoice'] = "Generați factura ";
 
 /* Invoices Page */
-$lang['Company Section Ticket Label Section Title Invoices'] = "Invoices";
+$lang['Company Section Ticket Label Section Title Invoices'] = "Facturi";
 
 /* Archive Page */
 $lang['Company Section Ticket Label Section Title Archive'] = "Arhivă";

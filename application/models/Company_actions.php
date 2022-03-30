@@ -10,6 +10,14 @@ class Company_actions extends CI_model
 						
 	}
 
+	function getOnlyCompanyDetails($id)
+	{
+		return $this->db->select()
+						->where('c.id_firma',$id)
+						->get('firma as c')->row_array();
+						
+	}
+
 	function updateCompanyDetails($data,$companyId) {
 		$this->db->where('id_firma', $companyId);
 		$this->db->update('firma', $data);
