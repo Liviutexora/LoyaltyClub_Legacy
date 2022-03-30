@@ -96,7 +96,7 @@ $lang['Company Section Home Are You Sure You Want To Generate Invoice'] = "Sunte
 $lang['Company Section Home Generate Invoice'] = "Generați factura ";
 
 /* Invoices Page */
-$lang['Company Section Ticket Label Section Title Invoices'] = "Invoices";
+$lang['Company Section Ticket Label Section Title Invoices'] = "Facturi";
 
 /* Archive Page */
 $lang['Company Section Ticket Label Section Title Archive'] = "Arhivă";
