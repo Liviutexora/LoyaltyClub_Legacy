@@ -257,7 +257,7 @@ class Company extends MY_Controller {
 		if($this->input->post()) {
 			$validation = array();
 			$validation[] =  array('field' => 'companyName', 'rules' => 'required');
-			$validation[] =  array('field' => 'activity-domain[]', 'rules' => 'required');
+			$validation[] =  array('field' => 'main-activity-domain', 'rules' => 'required');
 			$validation[] =  array('field' => 'district[]', 'rules' => 'required');
 			$validation[] =  array('field' => 'locality', 'rules' => 'required');
 			$validation[] =  array('field' => 'description', 'rules' => 'required');
