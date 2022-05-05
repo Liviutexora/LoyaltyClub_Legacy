@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="activity-domain"><?=$this->lang->line("Company Section Company Details Label Company Additionals Activity Domains")?></label>
-                            <select multiple class="form-control" id="activity-domain" name="activity-domain[]" required size="8">
+                            <select multiple class="form-control" id="activity-domain" name="activity-domain[]" size="8">
                                 <?php foreach ($allActivities as $activity) { ?>
                                         <option value="<?=$activity['id']?>" <?=(in_array($activity['id'],$companyActivitiesIds) ? "selected='selected'": "")?>><?=ucwords($activity['titlu_eng'])?></option>
                                 <?php } ?>
