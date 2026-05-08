@@ -33,3 +33,10 @@ docker-loyaltyclub
 
 application/config/config.php
 application/config/database.php
+fideliza_loyaltyclub_ro.sql
+
+downloads/
+uploads/
+ci_sessions/
+
+.env
