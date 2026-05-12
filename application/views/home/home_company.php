@@ -6,7 +6,7 @@
       <div class="card-body position-relative">
          <h6><?=$this->lang->line("Company Section Home Sales")?></h6>
          <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif">
-            <?=($amountValidatedTicket ? $amountValidatedTicket : 0)?> kr
+            <?=($amountValidatedTicket ? $amountValidatedTicket : 0)?> <?=$this->config->item('currency')?>
          </div>
       </div>
    </div>

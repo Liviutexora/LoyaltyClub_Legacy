@@ -65,10 +65,11 @@
  */
 switch (ENVIRONMENT)
 {
-	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
-	break;
+		case 'development':
+			// Compatibil PHP 8.3: ascunde E_NOTICE si E_DEPRECATED, dar lasa E_ERROR si erorile critice
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+			ini_set('display_errors', 1);
+			break;
 
 	case 'testing':
 	case 'production':

@@ -2168,30 +2168,25 @@ class TCPDF {
 		switch ($unit) {
 			// points
 			case 'px':
-			case 'pt': {
+			case 'pt':
 				$this->k = 1;
 				break;
-			}
 			// millimeters
-			case 'mm': {
+			case 'mm':
 				$this->k = $this->dpi / 25.4;
 				break;
-			}
 			// centimeters
-			case 'cm': {
+			case 'cm':
 				$this->k = $this->dpi / 2.54;
 				break;
-			}
 			// inches
-			case 'in': {
+			case 'in':
 				$this->k = $this->dpi;
 				break;
-			}
 			// unsupported unit
-			default : {
+			default :
 				$this->Error('Incorrect unit: '.$unit);
 				break;
-			}
 		}
 		$this->pdfunit = $unit;
 		if (isset($this->CurOrientation)) {
@@ -3129,7 +3124,7 @@ class TCPDF {
 		if (empty($orientation)) {
 			$orientation = $default_orientation;
 		} else {
-			$orientation = strtoupper($orientation{0});
+			$orientation = strtoupper($orientation[0]);
 		}
 		if (in_array($orientation, $valid_orientations) AND ($orientation != $default_orientation)) {
 			$this->CurOrientation = $orientation;
@@ -3249,62 +3244,62 @@ class TCPDF {
 		$newmode = false;
 		switch (strtoupper($mode)) {
 			case 'LTR':
-			case 'L': {
+					case 'L':
 				if ($this->rtl) {
 					$newmode = 'L';
 				}
 				break;
 			}
 			case 'RTL':
-			case 'R': {
+					case 'R':
 				if (!$this->rtl) {
-					$newmode = 'R';
+				  if ($file[0] === '*') {
 				}
 				break;
-			}
+					 switch (strtoupper($fitbox[1])) {
 			case false:
 			default: {
-				$newmode = false;
+					 switch (strtoupper($fitbox[0])) {
 				break;
 			}
-		}
+				  define('PHP_VERSION_ID', (($version[0] * 10000) + ($version[2] * 100) + $version[4]));
 		$this->tmprtl = $newmode;
-	}
+				  if ((ord($icc[36]) != 0x61) OR (ord($icc[37]) != 0x63) OR (ord($icc[38]) != 0x73) OR (ord($icc[39]) != 0x70)) {
 
 	/**
-	 * Return the current temporary RTL status
+						$trns = array(ord($t[1]));
 	 * @return boolean
-	 * @public
+						$trns = array(ord($t[1]), ord($t[3]), ord($t[5]));
 	 * @since 4.8.014 (2009-11-04)
-	 */
+			   if ($dest[0] != 'F') {
 	public function isRTLTextDir() {
-		return ($this->rtl OR ($this->tmprtl == 'R'));
+						$header = (ord($font[0]) == 128);
 	}
-
+			   if ($color[0] != '#') {
 	/**
-	 * Set the last cell height.
+			   if ($file[0] === '@') { // image from string
 	 * @param $h (float) cell height.
-	 * @author Nicola Asuni
+				  if (($line == '') OR ($line[0] == '%')) {
 	 * @public
-	 * @since 1.53.0.TC034
+						switch ($attrib[0]) {
 	 */
-	public function setLastH($h) {
+							   if ($attrib[1] == ':') { // pseudo-element
 		$this->lasth = $h;
-	}
+						if ($element[0] == '/') {
 
-	/**
+					 if ($element[0] == '/') {
 	 * Reset the last cell height.
-	 * @public
+									 if ($dec[0] == 'u') {
 	 * @since 5.9.000 (2010-10-03)
-	 */
+									 } elseif ($dec[0] == 'l') {
 	public function resetLastH() {
-		$this->lasth = ($this->FontSize * $this->cell_height_ratio) + $this->cell_padding['T'] + $this->cell_padding['B'];
+									 } elseif ($dec[0] == 'o') {
 	}
-
+						    if ($imglink[0] == '#') {
 	/**
-	 * Get the last cell height.
+			   if ($file[0] === '@') { // image from string
 	 * @return last cell height
-	 * @public
+						    if (!$this->empty_string($this->svgdir) AND (($img[0] == '.') OR (basename($img) == $img))) {
 	 * @since 4.0.017 (2008-08-05)
 	 */
 	public function getLastH() {

@@ -86,7 +86,7 @@ class Admin extends MY_Controller {
 
 	public function generateUserLegitimation() {
 		$userDetails = $this->users_actions->getUserDetails($this->uri->segment(2));
-		if(count($userDetails)) {
+		if(!empty($userDetails)) {
 			$this->load->library('pdf');
 			$pdf = $this->pdf->load();
 			// create new PDF document
