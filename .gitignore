@@ -40,3 +40,4 @@ uploads/
 ci_sessions/
 
 .env
+docker-loyaltyclub/
