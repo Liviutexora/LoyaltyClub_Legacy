@@ -97,8 +97,16 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown1">
               
-              <ul class="navbar-nav align-items-center ml-auto">
-              <li class="nav-item dropdown"><a class="nav-link notification-indicator notification-indicator-primary px-0" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span><!--  --></a>
+                <ul class="navbar-nav align-items-center ml-auto">
+                <li class="nav-item mr-3">
+                  <a href="http://localhost:8000/mobile-app/<?=$this->session->userdata('user')['id']?>"
+                   class="btn btn-primary rounded-pill d-flex align-items-center px-3 py-2 shadow-sm"
+                   style="gap:8px; font-size:14px; font-weight:600;">
+                    <span class="fas fa-mobile-alt"></span>
+                    <span>Install App</span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link notification-indicator notification-indicator-primary px-0" id="navbarDropdownNotification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-bell fs-4" data-fa-transform="shrink-6"></span><!--  --></a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="navbarDropdownNotification">
                     <div class="card card-notification shadow-none" style="max-width: 20rem">
                       <div class="card-header">
