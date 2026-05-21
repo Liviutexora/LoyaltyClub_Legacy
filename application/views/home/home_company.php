@@ -1,4 +1,17 @@
 <div class="card-deck"> 
+   <div class="card mb-3 overflow-hidden border-primary" style="min-width: 12rem">
+      <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-1.png);">
+      </div>
+      <div class="card-body position-relative">
+         <h6 class="text-primary">Loyalty Scanner</h6>
+         <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info d-flex align-items-center" style="gap: 0.5rem;">
+            <span class="fas fa-qrcode mr-2"></span>QR / SCAN
+         </div>
+         <a href="#qr-transaction-modal" data-toggle="modal" data-target="#qr-transaction-modal" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;">
+            Scan QR <i class="fa fa-angle-right"></i>
+         </a>
+      </div>
+   </div>
    <div class="card mb-3 overflow-hidden" style="min-width: 12rem">
       <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-3.png);">
       </div>
@@ -38,7 +51,101 @@
       <div class="w-100 mb-3"> 
          <?php $this->load->view("company/tickets/partials/ticketsTable") ?>
       </div>
+ </div>
+
+<div class="modal fade" id="qr-transaction-modal" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:460px;">
+      <div class="modal-content">
+
+         <div class="modal-header pb-3 pt-3" style="background:#eaf2ff; border-bottom:1px solid #c9dcff;">
+            <div class="w-100">
+               <h4 class="mb-1 text-primary font-weight-bold" style="letter-spacing:0.01em;">
+                  <?=$this->current_user['company_name'] ?? 'Company'?>
+               </h4>
+               <div class="mb-0" style="margin-top:2px; font-size:1.05em; color:#6c757d; letter-spacing:0.01em;">
+                  <span style="display:inline-block; margin-top:2px;">Validate Loyalty Transaction</span>
+               </div>
+            </div>
+            <button class="close" type="button" data-dismiss="modal">
+               <span>&times;</span>
+            </button>
+         </div>
+
+         <div class="modal-body">
+            <div class="row">
+
+
+
+
+                  <!-- QR Scanner container for future integration -->
+                  <div id="qr-scanner-container" style="display:none;"></div>
+
+                  <div class="col-md-8 mb-3">
+                     <label>Client Name</label>
+                     <input type="text" class="form-control" id="qr-client-name" readonly placeholder="Client identified after scan" style="background-color:#f8f9fa; color:#495057;">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                     <label>Loyalty ID</label>
+                     <input type="text" class="form-control" id="qr-legacy-id" readonly placeholder="Legacy ID" style="background-color:#f8f9fa; color:#495057;">
+                  </div>
+
+
+
+               <div class="col-md-12 mb-3">
+                  <label>Transaction Amount *</label>
+                  <div class="input-group">
+                     <input type="text" class="form-control" placeholder="0.00" style="background-color:#fff9e6;">
+                     <div class="input-group-append">
+                        <span class="input-group-text"><?=$this->config->item('currency')?></span>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-md-4 mb-3">
+                  <label>Loyalty %</label>
+                  <input type="text" class="form-control" readonly placeholder="%" style="background-color:#f8f9fa; color:#495057;">
+               </div>
+
+               <div class="col-md-8 mb-3">
+                  <label>Loyalty Value</label>
+                  <div class="input-group">
+                     <input type="text" class="form-control" readonly placeholder="0.00" style="background-color:#f8f9fa; color:#495057;">
+                     <div class="input-group-append">
+                        <span class="input-group-text"><?=$this->config->item('currency')?></span>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-12 mb-3">
+                  <label>
+                     Invoice / Fiscal Receipt Series
+                     <small class="text-muted">(Optional)</small>
+                  </label>
+
+                  <input
+                     type="text"
+                     class="form-control"
+                     placeholder="Optional invoice / receipt reference"
+                     style="background-color:#fffdf2;">
+               </div>
+
+            </div>
+         </div>
+
+         <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">
+               Cancel
+            </button>
+
+            <button class="btn btn-primary" type="button">
+               Validate Transaction
+            </button>
+         </div>
+
+      </div>
+   </div>
 </div>
+
 <!-- Modal-->
 <!-- div class="modal show" id="general-modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.5)">
  <div class="modal-dialog" role="document">
