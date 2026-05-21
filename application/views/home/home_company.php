@@ -1,3 +1,6 @@
+
+
+
 <div class="card-deck"> 
    <div class="card mb-3 overflow-hidden border-primary" style="min-width: 12rem">
       <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-1.png);">
@@ -7,7 +10,7 @@
          <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info d-flex align-items-center" style="gap: 0.5rem;">
             <span class="fas fa-qrcode mr-2"></span>QR / SCAN
          </div>
-         <a data-toggle="modal" data-target="#qr-transaction-modal" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;">
+         <a data-toggle="modal" data-target="#qr-scanner-modal" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;">
             Scan QR <i class="fa fa-angle-right"></i>
          </a>
       </div>
@@ -52,6 +55,26 @@
          <?php $this->load->view("company/tickets/partials/ticketsTable") ?>
       </div>
  </div>
+
+<!-- QR Scanner Modal -->
+<div class="modal fade" id="qr-scanner-modal" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:420px;">
+      <div class="modal-content">
+         <div class="modal-header pb-3 pt-3">
+            <h4 class="mb-0 font-weight-bold">Scan Loyalty QR</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div id="qr-reader" style="min-height:300px;"></div>
+         </div>
+         <div class="modal-footer justify-content-center">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+         </div>
+      </div>
+   </div>
+</div>
 
 <div class="modal fade" id="qr-transaction-modal" tabindex="-1" role="dialog" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:460px;">
@@ -140,6 +163,69 @@
       </div>
    </div>
 </div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    let qrScanner = null;
+
+    const scannerModal = document.getElementById('qr-scanner-modal');
+
+   $('#qr-scanner-modal').on('shown.bs.modal', function () {
+
+        if (qrScanner) return;
+
+        qrScanner = new Html5Qrcode("qr-reader");
+
+        Html5Qrcode.getCameras()
+            .then(function(cameras){
+
+                if (!cameras || cameras.length === 0) {
+                    console.log('No camera found');
+                    return;
+                }
+
+                const cameraId = cameras[0].id;
+
+                qrScanner.start(
+                    cameraId,
+                    {
+                        fps: 10,
+                        qrbox: 250
+                    },
+                    function(decodedText){
+                        console.log('QR detected:', decodedText);
+                    },
+                    function(error){
+                        // ignore scan noise
+                    }
+                );
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+
+    });
+
+    scannerModal.addEventListener('hidden.bs.modal', function () {
+
+        if (!qrScanner) return;
+
+        qrScanner.stop()
+            .then(function(){
+                qrScanner.clear();
+                qrScanner = null;
+            })
+            .catch(function(){
+                qrScanner = null;
+            });
+
+    });
+
+});
+</script>
 
 <!-- Modal-->
 <!-- div class="modal show" id="general-modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,0.5)">
