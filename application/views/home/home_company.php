@@ -7,7 +7,7 @@
          <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info d-flex align-items-center" style="gap: 0.5rem;">
             <span class="fas fa-qrcode mr-2"></span>QR / SCAN
          </div>
-         <a href="#qr-transaction-modal" data-toggle="modal" data-target="#qr-transaction-modal" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;">
+         <a data-toggle="modal" data-target="#qr-transaction-modal" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;">
             Scan QR <i class="fa fa-angle-right"></i>
          </a>
       </div>
@@ -74,11 +74,6 @@
          <div class="modal-body">
             <div class="row">
 
-
-
-
-                  <!-- QR Scanner container for future integration -->
-                  <div id="qr-scanner-container" style="display:none;"></div>
 
                   <div class="col-md-8 mb-3">
                      <label>Client Name</label>
