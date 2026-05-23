@@ -75,6 +75,19 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="company_loyalty_percent">Company Loyalty Percent</label>
+                            <div class="input-group">
+                                <input class="form-control" value="<?=$companyDetails['company_loyalty_percent']?>" id="company_loyalty_percent" name="company_loyalty_percent" type="text">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="google_maps_url"><?=$this->lang->line("Company Section Company Details Label Google Maps Url")?></label>

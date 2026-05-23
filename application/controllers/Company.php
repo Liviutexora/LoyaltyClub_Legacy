@@ -282,6 +282,10 @@ class Company extends MY_Controller {
 			$companyData['google_maps_url'] = $postData['google_maps_url'];
 			$companyData['description'] = $postData['description'];
 			$companyData['postal_code'] = $postData['postal_code'];
+			// Save company_loyalty_percent as numeric decimal only
+			if (isset($postData['company_loyalty_percent']) && is_numeric($postData['company_loyalty_percent'])) {
+				$companyData['company_loyalty_percent'] = number_format((float)$postData['company_loyalty_percent'], 2, '.', '');
+			}
 			$this->company_actions->updateCompanyDetails($companyData,$this->current_user['id']);
 			$userData = array();
 			$userData['telefon'] = $postData['phone'];

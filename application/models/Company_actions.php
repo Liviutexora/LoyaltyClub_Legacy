@@ -3,7 +3,7 @@ class Company_actions extends CI_model
 {
 	function getCompanyDetails($id)
 	{
-		return $this->db->select('s.settings_value as logo,us.id,us.telefon as phone,us.email,us.emailToChange,us.nume as addedBy,c.description,c.google_maps_url,c.locality,c.nume_firma as companyName,c.nr_orc,c.id_firma,c.cui,c.iban,c.banca as bank,c.website,c.sponsor_id,c.street,c.number,c.postal_code,c.contract,c.street,c.number', FALSE)
+		return $this->db->select('s.settings_value as logo,us.id,us.telefon as phone,us.email,us.emailToChange,us.nume as addedBy,c.description,c.google_maps_url,c.locality,c.nume_firma as companyName,c.nr_orc,c.id_firma,c.cui,c.iban,c.banca as bank,c.website,c.sponsor_id,c.street,c.number,c.postal_code,c.contract,c.street,c.number,c.company_loyalty_percent', FALSE)
 						->join("user us","c.id_firma =us.id", "LEFT")->where('c.id_firma',$id)
 						->join("user_settings as s","c.id_firma =s.settings_user_id AND s.settings_name = 'avatar-image'","LEFT")
 						->get('firma as c')->row_array();
