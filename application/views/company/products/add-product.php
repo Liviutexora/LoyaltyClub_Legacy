@@ -171,12 +171,12 @@
                             });
 
                             myDropzone.on("queuecomplete", function(file, xhr, formData) {
-                                window.location = "/products";
+                                window.location = "<?=site_url('products')?>";
                             });
                             
                             myDropzone.processQueue();
                         } else {
-                            window.location = "/products";
+                            window.location = "<?=site_url('products')?>";
                         }
                     
                     } else {
