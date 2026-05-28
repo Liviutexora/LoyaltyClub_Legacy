@@ -78,6 +78,7 @@ $route['tickets'] = 'company/tickets';
 $route['list-of-tickets'] = 'company/generatedTicketsDatables';
 $route['delete-ticket'] = 'company/deleteTicket';
 $route['validate-ticket'] = 'company/validateTicket';
+$route['qr-validation-bridge'] = 'qrvalidationbridge/index';
 $route['download-tickets'] = 'company/downloadTickets';
 $route['products'] = 'products/index';
 $route['add-product'] = 'products/addProduct';

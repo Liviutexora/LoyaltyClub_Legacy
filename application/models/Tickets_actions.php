@@ -1,14 +1,14 @@
 <?php
 class Tickets_actions extends CI_model
 {
-	public function generateTickets($number)
+    public function generateTickets($number, $companyId = null)
 	{
 		$data = array();
 		for($i=1;$i<=$number;$i++)
 		{
 			$CI = get_instance();
 			$ticket = strtoupper($CI->generateRandomString($length = 5));
-			$data[] = array("ticket" => $ticket, "id_firma" => $this->session->userdata('user')['id'], "data_creare" => date("Y-m-d"));
+            $data[] = array("ticket" => $ticket, "id_firma" => ($companyId ? $companyId : $this->session->userdata('user')['id']), "data_creare" => date("Y-m-d"));
         }
         $this->db->insert_batch('tickets', $data);
         return $data;
@@ -46,10 +46,10 @@ class Tickets_actions extends CI_model
 
 
     
-    function validateTicket($ticketDetails) {
+    function validateTicket($ticketDetails, $companyId = null) {
        
         $companyDetails = $this->db->select('sponsor_id', FALSE)
-						   ->where('id_firma', $this->session->userdata('user')['id'])
+						   ->where('id_firma', ($companyId ? $companyId : $this->session->userdata('user')['id']))
                            ->get('firma')->row_array();
         $sponsorId = $companyDetails['sponsor_id'];
 		
