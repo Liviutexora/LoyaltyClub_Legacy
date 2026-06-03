@@ -6,7 +6,7 @@ class Welcome extends MY_Controller {
 			parent::__construct();
 			$this -> load -> model('users_actions');
 			$this -> load -> model('tickets_actions');
-			$this -> load -> model('invoices_actions');
+			$this ->load -> model('invoices_actions');
 	}
 	/**
 	 * Index Page for this controller.
@@ -44,9 +44,12 @@ class Welcome extends MY_Controller {
 					$data['totalAmount'] = $totalAmount;
 					
 					$level1Precentage = round(($this->config->item('graphTicketsLevel1MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'),2);
-					$level2Precentage = round((($this->config->item('graphTicketsLevel2MaxValue'))  * 100)/$this->config->item('personalShoppingMaxValue'),2);
-					$level3Precentage = round((($this->config->item('graphTicketsLevel3MaxValue') )  * 100)/$this->config->item('personalShoppingMaxValue'),2);
+					$level2Precentage = round((($this->config->item('graphTicketsLevel2MaxValue') - $this->config->item('graphTicketsLevel1MaxValue')) * 100)/$this->config->item('personalShoppingMaxValue'),2);
+					$level3Precentage = round((($this->config->item('graphTicketsLevel3MaxValue') - $this->config->item('graphTicketsLevel2MaxValue')) * 100)/$this->config->item('personalShoppingMaxValue'),2);
 					$graphTicketsMaxPrecentages = array("level1" => $level1Precentage,"level2" => $level2Precentage,"level3" => $level3Precentage);
+					$level1Limit = round(($this->config->item('graphTicketsLevel1MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'),2);
+					$level2Limit = round(($this->config->item('graphTicketsLevel2MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'),2);
+					$level3Limit = round(($this->config->item('graphTicketsLevel3MaxValue') * 100)/$this->config->item('personalShoppingMaxValue'),2);
 		
 					$currentPrecentageFromTicketTotal = round(($totalAmount * 100)/$this->config->item('personalShoppingMaxValue'),2);
 				
@@ -55,16 +58,39 @@ class Welcome extends MY_Controller {
 					$data['graphTicketsMaxPrecentages'] = $graphTicketsMaxPrecentages;
 					$data['currentGraphPercentage'] = array();
 
-					if($currentPrecentageFromTicketTotal <= $graphTicketsMaxPrecentages['level1']) {
+					if($currentPrecentageFromTicketTotal <= $level1Limit) {
 						$data['levelSelect'] = 'level1';
-						$data['currentGraphPercentage']['level1'] = $currentPrecentageFromTicketTotal;
-					} elseif($currentPrecentageFromTicketTotal > $graphTicketsMaxPrecentages['level1']  && $currentPrecentageFromTicketTotal <= $graphTicketsMaxPrecentages['level2']) {
+						$data['currentGraphPercentage']['level1'] = min(
+						    100,
+						    round(
+						        ($currentPrecentageFromTicketTotal / $level1Limit) * 100
+						    ,2)
+						);
+					} elseif($currentPrecentageFromTicketTotal > $level1Limit  && $currentPrecentageFromTicketTotal <= $level2Limit) {
 						$data['levelSelect'] = 'level2';
-						$data['currentGraphPercentage']['level2'] = $currentPrecentageFromTicketTotal -  $graphTicketsMaxPrecentages['level1'] ;
-					}elseif($currentPrecentageFromTicketTotal > $graphTicketsMaxPrecentages['level2'] ) {
+						$data['currentGraphPercentage']['level2'] = min(
+						    100,
+						    round(
+						        (
+						            ($currentPrecentageFromTicketTotal - $level1Limit)
+						            /
+						            ($level2Limit - $level1Limit)
+						        ) * 100
+						    ,2)
+						);
+					}elseif($currentPrecentageFromTicketTotal > $level2Limit) {
 						$data['levelSelect'] = 'level3';
 						
-						$data['currentGraphPercentage']['level3'] = ($currentPrecentageFromTicketTotal - $graphTicketsMaxPrecentages['level2']);
+						$data['currentGraphPercentage']['level3'] = min(
+						    100,
+						    round(
+						        (
+						            ($currentPrecentageFromTicketTotal - $level2Limit)
+						            /
+						            ($level3Limit - $level2Limit)
+						        ) * 100
+						    ,2)
+						);
 					}
 
 					break;
