@@ -53,6 +53,51 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+	$dotenv_path = __DIR__.DIRECTORY_SEPARATOR.'.env';
+	if (is_file($dotenv_path) && is_readable($dotenv_path))
+	{
+		$dotenv_lines = file($dotenv_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		if ($dotenv_lines !== FALSE)
+		{
+			foreach ($dotenv_lines as $dotenv_line)
+			{
+				$dotenv_line = trim($dotenv_line);
+				if ($dotenv_line === '' || strpos($dotenv_line, '#') === 0 || strpos($dotenv_line, '=') === FALSE)
+				{
+					continue;
+				}
+
+				list($dotenv_name, $dotenv_value) = explode('=', $dotenv_line, 2);
+				$dotenv_name = trim($dotenv_name);
+				$dotenv_value = trim($dotenv_value);
+
+				if ($dotenv_name === '' || getenv($dotenv_name) !== FALSE || isset($_SERVER[$dotenv_name]))
+				{
+					continue;
+				}
+
+				$dotenv_length = strlen($dotenv_value);
+				if ($dotenv_length >= 2)
+				{
+					$dotenv_first = $dotenv_value[0];
+					$dotenv_last = $dotenv_value[$dotenv_length - 1];
+					if (($dotenv_first === '"' && $dotenv_last === '"') || ($dotenv_first === "'" && $dotenv_last === "'"))
+					{
+						$dotenv_value = substr($dotenv_value, 1, -1);
+					}
+				}
+
+				if (function_exists('putenv'))
+				{
+					@putenv($dotenv_name.'='.$dotenv_value);
+				}
+
+				$_SERVER[$dotenv_name] = $dotenv_value;
+				$_ENV[$dotenv_name] = $dotenv_value;
+			}
+		}
+	}
+
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*

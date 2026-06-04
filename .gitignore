@@ -31,8 +31,8 @@ docker-loyaltyclub
 /tests/tests/
 /tests/results/
 
-application/config/config.php
-application/config/database.php
+
+
 fideliza_loyaltyclub_ro.sql
 
 downloads/
