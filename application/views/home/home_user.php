@@ -32,7 +32,7 @@
             <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif text-info d-flex align-items-center" style="gap: 0.5rem;">
                 <span class="fas fa-qrcode mr-2"></span>QR / CARD
             </div>
-            <a href="http://localhost:8000/membership/<?=$this->session->userdata('user')['id']?>" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;" target="_blank" rel="noopener">Open Card <i class="fa fa-angle-right"></i></a>
+            <a href="<?=$this->config->item('laravel_app_url')?>/membership/<?=$this->session->userdata('user')['id']?>" class="btn btn-info pt-1 pb-1 pl-2 pr-2" style="font-size:14px; line-height:1;" target="_blank" rel="noopener">Open Card <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
     <div class="card mb-3 overflow-hidden" style="min-width: 12rem">

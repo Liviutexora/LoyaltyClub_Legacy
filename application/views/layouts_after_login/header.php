@@ -99,7 +99,7 @@
               
                 <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item mr-3">
-                  <a href="http://localhost:8000/mobile-app/<?=$this->session->userdata('user')['id']?>"
+                  <a href="<?=$this->config->item('laravel_app_url')?>/mobile-app/<?=$this->session->userdata('user')['id']?>"
                    class="btn btn-primary rounded-pill d-flex align-items-center px-3 py-2 shadow-sm"
                    style="gap:8px; font-size:14px; font-weight:600;">
                     <span class="fas fa-mobile-alt"></span>
