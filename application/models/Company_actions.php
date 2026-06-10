@@ -37,16 +37,17 @@ class Company_actions extends CI_model
 	}
 
 	function getAllCompanyActivitiesGroupByActivity() {
-		$this->db->select('c_a.*,c.*', FALSE);
+		$this->db->select('c.id, c.titlu_eng', FALSE);
 		$this->db->join("categorii-produse as c","c_a.id_activitate =c.id");	
 		$this->db->where("c.deleted",0);
 		$this->db->where("c.status",1);
-		return $this->db->group_by('c.titlu_eng')->get('firma_activitate as c_a')->result_array();
+		return $this->db->group_by('c.id, c.titlu_eng')->get('firma_activitate as c_a')->result_array();
 	}
 
 	function getAllCompanies($categoryName, $allRows = false,$offset = 10) {
 		$mainActivitySql = "(SELECT cp.titlu_eng from firma_activitate as c_a_m INNER JOIN `categorii-produse` as cp ON c_a_m.id_activitate = cp.id and cp.status = 1 and cp.deleted =0 WHERE c_a_m.main = 1 and c_a_m.id_firma = f.id_firma )";
-		$this->db->select(' '.$mainActivitySql.' as mainActivity,f.nume_firma,u.data,us.settings_value as logo,f.id_firma', FALSE);
+		$this->db->distinct();
+		$this->db->select(' '.$mainActivitySql.' as mainActivity,f.nume_firma,u.data,us.settings_value as logo,f.id_firma,f.id', FALSE);
 		$this->db->join("firma_activitate as c_a","c_a.id_firma =f.id_firma");	
 		$this->db->join("user as u","f.id_firma =u.id");
 		
@@ -67,7 +68,7 @@ class Company_actions extends CI_model
 				$start = $start - $offset;
 			}
 		}
-		$this->db->group_by('f.id_firma')->order_by('f.id',"desc");
+		$this->db->order_by('f.id',"desc");
 		if(!$allRows) {
 			$this->db->limit($offset,$start);
 		}
