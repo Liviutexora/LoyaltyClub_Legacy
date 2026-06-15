@@ -45,6 +45,7 @@
                             <input type="text" class="form-control" id="price" name="price" pattern="^[-+]?[0-9]*\.?[0-9]+" required="required">
                         </div>
                     </div>
+                    <?php /*
                     <div class="form-group row">
                         <label for="discount" class="col-sm-4 col-form-label"><?=$this->lang->line('Company Section Product Label Section Label Product Bonus')?> <span class="required-sign-label">*</span>: </label>
                         <div class="col-sm-2">
@@ -53,6 +54,7 @@
                             <input type="hidden" id="product-id" type="text">
                         </div>
                     </div>
+                    */ ?>
                     <div class="form-group row">
                         <label for="discount" class="col-md-4 col-form-label"><?=$this->lang->line('Company Section Product Label Section Label Product Photos')?>: </label>
                         <div class="col-md-8">

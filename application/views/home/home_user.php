@@ -45,6 +45,7 @@
         <div class="display-4 fs-4 mb-2 font-weight-normal text-sans-serif" data-countupp="{&quot;count&quot;:43594,&quot;format&quot;:&quot;comma&quot;,&quot;prefix&quot;:&quot;&quot;}">
 		<?=number_format($totalReceived,2)?> <?=$this->config->item("currency")?></div>
 		<a href="<?=site_url('my-payment')?>" class="btn btn-success pt-1 pb-1 pl-2 pr-2 " style="font-size:14px; line-height:1;">New Payment <i class="fa fa-angle-right"></i></a>
+        <div class="text-muted fs--2 mt-2">În dezvoltare</div>
         </div>
 		
     </div>
@@ -75,6 +76,20 @@
 <div class="row no-gutters">
     <div class="btn btn-primary w-100 mb-3" style="cursor: default;">
       ID Loyalty Club: <?=$this->session->userdata('user')['id']?>
+    </div>
+</div>
+<div class="row no-gutters">
+    <div class="col-12 mb-3">
+        <div class="card overflow-hidden border-primary">
+            <div class="bg-holder bg-card" style="background-image:url(assets/img/illustrations/corner-4.png);">
+            </div>
+            <div class="card-body position-relative">
+                <h6 class="text-primary mb-3">Credit Loyalty Club</h6>
+                <p class="mb-2 fs--1">Creditul acumulat în Loyalty Club va putea fi folosit în curând pentru achiziția de produse și servicii de la comercianții parteneri.</p>
+                <p class="mb-2 fs--1">Continuă să acumulezi cashback și bonusuri.</p>
+                <p class="mb-0 fs--1">Funcționalitatea este în dezvoltare.</p>
+            </div>
+        </div>
     </div>
 </div>
     <div class="row no-gutters">

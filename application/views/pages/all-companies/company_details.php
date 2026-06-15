@@ -92,9 +92,9 @@
 
                        <?php 
                         if(!$data['displayType'] || $data['displayType'] == "list") 
-                            $this->load->view("/pages/all-companies/products/list", array("products" => $products));
+                          $this->load->view("/pages/all-companies/products/list", array("products" => $products, "companyDetails" => $companyDetails));
                         else 
-                            $this->load->view("/pages/all-companies/products/grid", array("products" => $products));
+                          $this->load->view("/pages/all-companies/products/grid", array("products" => $products, "companyDetails" => $companyDetails));
                        ?>
                           
                           <div class="col-md-12  text-right">

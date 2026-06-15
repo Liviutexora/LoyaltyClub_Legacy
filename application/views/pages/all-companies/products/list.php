@@ -2,6 +2,9 @@
     <?php foreach ($products as $productDetails) { ?>
     <?php 
     $isThisProductNew = false;
+        $companyLoyaltyPercent = isset($companyDetails['company_loyalty_percent']) ? (float)$companyDetails['company_loyalty_percent'] : 0;
+        $cashbackDisplayed = round($companyLoyaltyPercent / 3, 2);
+        $cashbackDisplayed = rtrim(rtrim(number_format($cashbackDisplayed, 2, '.', ''), '0'), '.');
     $productCreatedDate = date("Y-m-d", strtotime($productDetails['created_at']));  
     $FirstDay = date("Y-m-d", strtotime('monday this week'));  
     $LastDay = date("Y-m-d", strtotime('sunday this week'));  
@@ -46,7 +49,7 @@
             <div>
                 <h4 class="fs-1 fs-md-2 text-warning mb-0"><?=$productDetails['pret']?> <?=$this->config->item('currency')?></h4>
                 <div class="d-none d-lg-block">
-                <p class="fs--1 mb-1"><?=$this->lang->line("Company Section Product Label Section Label Product Bonus")?>: <strong><?=$productDetails['promotie']?>%</strong></p>
+                <p class="fs--1 mb-1">Cashback: <strong><?=$cashbackDisplayed?>%</strong></p>
              
                 </p>
                 </div>
