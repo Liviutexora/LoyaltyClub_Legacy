@@ -57,8 +57,7 @@
             </div>
         </a>
         <ul class="nav collapse" id="companies" data-parent="#navbarVerticalCollapse">
-            <li class="nav-item active"><a class="nav-link" href="#"><?=$this->lang->line("Coming Soon")?></a>
-            </li>
+            <li class="nav-item"><span class="nav-link text-muted">În dezvoltare</span></li>
         </ul>
         </li>
         <li class="nav-item">
@@ -111,6 +110,7 @@
                   </div>
                 </a>
                 <ul class="nav collapse show" id="authentication" data-parent="#navbarVerticalCollapse" style="">
+                  <li class="nav-item"><span class="nav-link text-muted">În dezvoltare</span></li>
                   <li class="nav-item"><a class="nav-link dropdown-indicator collapsed" href="#authentication-basic" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="authentication-basic"><?=$this->lang->line('User Section Menu Label Settings')?></a>
                     <ul class="nav collapse" id="authentication-basic" style="">
                       <li class="nav-item">
@@ -134,7 +134,7 @@
                   </div>
                 </a>
                 <ul class="nav collapse show" id="business" data-parent="#navbarVerticalCollapse" style="">
-               
+                  <li class="nav-item"><span class="nav-link text-muted">În dezvoltare</span></li>
                 </ul>
               </li>
         </li>

@@ -47,7 +47,7 @@
                 <td class="align-middle"><?=number_format($userMoney,2)?> <?=$this->config->item('currency')?></td>
                 <td class="align-middle"><span class="badge badge rounded-capsule badge-soft-success"><?=$this->lang->line('User Section Label My Network Qualified')?><span class="ml-1 fas fa-check" data-fa-transform="shrink-2"></span></span>
                 </td>
-                <td class="align-middle"><?=number_format($userMoney,2)?> kr</td>
+                <td class="align-middle"><?=number_format($userMoney,2)?> RON</td>
                
             </tr>
             <?php foreach($levels as $levelNr=>$levelDetails){ ?>

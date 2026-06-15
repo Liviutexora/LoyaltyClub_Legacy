@@ -1,7 +1,7 @@
 <?php
 
 $lang['Company Section Menu Label Loyalty Bank'] = "Loyalty Bank";
-$lang['Company Section Menu Label Generate Tickets'] = "Add Tickets";
+$lang['Company Section Menu Label Generate Tickets'] = "Generate Coupons";
 $lang['Company Section Menu Label Settings'] = "Account Details";
 $lang['Company Section Menu Label Edit Profile Info'] = "Profile";
 $lang['Company Section Menu Label Edit Profile Company Details'] = "Company Details";
@@ -37,22 +37,22 @@ $lang['Company Section Company Details Label Our Offer'] = "Our Offer";
 $lang['Company Section Company Details Label Reviews'] = "Reviews";
 $lang['Company Description Nr. Chars Label'] = "Nr. Chars";
 $lang['Company Description No Description Label'] = "No Description";
-$lang['Company Section Ticket Label Section Title Tickets'] = "Tickets";
+$lang['Company Section Ticket Label Section Title Tickets'] = "Coupons";
 $lang['Company Section Ticket Label Section Ticket Serial'] = "Serial";
 $lang['Company Section Ticket Label Section Ticket Discount'] = "Bonus";
 $lang['Company Section Ticket Label Section Ticket Value'] = "Value";
 $lang['Company Section Ticket Label Section Ticket Date'] = "Date";
 $lang['Company Section Ticket Label Section Ticket Client ID'] = "Client ID";
 $lang['Company Section Ticket Label Section Ticket Status'] = "Status";
-$lang['Company Section Ticket Label Section Ticket Add Tickets'] = "Add Tickets";
-$lang['Company Section Ticket Label Section Ticket Insert Nr Of Tickets'] = "Number of Tickets";
-$lang['Company Section Ticket Label Section Ticket Max Limit Of Tickets On Insert'] = "You can insert max [nrOfTickests] tickets at once";
+$lang['Company Section Ticket Label Section Ticket Add Tickets'] = "Add Coupon";
+$lang['Company Section Ticket Label Section Ticket Insert Nr Of Tickets'] = "Number of Coupons";
+$lang['Company Section Ticket Label Section Ticket Max Limit Of Tickets On Insert'] = "You can insert max [nrOfTickests] coupons at once";
 $lang['Company Section Ticket Label Section Ticket Status Not Used'] = "No used";
 $lang['Company Section Ticket Label Section Ticket Status Used'] = "To be Validated";
 $lang['Company Section Ticket Label Section Ticket Status Validated'] = "Validated";
 $lang['Company Section Ticket Label Section Ticket Validate Ticket'] = "Validate";
-$lang['Company Section Ticket Label Section Ticket Validate Ticket Question'] = "Are you sure you want to validate this ticket?";
-$lang['Company Section Ticket Label Section Ticket Add Tickets'] = "Add";
+$lang['Company Section Ticket Label Section Ticket Validate Ticket Question'] = "Are you sure you want to validate this coupon?";
+$lang['Company Section Ticket Label Section Ticket Add Tickets'] = "Add Coupon";
 $lang['Company Section Ticket Label Section Ticket Download Tickets'] = "Download";
 $lang['Company Section Ticket Label Pdf Ticket Company'] = "Company";
 $lang['Company Section Ticket Label Pdf Ticket Serial'] = "Serial";

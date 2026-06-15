@@ -44,7 +44,7 @@
             </div>
             <div class="col-lg-4 d-flex justify-content-between flex-column">
             <div>
-                <h4 class="fs-1 fs-md-2 text-warning mb-0">$<?=$productDetails['pret']?></h4>
+                <h4 class="fs-1 fs-md-2 text-warning mb-0"><?=$productDetails['pret']?> <?=$this->config->item('currency')?></h4>
                 <div class="d-none d-lg-block">
                 <p class="fs--1 mb-1"><?=$this->lang->line("Company Section Product Label Section Label Product Bonus")?>: <strong><?=$productDetails['promotie']?>%</strong></p>
              

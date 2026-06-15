@@ -4,7 +4,7 @@
     <div class="modal-content">
         <form action="<?=site_url('insert-ticket')?>" method="post" id="insert-ticket-form" class="needs-validation" novalidate>
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><?=$this->lang->line('User Section Tickets Page Label Insert Ticket')?></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Introduceți Cupon</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span class="font-weight-light" aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -19,7 +19,7 @@
                         <label for="ticket-value" class="col-sm-4 col-form-label"><?=$this->lang->line('User Section Tickets Page Label Value')?> <span class="required-sign-label">*</span>: </label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control float-left" id="ticket-value" name="ticket-value" pattern="^[1-9][0-9]*"  required="required">
-                            <div class="input-group-prepend"><span class="input-group-text">kr</span></div>
+                            <div class="input-group-prepend"><span class="input-group-text">RON</span></div>
                         </div>
                     </div>
                     <div class="form-group row">

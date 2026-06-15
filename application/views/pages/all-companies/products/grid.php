@@ -39,7 +39,7 @@
             <div class="p-1">
             <h5 class="fs-0"><a class="text-dark" href="#!"><?=$productDetails['titlu']?></a></h5>
             <p class="fs--1 mb-3"><a class="text-500" href="#!"><?=$productDetails['descriere']?></a></p>
-            <h5 class="fs-md-2 text-warning mb-0 d-flex align-items-center mb-3"> $<?=$productDetails['pret']?>
+            <h5 class="fs-md-2 text-warning mb-0 d-flex align-items-center mb-3"><?=$productDetails['pret']?> <?=$this->config->item('currency')?>
               
             </h5>
             <p class="fs--1"><?=$this->lang->line("Company Section Product Label Section Label Product Bonus")?>: <strong><?=$productDetails['promotie']?>%</strong></p>

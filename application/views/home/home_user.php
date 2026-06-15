@@ -72,8 +72,13 @@
         </div>
     </div>
 </div>
+<div class="row no-gutters">
+    <div class="btn btn-primary w-100 mb-3" style="cursor: default;">
+      ID Loyalty Club: <?=$this->session->userdata('user')['id']?>
+    </div>
+</div>
     <div class="row no-gutters">
-        <div class="col-lg-6 col-xl-7 col-xxl-8 mb-3 pr-lg-2 mb-3">
+        <div class="col-12 mb-3">
             <div class="card h-lg-100">
             <div class="card-body d-flex align-items-center">
                 <div class="w-100">
@@ -92,31 +97,34 @@
             </div>
             </div>
         </div>
-        <div class="col-lg-6 col-xl-5 col-xxl-4 mb-3 pl-lg-2">
-            <div class="card h-lg-100 overflow-hidden">
-            <div class="bg-holder bg-card" style="background-image:url(../assets/img/illustrations/corner-1.png);">
-            </div>
-            <!--/.bg-holder-->
+<!-- FUTURE SUBSCRIPTIONS MODULE
+Hidden during production cleanup.
+Will be restored when subscription system is implemented.
+<div class="col-lg-6 col-xl-5 col-xxl-4 mb-3 pl-lg-2">
+    <div class="card h-lg-100 overflow-hidden">
+    <div class="bg-holder bg-card" style="background-image:url(../assets/img/illustrations/corner-1.png);">
+    </div>
 
-            <div class="card-body position-relative">
-                <div class="row">
-                    <div class="col-md-8">
-                    <h5 ><?=$this->lang->line('User Section Profile Label Profile Reference')?></h5>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="display-4 fs-2 mb-2 font-weight-normal text-sans-serif text-info float-right"><?=$this->session->userdata('user')['id']?></div>
-                    </div>
+    <div class="card-body position-relative">
+        <div class="row">
+            <div class="col-md-8">
+            <h5 ><?=$this->lang->line('User Section Profile Label Profile Reference')?></h5>
+            </div>
+            <div class="col-md-4">
+            <div class="display-4 fs-2 mb-2 font-weight-normal text-sans-serif text-info float-right"><?=$this->session->userdata('user')['id']?></div>
+            </div>
 
-                </div>
-                
-                
-                <h5 class="text-warning"><?=$this->lang->line('User Section Label Subscription Your subscription will be renewed in')?></h5>
-                <p class="fs--1 mb-0"><?=$this->lang->line('User Section Label Subscription Your subscription will expire on')?>: 12-03-2021</p>
-                <button class="btn btn-falcon-success fs--1 mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional (<?=$this->lang->line("Coming Soon")?>)</button>
-                <a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0 pr-0 float-right" href="#!"><?=$this->lang->line('User Section Label Subscription Keep Me')?> standard (<?=$this->lang->line("Coming Soon")?>)<svg class="svg-inline--fa fa-chevron-right fa-w-10 ml-1" data-fa-transform="shrink-4 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg="" style="transform-origin: 0.3125em 0.5625em;"><g transform="translate(160 256)"><g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" transform="translate(-160 -256)"></path></g></g></svg><!-- <span class="fas fa-chevron-right ml-1" data-fa-transform="shrink-4 down-1"></span> --></a>
-               
-            </div>
-            </div>
         </div>
+        
+        
+        <h5 class="text-warning"><?=$this->lang->line('User Section Label Subscription Your subscription will be renewed in')?></h5>
+        <p class="fs--1 mb-0"><?=$this->lang->line('User Section Label Subscription Your subscription will expire on')?>: 12-03-2021</p>
+        <button class="btn btn-falcon-success fs--1 mt-4 mr-1 mb-1" type="button"><?=$this->lang->line('User Section Label Subscription Upgrade to')?> Professional (<?=$this->lang->line("Coming Soon")?>)</button>
+        <a class="btn btn-link fs--1 text-warning mt-4 mt-lg-3 pl-0 pr-0 float-right" href="#!"><?=$this->lang->line('User Section Label Subscription Keep Me')?> standard (<?=$this->lang->line("Coming Soon")?>)<svg class="svg-inline--fa fa-chevron-right fa-w-10 ml-1" data-fa-transform="shrink-4 down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg="" style="transform-origin: 0.3125em 0.5625em;"><g transform="translate(160 256)"><g transform="translate(0, 32)  scale(0.75, 0.75)  rotate(0 0 0)"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" transform="translate(-160 -256)"></path></g></g></svg></a>
+           
+    </div>
+    </div>
+</div>
+-->
     </div>
 

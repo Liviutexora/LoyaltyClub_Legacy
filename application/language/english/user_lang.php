@@ -27,8 +27,8 @@ $lang['User Section Tasks Label New Tasks'] = "You have 4 new tasks. <a href='#'
 $lang['User Section Label Revenue'] = "Revenue";
 $lang['User Section Label Users'] = "Users";
 $lang['User Section Label All Users'] = "All users";
-$lang['User Section Label Loyalty Tickets'] = "Tickets";
-$lang['User Section Label Btn Add Ticket'] = "Add Ticket";
+$lang['User Section Label Loyalty Tickets'] = "Coupons";
+$lang['User Section Label Btn Add Ticket'] = "Add Coupon";
 $lang['User Section Label Btn See All Tickets'] = "See all";
 $lang['User Section Label Personal Shopping'] = "Personal Shopping";
 $lang['User Section Label Personal Shopping of'] = "of";
